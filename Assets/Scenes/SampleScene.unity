@@ -349,7 +349,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2110208231}
-  - component: {fileID: 2110208230}
+  - component: {fileID: 2110208232}
   m_Layer: 0
   m_Name: Test
   m_TagString: Untagged
@@ -357,18 +357,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2110208230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2110208229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f352b0fe96aafca48b9d38bab363fad7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TestBootstrap
 --- !u!4 &2110208231
 Transform:
   m_ObjectHideFlags: 0
@@ -384,6 +372,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2110208232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110208229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c53e2d8e6f028694c88e162515385cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HeroDataTest
 --- !u!1 &2122553117
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,6 +413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe0f1b57e9b092849bd2e59af7fb755b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Core.GameManager
+  heroDatabase: {fileID: 11400000, guid: 4ab02857c1095c34bb0e56ce4889f8d0, type: 2}
 --- !u!4 &2122553119
 Transform:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using LuckyDefense.Heroes.Data;
 using UnityEngine;
 
 
@@ -9,6 +10,9 @@ namespace LuckyDefense.Core
 
         public ResourceManager Resource { get; private set; }
         public DataManager Data { get; private set; }
+
+        [SerializeField]
+        private HeroDatabase heroDatabase;
 
 
         private void Awake()
@@ -29,6 +33,8 @@ namespace LuckyDefense.Core
         {
             Resource = new ResourceManager();
             Data = new DataManager();
+
+            Data.Init(heroDatabase);
         }
     }
 }
