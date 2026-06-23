@@ -1,5 +1,6 @@
 using LuckyDefense.Board;
 using LuckyDefense.Heroes.Data;
+using System;
 using UnityEngine;
 
 
@@ -11,8 +12,8 @@ namespace LuckyDefense.Core
 
         public ResourceManager Resource { get; private set; }
         public DataManager Data { get; private set; }
-
         public BoardManager Board { get; private set; }
+        public SpawnManager Spawn { get; private set; }
 
         [SerializeField]
         private HeroDatabase heroDatabase;
@@ -37,6 +38,7 @@ namespace LuckyDefense.Core
             Resource = new ResourceManager();
             Data = new DataManager();
             Board = new BoardManager();
+            Spawn = new SpawnManager();
 
             Data.Init(heroDatabase);
         }

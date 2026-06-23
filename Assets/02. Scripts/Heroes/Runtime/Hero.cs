@@ -1,15 +1,24 @@
+using LuckyDefense.Heroes.Data;
 using UnityEngine;
 
 namespace LuckyDefense.Heroes
 {
     public class Hero
     {
-        public int HeroID { get; }
+        public HeroData Data { get; }
 
-        public Hero(int heroID)
+        public int Level { get; private set; } = 1;
+
+        public Hero(HeroData data)
         {
-            HeroID = heroID;
+            Data = data;
         }
+
+        public int HeroID => Data.HeroID;
+
+        public string HeroName => Data.HeroName;
+
+        public HeroGrade Grade => Data.Grade;
     }
 }
 

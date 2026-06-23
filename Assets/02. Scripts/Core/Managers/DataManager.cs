@@ -7,6 +7,8 @@ namespace LuckyDefense.Core
     {
         private Dictionary<int, HeroData> heroDict = new();
 
+        private List<HeroData> commonHeroes = new();
+
         public void Init(HeroDatabase database)
         {
             heroDict.Clear();
@@ -22,7 +24,11 @@ namespace LuckyDefense.Core
                 }
 
                 heroDict.Add(hero.HeroID, hero);
+
+                if (hero.Grade == HeroGrade.Common)
+                    commonHeroes.Add(hero);
             }
+
         }
 
         public HeroData GetHero(int heroID)
@@ -30,6 +36,16 @@ namespace LuckyDefense.Core
             heroDict.TryGetValue(heroID, out HeroData hero);
 
             return hero;
+        }
+
+        public HeroData GetRandomCommonHero()
+        {
+            int index =
+                UnityEngine.Random.Range(
+                    0,
+                    commonHeroes.Count);
+
+            return commonHeroes[index];
         }
     }
 }
