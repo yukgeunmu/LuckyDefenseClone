@@ -1,5 +1,4 @@
-﻿using LuckyDefense.Core;
-using LuckyDefense.Core.Events;
+﻿using LuckyDefense.Core.Events;
 using LuckyDefense.Heroes;
 using LuckyDefense.Heroes.Data;
 using LuckyDefense.Heroes.Factory;
@@ -10,9 +9,9 @@ namespace LuckyDefense.Core
     {
         private readonly HeroFactory heroFactory;
 
-        public SpawnManager()
+        public SpawnManager(HeroFactory heroFactory)
         {
-            heroFactory = new HeroFactory();
+            this.heroFactory = heroFactory;
         }
 
         public bool SummonHero()

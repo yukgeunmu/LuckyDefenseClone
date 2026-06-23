@@ -1,3 +1,4 @@
+using LuckyDefense.Heroes;
 using LuckyDefense.Heroes.Data;
 using System.Collections.Generic;
 
@@ -9,9 +10,12 @@ namespace LuckyDefense.Core
 
         private List<HeroData> commonHeroes = new();
 
-        public void Init(HeroDatabase database)
+        private List<RecipeData> recipes = new();
+
+        public void Init(HeroDatabase database, RecipeDatabase recipeDatabase)
         {
             heroDict.Clear();
+            recipes.Clear();
 
             foreach (HeroData hero in database.Heroes)
             {
@@ -28,6 +32,8 @@ namespace LuckyDefense.Core
                 if (hero.Grade == HeroGrade.Common)
                     commonHeroes.Add(hero);
             }
+
+            recipes = recipeDatabase.Recipes;
 
         }
 
@@ -46,6 +52,26 @@ namespace LuckyDefense.Core
                     commonHeroes.Count);
 
             return commonHeroes[index];
+        }
+
+        public RecipeData FindRecipe(HeroData heroData)
+        {
+            foreach (var recipe in recipes)
+            {
+                if (recipe.Materials.Count != 1)
+                    continue;
+
+                RecipeMaterial material =
+                    recipe.Materials[0];
+
+                if (material.HeroData == heroData
+                    && material.Count == 3)
+                {
+                    return recipe;
+                }
+            }
+
+            return null;
         }
     }
 }

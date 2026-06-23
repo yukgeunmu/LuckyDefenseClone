@@ -90,5 +90,23 @@ namespace LuckyDefense.Board
 
             return true;
         }
+
+        public List<GridCell> FindHeroes(int heroID)
+        {
+            List<GridCell> result = new();
+
+            foreach (var cell in cells)
+            {
+                if (cell.IsEmpty)
+                    continue;
+
+                if (cell.OccupiedHero.HeroID == heroID)
+                {
+                    result.Add(cell);
+                }
+            }
+
+            return result;
+        }
     }
 }
