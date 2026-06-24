@@ -1,9 +1,12 @@
-﻿using LuckyDefense.Core.Events;
+﻿using LuckyDefense.Board;
+using LuckyDefense.Board.View;
+using LuckyDefense.Core.Events;
 using LuckyDefense.Heroes;
 using LuckyDefense.Heroes.Data;
 using LuckyDefense.Heroes.Factory;
+using LuckyDefense.Heroes.View;
 
-namespace LuckyDefense.Core
+namespace LuckyDefense.Core.Manager
 {
     public class SpawnManager
     {
@@ -41,10 +44,10 @@ namespace LuckyDefense.Core
                 return false;
             }
 
-            EventBus.Publish(
-                new HeroSummonedEvent(hero));
-
+            EventBus.Publish(new HeroSummonedEvent(hero));
             return true;
         }
+
+
     }
 }

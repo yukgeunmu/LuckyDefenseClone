@@ -10,10 +10,13 @@ namespace LuckyDefense.Board
 
         public bool IsEmpty => OccupiedHero == null;
 
+
+
         public GridCell(int index)
         {
             Index = index;
         }
+
 
         public void SetHero(Hero hero)
         {

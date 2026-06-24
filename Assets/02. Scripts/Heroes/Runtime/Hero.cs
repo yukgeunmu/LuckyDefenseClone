@@ -1,3 +1,4 @@
+using LuckyDefense.Board;
 using LuckyDefense.Heroes.Data;
 using UnityEngine;
 
@@ -8,6 +9,12 @@ namespace LuckyDefense.Heroes
         public HeroData Data { get; }
 
         public int Level { get; private set; } = 1;
+
+        public GridCell CurrentCell
+        {
+            get;
+            internal set;
+        }
 
         public Hero(HeroData data)
         {

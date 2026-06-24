@@ -1,15 +1,15 @@
 ﻿using LuckyDefense.Heroes;
+using LuckyDefense.Board;
 using System.Collections.Generic;
 
-namespace LuckyDefense.Board
+namespace LuckyDefense.Core.Manager
 {
     public class BoardManager
     {
         public const int Row = 4;
         public const int Col = 5;
 
-        private readonly List<GridCell> cells =
-            new();
+        private readonly List<GridCell> cells = new();
 
         public IReadOnlyList<GridCell> Cells => cells;
 
@@ -57,6 +57,7 @@ namespace LuckyDefense.Board
                 return false;
 
             cell.SetHero(hero);
+            hero.CurrentCell = cell;
 
             return true;
         }
@@ -67,6 +68,7 @@ namespace LuckyDefense.Board
             {
                 if (cell.OccupiedHero == hero)
                 {
+                    hero.CurrentCell = null;
                     cell.Clear();
                     return true;
                 }
@@ -107,6 +109,17 @@ namespace LuckyDefense.Board
             }
 
             return result;
+        }
+
+        public GridCell FindCell(Hero hero)
+        {
+            foreach (var cell in cells)
+            {
+                if (cell.OccupiedHero == hero)
+                    return cell;
+            }
+
+            return null;
         }
     }
 }

@@ -1,12 +1,16 @@
 using LuckyDefense.Board;
+using LuckyDefense.Board.View;
+using LuckyDefense.Core.Events;
+using LuckyDefense.Heroes;
 using LuckyDefense.Heroes.Data;
 using LuckyDefense.Heroes.Factory;
 using LuckyDefense.Heroes.Merge;
+using LuckyDefense.Heroes.View;
 using System;
 using UnityEngine;
 
 
-namespace LuckyDefense.Core
+namespace LuckyDefense.Core.Manager
 {
     public class GameManager : MonoBehaviour
     {
@@ -25,7 +29,12 @@ namespace LuckyDefense.Core
         [SerializeField]
         private RecipeDatabase recipeDatabase;
 
+
+
+
         private HeroFactory heroFactory;
+
+        private HeroViewFactory heroViewFactory;
 
 
         private void Awake()
@@ -54,5 +63,6 @@ namespace LuckyDefense.Core
 
             Data.Init(heroDatabase, recipeDatabase);
         }
+
     }
 }

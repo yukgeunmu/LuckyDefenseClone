@@ -1,4 +1,4 @@
-using LuckyDefense.Core;
+using LuckyDefense.Core.Manager;
 using UnityEngine;
 
 public class TestBootstrap : MonoBehaviour

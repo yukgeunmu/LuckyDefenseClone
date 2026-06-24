@@ -18,6 +18,16 @@ namespace LuckyDefense.Core
                 eventDictionary[type] += callback;
         }
 
+        public static void Unsubscribe<T>(Action<IEvent> callback) where T : IEvent
+        {
+            Type type = typeof(T);
+
+            if (eventDictionary.ContainsKey(type))
+            {
+                eventDictionary[type] -= callback;
+            }
+        }
+
         public static void Publish(IEvent gameEvent)
         {
             Type type = gameEvent.GetType();

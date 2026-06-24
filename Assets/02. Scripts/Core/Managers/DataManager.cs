@@ -2,7 +2,7 @@ using LuckyDefense.Heroes;
 using LuckyDefense.Heroes.Data;
 using System.Collections.Generic;
 
-namespace LuckyDefense.Core
+namespace LuckyDefense.Core.Manager
 {
     public class DataManager
     {

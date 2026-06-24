@@ -1,4 +1,4 @@
-namespace LuckyDefense.Core
+namespace LuckyDefense.Core.Manager
 {
     public class ResourceManager
     {

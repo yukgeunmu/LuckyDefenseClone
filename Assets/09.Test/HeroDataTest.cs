@@ -1,5 +1,5 @@
 using LuckyDefense.Heroes.Data;
-using LuckyDefense.Core;
+using LuckyDefense.Core.Manager;
 using UnityEngine;
 
 public class HeroDataTest : MonoBehaviour
