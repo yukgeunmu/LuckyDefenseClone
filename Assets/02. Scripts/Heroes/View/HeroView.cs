@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace LuckyDefense.Heroes.View
 {
-    public class HeroView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+    public class HeroView : MonoBehaviour
     {
         public Hero Hero { get; private set; }
 
@@ -19,23 +19,23 @@ namespace LuckyDefense.Heroes.View
                 $"{hero.HeroName}";
         }
 
-        public void OnBeginDrag(PointerEventData eventData)
-        {
-            originalPosition =
-                transform.position;
+        //public void OnBeginDrag(PointerEventData eventData)
+        //{
+        //    originalPosition =
+        //        transform.position;
 
-            originalParent =
-                transform.parent;
-        }
+        //    originalParent =
+        //        transform.parent;
+        //}
 
-        public void OnDrag(PointerEventData eventData)
-        {
-            transform.position =
-                eventData.position;
-        }
+        //public void OnDrag(PointerEventData eventData)
+        //{
+        //    transform.position =
+        //        eventData.position;
+        //}
 
-        public void OnEndDrag(PointerEventData eventData)
-        {
-        }
+        //public void OnEndDrag(PointerEventData eventData)
+        //{
+        //}
     }
 }

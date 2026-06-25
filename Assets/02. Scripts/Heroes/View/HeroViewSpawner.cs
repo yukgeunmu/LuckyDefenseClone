@@ -46,17 +46,25 @@ namespace Game.Heroes.View
             GridCell cell =
                 GameManager.Instance.Board.FindCell(hero);
 
+            if(cell == null)
+            {
+                return;
+            }
+
+
             CellView cellView =
                 boardView.GetCellView(cell.Index);
 
             HeroView heroView =
                 heroViewFactory.Create(
                     hero,
-                    cellView.transform);
+                    cellView.HeroContainer);
 
             heroViewManager.Register(
                 hero,
                 heroView);
+
+            cellView.Refresh();
         }
     }
 }

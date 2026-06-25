@@ -1,5 +1,6 @@
-﻿using LuckyDefense.Heroes;
-using LuckyDefense.Board;
+﻿using LuckyDefense.Board;
+using LuckyDefense.Heroes;
+using LuckyDefense.Heroes.Data;
 using System.Collections.Generic;
 
 namespace LuckyDefense.Core.Manager
@@ -49,32 +50,18 @@ namespace LuckyDefense.Core.Manager
             return null;
         }
 
-        public bool PlaceHero(Hero hero)
-        {
-            GridCell cell = GetEmptyCell();
-
-            if (cell == null)
-                return false;
-
-            cell.SetHero(hero);
-            hero.CurrentCell = cell;
-
-            return true;
-        }
-
-        public bool RemoveHero(Hero hero)
+        public GridCell GetAvailableCell(HeroData heroData)
         {
             foreach (var cell in cells)
             {
-                if (cell.OccupiedHero == hero)
-                {
-                    hero.CurrentCell = null;
-                    cell.Clear();
-                    return true;
-                }
+                if (cell.IsEmpty)
+                    return cell;
+
+                if (cell.HeroData == heroData && !cell.IsFull)
+                    return cell;
             }
 
-            return false;
+            return null;
         }
 
 
@@ -85,41 +72,92 @@ namespace LuckyDefense.Core.Manager
             if (cell == null)
                 return false;
 
-            if (!cell.IsEmpty)
+            if (!cell.AddHero(hero))
                 return false;
 
-            cell.SetHero(hero);
+            hero.CurrentCell = cell;
 
             return true;
         }
 
-        public List<GridCell> FindHeroes(int heroID)
+
+
+        public bool PlaceHero(Hero hero)
         {
-            List<GridCell> result = new();
+            GridCell cell = GetAvailableCell(hero.Data);
 
-            foreach (var cell in cells)
-            {
-                if (cell.IsEmpty)
-                    continue;
+            if (cell == null)
+                return false;
 
-                if (cell.OccupiedHero.HeroID == heroID)
-                {
-                    result.Add(cell);
-                }
-            }
+            cell.AddHero(hero);
+            hero.CurrentCell = cell;
+
+            return true;
+        }
+
+        public bool RemoveHero(Hero hero)
+        {
+            GridCell cell = hero.CurrentCell;
+
+            if (cell == null)
+                return false;
+
+            bool result = cell.RemoveHero(hero);
+
+            if (result)
+                hero.CurrentCell = null;
 
             return result;
         }
 
+
+        //public List<GridCell> FindHeroes(int heroID)
+        //{
+        //    List<GridCell> result = new();
+
+        //    foreach (var cell in cells)
+        //    {
+        //        if (cell.IsEmpty)
+        //            continue;
+
+        //        if (cell.OccupiedHero.HeroID == heroID)
+        //        {
+        //            result.Add(cell);
+        //        }
+        //    }
+
+        //    return result;
+        //}
+
         public GridCell FindCell(Hero hero)
         {
+
+
             foreach (var cell in cells)
             {
-                if (cell.OccupiedHero == hero)
+                if (cell.Contains(hero))
+                {
                     return cell;
+                }
+
             }
 
             return null;
+        }
+
+        public bool MoveCell(GridCell source, GridCell target)
+        {
+            if (!target.IsEmpty)
+                return false;
+
+            foreach (var hero in source.Heroes)
+            {
+                target.AddHero(hero);
+            }
+
+            source.Clear();
+
+            return true;
         }
     }
 }

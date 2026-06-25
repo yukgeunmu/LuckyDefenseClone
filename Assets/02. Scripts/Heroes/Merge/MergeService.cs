@@ -20,71 +20,101 @@ namespace LuckyDefense.Heroes.Merge
         }
 
 
-        public bool TryMerge(Hero source, Hero target)
+        public bool CanMerge(GridCell cell)
         {
-            if (source == null)
+            if (cell.HeroCount < 3)
                 return false;
 
-            if (target == null)
-                return false;
+            Hero firstHero = cell.Heroes[0];
 
-            if (source.HeroID != target.HeroID)
+            foreach (Hero hero in cell.Heroes)
             {
-                return false;
+                if (hero.HeroID != firstHero.HeroID)
+                    return false;
             }
-
-            BoardManager board = GameManager.Instance.Board;
-
-            List<Hero> consumedHeroes = new();
 
             return true;
-
         }
 
-
-        public bool TryMerge(int heroID)
+        public bool TryMerge(GridCell cell)
         {
-            BoardManager board = GameManager.Instance.Board;
-
-            List<GridCell> heroes = board.FindHeroes(heroID);
-
-            List<Hero> consumedHeroes = new();
-
-            for (int i = 0; i < 3; i++)
-            {
-                consumedHeroes.Add(
-                    heroes[i].OccupiedHero);
-            }
-
-            if (heroes.Count < 3)
+            if (!CanMerge(cell))
                 return false;
 
-            HeroData sourceHero =
-                heroes[0]
-                    .OccupiedHero
-                    .Data;
+            Hero sourceHero =
+                cell.Heroes[0];
 
             RecipeData recipe =
                 GameManager.Instance.Data
-                    .FindRecipe(sourceHero);
+                    .FindRecipe(sourceHero.Data);
 
             if (recipe == null)
                 return false;
 
-            int targetIndex = heroes[0].Index;
+            List<Hero> consumedHeroes = new(cell.Heroes);
 
-            for (int i = 0; i < 3; i++)
+            foreach (Hero hero in consumedHeroes)
             {
-                heroes[i].Clear();
+                GameManager.Instance.Board
+                    .RemoveHero(hero);
             }
 
             Hero mergedHero = heroFactory.Create(recipe.ResultHero);
 
-            board.PlaceHero(targetIndex, mergedHero);
+            GameManager.Instance.Board
+                .PlaceHero(cell.Index, mergedHero);
 
-            EventBus.Publish(new HeroMergedEvent(mergedHero, consumedHeroes));
+            EventBus.Publish( new HeroMergedEvent(mergedHero, consumedHeroes));
 
             return true;
         }
+
+
+
+
+        //public bool TryMerge(int heroID)
+        //{
+        //    BoardManager board = GameManager.Instance.Board;
+
+        //    List<GridCell> heroes = board.FindHeroes(heroID);
+
+        //    List<Hero> consumedHeroes = new();
+
+        //    for (int i = 0; i < 3; i++)
+        //    {
+        //        consumedHeroes.Add(
+        //            heroes[i].OccupiedHero);
+        //    }
+
+        //    if (heroes.Count < 3)
+        //        return false;
+
+        //    HeroData sourceHero =
+        //        heroes[0]
+        //            .OccupiedHero
+        //            .Data;
+
+        //    RecipeData recipe =
+        //        GameManager.Instance.Data
+        //            .FindRecipe(sourceHero);
+
+        //    if (recipe == null)
+        //        return false;
+
+        //    int targetIndex = heroes[0].Index;
+
+        //    for (int i = 0; i < 3; i++)
+        //    {
+        //        heroes[i].Clear();
+        //    }
+
+        //    Hero mergedHero = heroFactory.Create(recipe.ResultHero);
+
+        //    board.PlaceHero(targetIndex, mergedHero);
+
+        //    EventBus.Publish(new HeroMergedEvent(mergedHero, consumedHeroes));
+
+        //    return true;
+        //}
     }
 }

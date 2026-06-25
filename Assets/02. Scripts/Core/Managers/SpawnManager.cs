@@ -32,6 +32,8 @@ namespace LuckyDefense.Core.Manager
             Hero hero =
                 heroFactory.Create(heroData);
 
+
+
             bool result =
                 GameManager.Instance.Board
                     .PlaceHero(hero);

@@ -15,10 +15,10 @@ public class MergeTest : MonoBehaviour
         spawn.SummonHero();
         spawn.SummonHero();
 
-        bool success =
-            GameManager.Instance.Merge
-                .TryMerge(1001);
+        //bool success =
+        //    GameManager.Instance.Merge
+        //        .TryMerge(1001);
 
-        Debug.Log(success);
+        //Debug.Log(success);
     }
 }
