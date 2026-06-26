@@ -4,7 +4,7 @@ using LuckyDefense.Core.Events;
 using LuckyDefense.Heroes;
 using LuckyDefense.Heroes.Data;
 using LuckyDefense.Heroes.Factory;
-using LuckyDefense.Heroes.Merge;
+using LuckyDefense.Core.Service;
 using LuckyDefense.Heroes.View;
 using System;
 using UnityEngine;
@@ -22,6 +22,8 @@ namespace LuckyDefense.Core.Manager
         public SpawnManager Spawn { get; private set; }
 
         public MergeService Merge { get; private set; }
+
+        public PlacementService Placement { get; private set; }
 
         [SerializeField]
         private HeroDatabase heroDatabase;
@@ -60,6 +62,7 @@ namespace LuckyDefense.Core.Manager
             Board = new BoardManager();
             Spawn = new SpawnManager(heroFactory);
             Merge = new MergeService(heroFactory);
+            Placement = new PlacementService(Board);
 
             Data.Init(heroDatabase, recipeDatabase);
         }

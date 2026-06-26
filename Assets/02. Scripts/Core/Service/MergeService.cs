@@ -1,13 +1,12 @@
 using LuckyDefense.Board;
-using LuckyDefense.Core;
+using LuckyDefense.Heroes;
 using LuckyDefense.Core.Events;
 using LuckyDefense.Core.Manager;
 using LuckyDefense.Heroes.Data;
 using LuckyDefense.Heroes.Factory;
 using System.Collections.Generic;
-using static Unity.VisualScripting.Member;
 
-namespace LuckyDefense.Heroes.Merge
+namespace LuckyDefense.Core.Service
 {
     public class MergeService
     {
@@ -55,7 +54,7 @@ namespace LuckyDefense.Heroes.Merge
 
             foreach (Hero hero in consumedHeroes)
             {
-                GameManager.Instance.Board
+                GameManager.Instance.Placement
                     .RemoveHero(hero);
             }
 

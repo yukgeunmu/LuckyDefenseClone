@@ -3,6 +3,7 @@ using LuckyDefense.Core.Events;
 using LuckyDefense.Heroes;
 using LuckyDefense.Heroes.Data;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 namespace LuckyDefense.Core.Manager
 {
@@ -82,36 +83,6 @@ namespace LuckyDefense.Core.Manager
         }
 
 
-
-        public bool PlaceHero(Hero hero)
-        {
-            GridCell cell = GetAvailableCell(hero.Data);
-
-            if (cell == null)
-                return false;
-
-            cell.AddHero(hero);
-            hero.CurrentCell = cell;
-
-            return true;
-        }
-
-        public bool RemoveHero(Hero hero)
-        {
-            GridCell cell = hero.CurrentCell;
-
-            if (cell == null)
-                return false;
-
-            bool result = cell.RemoveHero(hero);
-
-            if (result)
-                hero.CurrentCell = null;
-
-            return result;
-        }
-
-
         public GridCell FindCell(Hero hero)
         {
             foreach (var cell in cells)
@@ -126,30 +97,5 @@ namespace LuckyDefense.Core.Manager
             return null;
         }
 
-        public bool MoveStack(GridCell source, GridCell target)
-        {
-            if (source == null || target == null)
-                return false;
-
-            if (source.IsEmpty)
-                return false;
-
-            if (!target.IsEmpty)
-                return false;
-
-            List<Hero> heroes = source.GetHeroes();
-
-            foreach (Hero hero in heroes)
-            {
-                target.AddHero(hero);
-                hero.CurrentCell = target;
-            }
-
-            source.Clear();
-
-            EventBus.Publish( new CellMovedEvent(source,target));
-
-            return true;
-        }
     }
 }

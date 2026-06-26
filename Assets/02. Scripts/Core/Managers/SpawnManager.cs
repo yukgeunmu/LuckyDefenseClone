@@ -35,7 +35,7 @@ namespace LuckyDefense.Core.Manager
 
 
             bool result =
-                GameManager.Instance.Board
+                GameManager.Instance.Placement
                     .PlaceHero(hero);
 
             if (!result)

@@ -91,7 +91,7 @@ namespace LuckyDefense.Board
 
                     GridCell targetCell = target.GridCell;
 
-                    GameManager.Instance.Board.MoveStack(sourceCell, targetCell);
+                    GameManager.Instance.Placement.MoveStack(sourceCell, targetCell);
                 }
             }
 
