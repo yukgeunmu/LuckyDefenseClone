@@ -28,6 +28,21 @@ namespace LuckyDefense.Core.Service
             return true;
         }
 
+        public bool PlaceMergeHero(int cellIndex, Hero hero)
+        {
+            GridCell cell = board.GetCell(cellIndex);
+
+            if (cell == null)
+                return false;
+
+            if (!cell.AddHero(hero))
+                return false;
+
+            hero.CurrentCell = cell;
+
+            return true;
+        }
+
         public bool MoveStack(GridCell source, GridCell target)
         {
             if (source == null || target == null)

@@ -60,8 +60,8 @@ namespace LuckyDefense.Core.Service
 
             Hero mergedHero = heroFactory.Create(recipe.ResultHero);
 
-            GameManager.Instance.Board
-                .PlaceHero(cell.Index, mergedHero);
+            GameManager.Instance.Placement
+                .PlaceMergeHero(cell.Index, mergedHero);
 
             EventBus.Publish( new HeroMergedEvent(mergedHero, consumedHeroes));
 

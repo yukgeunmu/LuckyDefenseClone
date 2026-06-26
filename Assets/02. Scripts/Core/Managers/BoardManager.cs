@@ -67,21 +67,6 @@ namespace LuckyDefense.Core.Manager
         }
 
 
-        public bool PlaceHero(int cellIndex, Hero hero)
-        {
-            GridCell cell = GetCell(cellIndex);
-
-            if (cell == null)
-                return false;
-
-            if (!cell.AddHero(hero))
-                return false;
-
-            hero.CurrentCell = cell;
-
-            return true;
-        }
-
 
         public GridCell FindCell(Hero hero)
         {
