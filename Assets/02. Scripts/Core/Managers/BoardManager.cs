@@ -1,4 +1,5 @@
 ﻿using LuckyDefense.Board;
+using LuckyDefense.Core.Events;
 using LuckyDefense.Heroes;
 using LuckyDefense.Heroes.Data;
 using System.Collections.Generic;
@@ -111,28 +112,8 @@ namespace LuckyDefense.Core.Manager
         }
 
 
-        //public List<GridCell> FindHeroes(int heroID)
-        //{
-        //    List<GridCell> result = new();
-
-        //    foreach (var cell in cells)
-        //    {
-        //        if (cell.IsEmpty)
-        //            continue;
-
-        //        if (cell.OccupiedHero.HeroID == heroID)
-        //        {
-        //            result.Add(cell);
-        //        }
-        //    }
-
-        //    return result;
-        //}
-
         public GridCell FindCell(Hero hero)
         {
-
-
             foreach (var cell in cells)
             {
                 if (cell.Contains(hero))
@@ -145,17 +126,27 @@ namespace LuckyDefense.Core.Manager
             return null;
         }
 
-        public bool MoveCell(GridCell source, GridCell target)
+        public bool MoveStack(GridCell source, GridCell target)
         {
+            if (source == null || target == null)
+                return false;
+
+            if (source.IsEmpty)
+                return false;
+
             if (!target.IsEmpty)
                 return false;
 
-            foreach (var hero in source.Heroes)
+            List<Hero> heroes = source.GetHeroes();
+
+            foreach (Hero hero in heroes)
             {
                 target.AddHero(hero);
             }
 
             source.Clear();
+
+            EventBus.Publish( new CellMovedEvent(source,target));
 
             return true;
         }

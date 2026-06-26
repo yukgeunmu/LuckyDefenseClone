@@ -18,24 +18,5 @@ namespace LuckyDefense.Heroes.View
             gameObject.name =
                 $"{hero.HeroName}";
         }
-
-        //public void OnBeginDrag(PointerEventData eventData)
-        //{
-        //    originalPosition =
-        //        transform.position;
-
-        //    originalParent =
-        //        transform.parent;
-        //}
-
-        //public void OnDrag(PointerEventData eventData)
-        //{
-        //    transform.position =
-        //        eventData.position;
-        //}
-
-        //public void OnEndDrag(PointerEventData eventData)
-        //{
-        //}
     }
 }

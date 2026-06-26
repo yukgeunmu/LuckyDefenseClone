@@ -6,6 +6,7 @@ using LuckyDefense.Core.Manager;
 using LuckyDefense.Heroes;
 using LuckyDefense.Heroes.Factory;
 using LuckyDefense.Heroes.View;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Heroes.View
@@ -30,11 +31,13 @@ namespace Game.Heroes.View
         private void OnEnable()
         {
             EventBus.Subscribe<HeroSummonedEvent>(OnHeroSummoned);
+            EventBus.Subscribe<CellMovedEvent>(OnCellMoved);
         }
 
         private void OnDisable()
         {
             EventBus.Unsubscribe<HeroSummonedEvent>(OnHeroSummoned);
+            EventBus.Unsubscribe<CellMovedEvent>(OnCellMoved);
         }
 
         private void OnHeroSummoned(IEvent e)
@@ -51,20 +54,36 @@ namespace Game.Heroes.View
                 return;
             }
 
+            CellView cellView = boardView.GetCellView(cell.Index);
 
-            CellView cellView =
-                boardView.GetCellView(cell.Index);
+            HeroView heroView = heroViewFactory.Create(hero);
+                   
+            cellView.HeroStackView.AddHeroView(heroView);
 
-            HeroView heroView =
-                heroViewFactory.Create(
-                    hero,
-                    cellView.HeroContainer);
+            heroViewManager.Register(hero, heroView);
+        }
 
-            heroViewManager.Register(
-                hero,
-                heroView);
+        private void OnCellMoved(IEvent e)
+        {
+            CellMovedEvent evt =(CellMovedEvent)e;
 
-            cellView.Refresh();
+            RefreshCell(evt.SourceCell);
+             
+            RefreshCell(evt.TargetCell);
+        }
+
+        private void RefreshCell(GridCell cell)
+        {
+            CellView cellView = boardView.GetCellView(cell.Index);
+
+            List<HeroView> views = new();
+
+            foreach (Hero hero in cell.Heroes)
+            {
+                views.Add(heroViewManager.GetView(hero));
+            }
+
+            cellView.HeroStackView.SetHeroes(views);
         }
     }
 }

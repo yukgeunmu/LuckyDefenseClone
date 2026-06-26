@@ -14,8 +14,6 @@ namespace LuckyDefense.Board
         public bool IsFull => heroes.Count >= MaxHeroCount;
         public int HeroCount => heroes.Count;
 
-
-
         public GridCell CurrentCell
         {
             get;
@@ -69,6 +67,7 @@ namespace LuckyDefense.Board
 
         public void Clear()
         {
+            heroes.Clear();
         }
 
         public bool CanMoveTo(GridCell target)

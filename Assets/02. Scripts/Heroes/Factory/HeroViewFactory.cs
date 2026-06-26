@@ -13,12 +13,9 @@ namespace LuckyDefense.Heroes.Factory
             this.prefab = prefab;
         }
 
-        public HeroView Create( Hero hero, Transform parent)
+        public HeroView Create(Hero hero)
         {
-            HeroView view =
-                Object.Instantiate(
-                    prefab,
-                    parent);
+            HeroView view = Object.Instantiate(prefab);
 
             view.Init(hero);
 
