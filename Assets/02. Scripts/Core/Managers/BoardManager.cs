@@ -142,6 +142,7 @@ namespace LuckyDefense.Core.Manager
             foreach (Hero hero in heroes)
             {
                 target.AddHero(hero);
+                hero.CurrentCell = target;
             }
 
             source.Clear();
