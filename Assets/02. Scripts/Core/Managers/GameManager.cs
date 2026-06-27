@@ -10,6 +10,7 @@ using System;
 using UnityEngine;
 using LuckyDefense.Monsters.Data;
 using LuckyDefense.Monsters.Factory;
+using LuckyDefense.Wave.Data;
 
 
 namespace LuckyDefense.Core.Manager
@@ -35,6 +36,9 @@ namespace LuckyDefense.Core.Manager
 
         [SerializeField]
         private MonsterDatabase monsterDatabase;
+
+        [SerializeField]
+        private WaveDatabase waveDatabase;
 
 
 
@@ -70,7 +74,7 @@ namespace LuckyDefense.Core.Manager
             Merge = new MergeService(heroFactory);
             Placement = new PlacementService(Board);
 
-            Data.Init(heroDatabase, recipeDatabase, monsterDatabase);
+            Data.Init(heroDatabase, recipeDatabase, monsterDatabase, waveDatabase);
         }
 
     }

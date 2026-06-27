@@ -1,5 +1,6 @@
 using LuckyDefense.Heroes.Data;
 using LuckyDefense.Monsters.Data;
+using LuckyDefense.Wave.Data;
 using System.Collections.Generic;
 
 namespace LuckyDefense.Core.Manager
@@ -14,7 +15,13 @@ namespace LuckyDefense.Core.Manager
 
         private Dictionary<int, MonsterData> monsterDict = new();
 
-        public void Init(HeroDatabase heroDB, RecipeDatabase recipeDatabase, MonsterDatabase monsterDB)
+        private Dictionary<int, WaveData> waveDict = new();
+
+        public void Init(
+            HeroDatabase heroDB,
+            RecipeDatabase recipeDatabase,
+            MonsterDatabase monsterDB,
+            WaveDatabase waveDB)
         {
             heroDict.Clear();
             recipes.Clear();
@@ -40,6 +47,13 @@ namespace LuckyDefense.Core.Manager
                 monsterDict.Add(
                     monster.MonsterID,
                     monster);
+            }
+
+            foreach (WaveData wave in waveDB.Waves)
+            {
+                waveDict.Add(
+                    wave.WaveNumber,
+                    wave);
             }
 
             recipes = recipeDatabase.Recipes;
@@ -90,6 +104,15 @@ namespace LuckyDefense.Core.Manager
                 out MonsterData monster);
 
             return monster;
+        }
+
+        public WaveData GetWave(int wave)
+        {
+            waveDict.TryGetValue(
+                wave,
+                out WaveData data);
+
+            return data;
         }
     }
 }
