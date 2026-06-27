@@ -1,5 +1,5 @@
-using LuckyDefense.Heroes;
 using LuckyDefense.Heroes.Data;
+using LuckyDefense.Monster.Data;
 using System.Collections.Generic;
 
 namespace LuckyDefense.Core.Manager
@@ -12,12 +12,14 @@ namespace LuckyDefense.Core.Manager
 
         private List<RecipeData> recipes = new();
 
-        public void Init(HeroDatabase database, RecipeDatabase recipeDatabase)
+        private Dictionary<int, MonsterData> monsterDict = new();
+
+        public void Init(HeroDatabase heroDB, RecipeDatabase recipeDatabase, MonsterDatabase monsterDB)
         {
             heroDict.Clear();
             recipes.Clear();
 
-            foreach (HeroData hero in database.Heroes)
+            foreach (HeroData hero in heroDB.Heroes)
             {
                 if (heroDict.ContainsKey(hero.HeroID))
                 {
@@ -31,6 +33,13 @@ namespace LuckyDefense.Core.Manager
 
                 if (hero.Grade == HeroGrade.Common)
                     commonHeroes.Add(hero);
+            }
+
+            foreach (var monster in monsterDB.Monsters)
+            {
+                monsterDict.Add(
+                    monster.MonsterID,
+                    monster);
             }
 
             recipes = recipeDatabase.Recipes;
@@ -72,6 +81,15 @@ namespace LuckyDefense.Core.Manager
             }
 
             return null;
+        }
+
+        public MonsterData GetMonster(int id)
+        {
+            monsterDict.TryGetValue(
+                id,
+                out MonsterData monster);
+
+            return monster;
         }
     }
 }

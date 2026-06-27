@@ -8,6 +8,7 @@ using LuckyDefense.Core.Service;
 using LuckyDefense.Heroes.View;
 using System;
 using UnityEngine;
+using LuckyDefense.Monster.Data;
 
 
 namespace LuckyDefense.Core.Manager
@@ -30,6 +31,9 @@ namespace LuckyDefense.Core.Manager
 
         [SerializeField]
         private RecipeDatabase recipeDatabase;
+
+        [SerializeField]
+        private MonsterDatabase monsterDatabase;
 
 
 
@@ -64,7 +68,7 @@ namespace LuckyDefense.Core.Manager
             Merge = new MergeService(heroFactory);
             Placement = new PlacementService(Board);
 
-            Data.Init(heroDatabase, recipeDatabase);
+            Data.Init(heroDatabase, recipeDatabase, monsterDatabase);
         }
 
     }

@@ -2066,9 +2066,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2110208229}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8a12cfbd5bb1ac49b5ac1279488f3b6, type: 3}
+  m_Script: {fileID: 11500000, guid: c02ac30f209e81447967188205265b5e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HeroViewMergeTest
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterDBTest
 --- !u!1 &2122553117
 GameObject:
   m_ObjectHideFlags: 0
@@ -2100,6 +2100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Core.GameManager
   heroDatabase: {fileID: 11400000, guid: 4ab02857c1095c34bb0e56ce4889f8d0, type: 2}
   recipeDatabase: {fileID: 11400000, guid: f31e40c260c6238419a8c5bca36889e3, type: 2}
+  monsterDatabase: {fileID: 11400000, guid: 1fb3be1e351c375478303ada9b40e943, type: 2}
 --- !u!4 &2122553119
 Transform:
   m_ObjectHideFlags: 0

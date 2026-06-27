@@ -1,0 +1,31 @@
+
+namespace LuckyDefense.Monster.Data
+{
+    using UnityEngine;
+
+    [CreateAssetMenu( fileName = "MonsterData", menuName = "Game/Monster Data")]
+    public class MonsterData : ScriptableObject
+    {
+        [Header("Info")]
+        public int MonsterID;
+
+        public string MonsterName;
+
+        public MonsterType Type;
+
+        public MonsterRace Race;
+
+        [Header("Stat")]
+        public int MaxHp;
+
+        public int Attack;
+
+        public float MoveSpeed;
+
+        [Header("Reward")]
+        public int RewardSilver;
+
+        [Header("View")]
+        public Sprite Icon;
+    }
+}
