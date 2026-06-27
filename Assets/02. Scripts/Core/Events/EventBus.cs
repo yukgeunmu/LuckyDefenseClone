@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace LuckyDefense.Core
+namespace LuckyDefense.Core.Events
 {
     public static class EventBus
     {

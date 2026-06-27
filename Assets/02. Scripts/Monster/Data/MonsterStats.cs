@@ -1,16 +1,38 @@
-using UnityEngine;
-
-public class MonsterStats : MonoBehaviour
+namespace LuckyDefense.Monsters.Data
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [System.Serializable]
+    public class MonsterStats
     {
-        
-    }
+        public int MaxHP;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public int CurrentHP;
+
+        public int Attack;
+
+        public float MoveSpeed;
+
+
+        public MonsterStats()
+        {
+        }
+
+        public MonsterStats(MonsterData data)
+        {
+            MaxHP = data.MaxHp;
+            CurrentHP = data.MaxHp;
+            Attack = data.Attack;
+            MoveSpeed = data.MoveSpeed;
+        }
+
+        public MonsterStats Clone()
+        {
+            return new MonsterStats
+            {
+                MaxHP = MaxHP,
+                CurrentHP = CurrentHP,
+                Attack = Attack,
+                MoveSpeed = MoveSpeed,
+            };
+        }
     }
 }

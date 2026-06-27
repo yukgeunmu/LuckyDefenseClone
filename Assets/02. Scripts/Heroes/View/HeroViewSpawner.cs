@@ -49,7 +49,7 @@ namespace Game.Heroes.View
             GridCell cell =
                 GameManager.Instance.Board.FindCell(hero);
 
-            if(cell == null)
+            if (cell == null)
             {
                 return;
             }
@@ -57,7 +57,7 @@ namespace Game.Heroes.View
             CellView cellView = boardView.GetCellView(cell.Index);
 
             HeroView heroView = heroViewFactory.Create(hero);
-                   
+
             cellView.HeroStackView.AddHeroView(heroView);
 
             heroViewManager.Register(hero, heroView);
@@ -65,10 +65,10 @@ namespace Game.Heroes.View
 
         private void OnCellMoved(IEvent e)
         {
-            CellMovedEvent evt =(CellMovedEvent)e;
+            CellMovedEvent evt = (CellMovedEvent)e;
 
             RefreshCell(evt.SourceCell);
-             
+
             RefreshCell(evt.TargetCell);
         }
 

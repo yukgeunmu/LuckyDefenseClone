@@ -3,7 +3,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace LuckyDefense.Monster.Data
+namespace LuckyDefense.Monsters.Data
 {
     [CreateAssetMenu(menuName = "Game/Monster Database", fileName = "MonsterDatabase")]
     public class MonsterDatabase : ScriptableObject

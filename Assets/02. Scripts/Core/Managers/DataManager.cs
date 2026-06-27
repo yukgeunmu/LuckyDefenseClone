@@ -1,5 +1,5 @@
 using LuckyDefense.Heroes.Data;
-using LuckyDefense.Monster.Data;
+using LuckyDefense.Monsters.Data;
 using System.Collections.Generic;
 
 namespace LuckyDefense.Core.Manager

@@ -1,4 +1,3 @@
-using LuckyDefense.Heroes;
 using LuckyDefense.Heroes.Data;
 
 namespace LuckyDefense.Heroes.Factory

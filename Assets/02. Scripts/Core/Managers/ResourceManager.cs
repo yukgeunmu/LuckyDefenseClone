@@ -1,3 +1,5 @@
+using LuckyDefense.Core.Events;
+
 namespace LuckyDefense.Core.Manager
 {
     public class ResourceManager

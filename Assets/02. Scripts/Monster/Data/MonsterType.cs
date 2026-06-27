@@ -1,5 +1,5 @@
 
-namespace LuckyDefense.Monster.Data
+namespace LuckyDefense.Monsters.Data
 {
     public enum MonsterType
     {

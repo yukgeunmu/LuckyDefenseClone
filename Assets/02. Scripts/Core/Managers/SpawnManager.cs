@@ -1,10 +1,11 @@
-﻿using LuckyDefense.Board;
-using LuckyDefense.Board.View;
-using LuckyDefense.Core.Events;
+﻿using LuckyDefense.Core.Events;
 using LuckyDefense.Heroes;
 using LuckyDefense.Heroes.Data;
 using LuckyDefense.Heroes.Factory;
-using LuckyDefense.Heroes.View;
+using LuckyDefense.Monsters;
+using LuckyDefense.Monsters.Data;
+using LuckyDefense.Monsters.Factory;
+using System.Collections.Generic;
 
 namespace LuckyDefense.Core.Manager
 {
@@ -12,9 +13,16 @@ namespace LuckyDefense.Core.Manager
     {
         private readonly HeroFactory heroFactory;
 
-        public SpawnManager(HeroFactory heroFactory)
+        private readonly MonsterFactory monsterFactory;
+
+        private readonly List<Monster> monsters = new();
+
+        public IReadOnlyList<Monster> Monsters => monsters;
+
+        public SpawnManager(HeroFactory heroFactory, MonsterFactory monserFactory)
         {
             this.heroFactory = heroFactory;
+            this.monsterFactory = monserFactory;
         }
 
         public bool SummonHero()
@@ -50,6 +58,26 @@ namespace LuckyDefense.Core.Manager
             return true;
         }
 
+        public Monster SpawnMonster(MonsterData monsterData)
+        {
+            Monster monster = monsterFactory.Create(monsterData);
 
+            monsters.Add(monster);
+
+            EventBus.Publish(new MonsterSpawnedEvent(monster));
+
+            return monster;
+        }
+
+
+        public void RemoveMonster(Monster monster)
+        {
+            monsters.Remove(monster);
+        }
+
+        public void ClearMonster()
+        {
+            monsters.Clear();
+        }
     }
 }

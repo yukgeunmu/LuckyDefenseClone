@@ -8,7 +8,8 @@ using LuckyDefense.Core.Service;
 using LuckyDefense.Heroes.View;
 using System;
 using UnityEngine;
-using LuckyDefense.Monster.Data;
+using LuckyDefense.Monsters.Data;
+using LuckyDefense.Monsters.Factory;
 
 
 namespace LuckyDefense.Core.Manager
@@ -40,7 +41,7 @@ namespace LuckyDefense.Core.Manager
 
         private HeroFactory heroFactory;
 
-        private HeroViewFactory heroViewFactory;
+        private MonsterFactory monsterFactory;
 
 
         private void Awake()
@@ -60,11 +61,12 @@ namespace LuckyDefense.Core.Manager
         private void Init()
         {
             heroFactory = new HeroFactory();
+            monsterFactory = new MonsterFactory();
 
             Resource = new ResourceManager();
             Data = new DataManager();
             Board = new BoardManager();
-            Spawn = new SpawnManager(heroFactory);
+            Spawn = new SpawnManager(heroFactory, monsterFactory);
             Merge = new MergeService(heroFactory);
             Placement = new PlacementService(Board);
 
