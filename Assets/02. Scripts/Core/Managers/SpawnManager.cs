@@ -37,10 +37,7 @@ namespace LuckyDefense.Core.Manager
                 GameManager.Instance.Data
                     .GetRandomCommonHero();
 
-            Hero hero =
-                heroFactory.Create(heroData);
-
-
+            Hero hero = heroFactory.Create(heroData);
 
             bool result =
                 GameManager.Instance.Placement

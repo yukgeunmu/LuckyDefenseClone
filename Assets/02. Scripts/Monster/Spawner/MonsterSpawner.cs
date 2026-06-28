@@ -5,7 +5,7 @@ using LuckyDefense.Wave.Data;
 using System.Collections;
 using UnityEngine;
 
-namespace LuckyDefense.Monsters
+namespace LuckyDefense.Monsters.Spawner
 {
     public class MonsterSpawner : MonoBehaviour
     {

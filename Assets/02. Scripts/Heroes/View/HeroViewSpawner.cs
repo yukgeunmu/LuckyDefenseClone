@@ -60,7 +60,7 @@ namespace Game.Heroes.View
 
             cellView.HeroStackView.AddHeroView(heroView);
 
-            heroViewManager.Register(hero, heroView);
+            heroViewManager.Add(hero, heroView);
         }
 
         private void OnCellMoved(IEvent e)

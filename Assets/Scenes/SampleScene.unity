@@ -1188,6 +1188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 916707278}
   - component: {fileID: 916707277}
+  - component: {fileID: 916707279}
   m_Layer: 0
   m_Name: MonsterSpawner
   m_TagString: Untagged
@@ -1223,6 +1224,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &916707279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916707276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302dedf7b0bc457438ed05ca630d7fae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Monsters.View.MonsterViewSpawner
+  monsterRoot: {fileID: 916707278}
+  monsterPrefab: {fileID: 2902826358595848487, guid: 288ba98de89892e42bd6893c707d1102, type: 3}
 --- !u!1001 &922823804
 PrefabInstance:
   m_ObjectHideFlags: 0
