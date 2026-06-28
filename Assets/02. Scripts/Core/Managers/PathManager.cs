@@ -22,8 +22,8 @@ namespace LuckyDefense.Core.Manager
 
         public Transform GetPoint(int index)
         {
-            if (index < 0 ||index >= points.Count)
-                return null;
+            if (index >= Count)
+                return points[0];
 
             return points[index];
         }

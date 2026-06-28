@@ -1,4 +1,5 @@
 using LuckyDefense.Monsters.Data;
+using LuckyDefense.Core.Manager;
 
 namespace LuckyDefense.Monsters
 {
@@ -18,7 +19,7 @@ namespace LuckyDefense.Monsters
 
             Stats = new MonsterStats(data);
 
-            CurrentPathIndex = 0;
+            CurrentPathIndex = 1;
         }
 
         public void TakeDamage(int damage)
@@ -39,7 +40,10 @@ namespace LuckyDefense.Monsters
 
         public void MoveNextPath()
         {
-            CurrentPathIndex++;
+            if (CurrentPathIndex >= GameManager.Instance.Path.Count)
+                CurrentPathIndex = 0;
+            else
+                CurrentPathIndex++;
         }
     }
 }
