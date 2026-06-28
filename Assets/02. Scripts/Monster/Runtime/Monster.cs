@@ -36,5 +36,10 @@ namespace LuckyDefense.Monsters
             if (Stats.CurrentHP > Stats.MaxHP)
                 Stats.CurrentHP = Stats.MaxHP;
         }
+
+        public void MoveNextPath()
+        {
+            CurrentPathIndex++;
+        }
     }
 }

@@ -22,6 +22,11 @@ public class WaveTest : MonoBehaviour
         Debug.Log(
             $"Spawn : "
             + evt.Monster.Data.MonsterName);
+
+        Debug.Log(GameManager.Instance
+        .Path
+        .GetStartPoint()
+        .position);
     }
 
 

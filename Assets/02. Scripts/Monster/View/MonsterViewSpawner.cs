@@ -1,6 +1,5 @@
 using LuckyDefense.Core;
 using LuckyDefense.Core.Events;
-using LuckyDefense.Monsters.Factory;
 using UnityEngine;
 
 namespace LuckyDefense.Monsters.View

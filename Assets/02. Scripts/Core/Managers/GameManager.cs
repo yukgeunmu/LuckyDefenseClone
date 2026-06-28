@@ -26,6 +26,8 @@ namespace LuckyDefense.Core.Manager
 
         public WaveManager Wave { get; private set; }
 
+        public PathManager Path { get; private set; }
+
         public MergeService Merge { get; private set; }
 
         public PlacementService Placement { get; private set; }
@@ -41,6 +43,9 @@ namespace LuckyDefense.Core.Manager
 
         [SerializeField]
         private WaveDatabase waveDatabase;
+
+        [SerializeField]
+        private Transform pathRoot;
 
 
 
@@ -64,6 +69,16 @@ namespace LuckyDefense.Core.Manager
             Init();
         }
 
+        private void OnDrawGizmos()
+        {
+            if (GameManager.Instance == null)
+                return;
+
+            GameManager.Instance
+                .Path
+                ?.DrawGizmos();
+        }
+
         private void Init()
         {
             heroFactory = new HeroFactory();
@@ -74,12 +89,14 @@ namespace LuckyDefense.Core.Manager
             Board = new BoardManager();
             Spawn = new SpawnManager(heroFactory, monsterFactory);
             Wave = new WaveManager();
+            Path = new PathManager();
 
 
             Merge = new MergeService(heroFactory);
             Placement = new PlacementService(Board);
 
             Data.Init(heroDatabase, recipeDatabase, monsterDatabase, waveDatabase);
+            Path.Initialize(pathRoot);
         }
 
     }

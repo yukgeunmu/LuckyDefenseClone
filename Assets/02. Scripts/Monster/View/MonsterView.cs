@@ -1,3 +1,4 @@
+using LuckyDefense.Core.Manager;
 using UnityEngine;
 
 namespace LuckyDefense.Monsters.View
@@ -6,8 +7,6 @@ namespace LuckyDefense.Monsters.View
     {
         [SerializeField]
         private SpriteRenderer spriteRenderer;
-
-        private static int spawnIndex = 0;
 
         public Monster Monster { get; private set; }
 
@@ -20,9 +19,10 @@ namespace LuckyDefense.Monsters.View
                 spriteRenderer.sprite = monster.Data.Icon;
             }
 
-            transform.position = new Vector3( spawnIndex * 1.5f,0, 0);
+            Transform start =GameManager.Instance.Path.GetStartPoint();
 
-            spawnIndex++;
+            this.transform.position = start.position;
+
         }
     }
 }
