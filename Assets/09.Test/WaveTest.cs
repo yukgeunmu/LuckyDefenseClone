@@ -9,36 +9,19 @@ public class WaveTest : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        EventBus.Subscribe<WaveStartedEvent>(OnWaveStarted);
 
-        EventBus.Subscribe<WaveEndedEvent>(OnWaveEnded);
+        EventBus.Subscribe<MonsterSpawnedEvent>(OnMonsterSpawned);
 
         GameManager.Instance.Wave.StartGame();
-
     }
 
-    private void OnWaveStarted(IEvent e)
+    private void OnMonsterSpawned(IEvent e)
     {
-        WaveStartedEvent evt =
-            (WaveStartedEvent)e;
+        MonsterSpawnedEvent evt =(MonsterSpawnedEvent)e;
 
         Debug.Log(
-            $"Wave Start : "
-            + evt.Wave.WaveNumber);
-
-        GameManager.Instance
-            .Wave
-            .EndWave();
-    }
-
-    private void OnWaveEnded(IEvent e)
-    {
-        WaveEndedEvent evt =
-            (WaveEndedEvent)e;
-
-        Debug.Log(
-            $"Wave End : "
-            + evt.Wave.WaveNumber);
+            $"Spawn : "
+            + evt.Monster.Data.MonsterName);
     }
 
 
