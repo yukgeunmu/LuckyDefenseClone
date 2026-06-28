@@ -24,6 +24,8 @@ namespace LuckyDefense.Core.Manager
         public BoardManager Board { get; private set; }
         public SpawnManager Spawn { get; private set; }
 
+        public WaveManager Wave { get; private set; }
+
         public MergeService Merge { get; private set; }
 
         public PlacementService Placement { get; private set; }
@@ -71,6 +73,9 @@ namespace LuckyDefense.Core.Manager
             Data = new DataManager();
             Board = new BoardManager();
             Spawn = new SpawnManager(heroFactory, monsterFactory);
+            Wave = new WaveManager();
+
+
             Merge = new MergeService(heroFactory);
             Placement = new PlacementService(Board);
 

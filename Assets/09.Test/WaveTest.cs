@@ -1,5 +1,7 @@
+
+using LuckyDefense.Core;
+using LuckyDefense.Core.Events;
 using LuckyDefense.Core.Manager;
-using LuckyDefense.Wave.Data;
 using UnityEngine;
 
 public class WaveTest : MonoBehaviour
@@ -7,17 +9,36 @@ public class WaveTest : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        WaveData wave = GameManager.Instance .Data.GetWave(1);
+        EventBus.Subscribe<WaveStartedEvent>(OnWaveStarted);
+
+        EventBus.Subscribe<WaveEndedEvent>(OnWaveEnded);
+
+        GameManager.Instance.Wave.StartGame();
+
+    }
+
+    private void OnWaveStarted(IEvent e)
+    {
+        WaveStartedEvent evt =
+            (WaveStartedEvent)e;
 
         Debug.Log(
-            $"Wave : {wave.WaveNumber}");
+            $"Wave Start : "
+            + evt.Wave.WaveNumber);
 
-        foreach (var spawn in wave.Monsters)
-        {
-            Debug.Log(
-                $"{spawn.Monster.MonsterName} "
-                + $"{spawn.Count}");
-        }
+        GameManager.Instance
+            .Wave
+            .EndWave();
+    }
+
+    private void OnWaveEnded(IEvent e)
+    {
+        WaveEndedEvent evt =
+            (WaveEndedEvent)e;
+
+        Debug.Log(
+            $"Wave End : "
+            + evt.Wave.WaveNumber);
     }
 
 
