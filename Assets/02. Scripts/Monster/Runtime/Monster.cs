@@ -1,6 +1,7 @@
 using LuckyDefense.Monsters.Data;
 using LuckyDefense.Core.Manager;
 using LuckyDefense.Core.Events;
+using UnityEngine;
 
 namespace LuckyDefense.Monsters
 {
@@ -9,6 +10,8 @@ namespace LuckyDefense.Monsters
         public MonsterData Data { get; }
 
         public MonsterStats Stats { get; }
+
+        public Vector3 Position{ get;set; }
 
         public float HPPercent
         {
@@ -37,8 +40,12 @@ namespace LuckyDefense.Monsters
         {
             Stats.CurrentHP -= damage;
 
+            Debug.Log(Stats.CurrentHP);
+
             if (Stats.CurrentHP < 0)
                 Stats.CurrentHP = 0;
+
+           
         }
 
         public void Heal(int amount)

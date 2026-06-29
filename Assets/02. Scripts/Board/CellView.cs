@@ -1,6 +1,5 @@
 using LuckyDefense.Core.Manager;
 using LuckyDefense.Heroes.View;
-using System;
 using UnityEngine;
 
 namespace LuckyDefense.Board.View
@@ -18,6 +17,11 @@ namespace LuckyDefense.Board.View
         {
             get
             {
+                if (GameManager.Instance == null || GameManager.Instance.Board == null)
+                {
+                    return null;
+                }
+
                 return GameManager.Instance.Board.GetCell(CellIndex);
             }
         }
@@ -31,6 +35,13 @@ namespace LuckyDefense.Board.View
             CellIndex = index;
 
             heroStackView.Initialize(this);
+
+            // GridCell이 null인지 확인 후 대입
+            GridCell cell = GridCell;
+            if (cell != null)
+            {
+                cell.WorldPosition = this.transform.position;
+            }
         }
 
     }

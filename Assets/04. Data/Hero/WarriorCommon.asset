@@ -17,7 +17,9 @@ MonoBehaviour:
   Grade: 0
   ClassType: 0
   RaceType: 0
-  AttackPower: 10
+  PrimaryTarget: 5
+  FallbackTarget: 0
+  AttackPower: 1
   AttackSpeed: 1
-  Range: 2
+  Range: 1
   Description: 

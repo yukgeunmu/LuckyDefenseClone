@@ -12,6 +12,7 @@ using LuckyDefense.Monsters.Data;
 using LuckyDefense.Monsters.Factory;
 using LuckyDefense.Wave.Data;
 using LuckyDefense.Monsters.View;
+using LuckyDefense.Core.Combat;
 
 
 namespace LuckyDefense.Core.Manager
@@ -29,6 +30,9 @@ namespace LuckyDefense.Core.Manager
         public PathManager Path { get; private set; }
 
         public HeroViewManager HeroView {  get; private set; }
+
+        public HeroCombatManager HeroCombat { get; private set; }
+
         public MonsterViewManager MonsterView {  get; private set; }
 
         public MergeService Merge { get; private set; }
@@ -36,6 +40,11 @@ namespace LuckyDefense.Core.Manager
         public PlacementService Placement { get; private set; }
 
         public DamageService Damage { get; private set; }
+
+        public TargetService Target { get; private set; }
+
+        public CombatService Combat { get; private set; }
+
 
         [SerializeField]
         private HeroDatabase heroDatabase;
@@ -95,10 +104,14 @@ namespace LuckyDefense.Core.Manager
 
             HeroView = new HeroViewManager();
             MonsterView = new MonsterViewManager();
+            HeroCombat = new HeroCombatManager();
 
             Merge = new MergeService(heroFactory);
             Placement = new PlacementService(Board);
             Damage = new DamageService();
+            Target = new TargetService();
+            Combat = new CombatService(HeroCombat, Target, Damage);
+
 
             Data.Init(heroDatabase, recipeDatabase, monsterDatabase, waveDatabase);
             Path.Initialize(pathRoot);

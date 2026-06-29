@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace LuckyDefense.Heroes.Data
@@ -15,6 +16,8 @@ namespace LuckyDefense.Heroes.Data
         public HeroGrade Grade;
         public HeroClass ClassType;
         public HeroRace RaceType;
+        public TargetType PrimaryTarget;
+        public TargetType FallbackTarget;
 
         [Header("¿¸≈ı")]
         public int AttackPower;

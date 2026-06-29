@@ -17,8 +17,6 @@ public class MonsterDamageTest : MonoBehaviour
 
         Hero hero = GameManager.Instance.Spawn.SpawnHeroTest();
 
-        StartAttackSequence(hero, monster);
-
     }
 
     void StartAttackSequence(Hero hero, Monster monster)

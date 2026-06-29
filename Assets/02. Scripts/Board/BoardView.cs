@@ -9,7 +9,7 @@ namespace LuckyDefense.Board.View
         [SerializeField]
         private List<CellView> cellViews;
 
-        private void Awake()
+        private void Start()
         {
             for (int i = 0; i < cellViews.Count; i++)
             {

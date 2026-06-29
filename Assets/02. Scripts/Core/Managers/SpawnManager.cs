@@ -1,4 +1,5 @@
-﻿using LuckyDefense.Core.Events;
+﻿using LuckyDefense.Core.Combat;
+using LuckyDefense.Core.Events;
 using LuckyDefense.Heroes;
 using LuckyDefense.Heroes.Data;
 using LuckyDefense.Heroes.Factory;
@@ -38,6 +39,9 @@ namespace LuckyDefense.Core.Manager
                     .GetRandomCommonHero();
 
             Hero hero = heroFactory.Create(heroData);
+            ITargetStrategy primary = heroFactory.CreateTargetStrategy(heroData.PrimaryTarget);
+            ITargetStrategy fallback = heroFactory.CreateTargetStrategy(heroData.FallbackTarget);
+            GameManager.Instance.HeroCombat.Add(hero, primary, fallback);
 
             bool result =
                 GameManager.Instance.Placement

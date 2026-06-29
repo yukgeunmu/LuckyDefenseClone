@@ -1,6 +1,7 @@
 using LuckyDefense.Heroes;
 using LuckyDefense.Heroes.Data;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace LuckyDefense.Board
 {
@@ -13,6 +14,9 @@ namespace LuckyDefense.Board
         public bool IsEmpty => heroes.Count == 0;
         public bool IsFull => heroes.Count >= MaxHeroCount;
         public int HeroCount => heroes.Count;
+
+        public Vector3 WorldPosition;
+
 
         public GridCell CurrentCell
         {

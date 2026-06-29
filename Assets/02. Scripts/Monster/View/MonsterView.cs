@@ -33,6 +33,8 @@ namespace LuckyDefense.Monsters.View
                 return;
 
             Move();
+
+            Monster.Position = transform.position;
         }
 
         private void Move()

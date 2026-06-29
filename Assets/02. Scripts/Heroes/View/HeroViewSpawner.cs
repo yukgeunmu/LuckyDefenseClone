@@ -1,6 +1,7 @@
 using LuckyDefense.Board;
 using LuckyDefense.Board.View;
 using LuckyDefense.Core;
+using LuckyDefense.Core.Combat;
 using LuckyDefense.Core.Events;
 using LuckyDefense.Core.Manager;
 using LuckyDefense.Heroes;
@@ -59,6 +60,7 @@ namespace Game.Heroes.View
             cellView.HeroStackView.AddHeroView(heroView);
 
             GameManager.Instance.HeroView.Add(hero, heroView);
+
         }
 
         private void OnCellMoved(IEvent e)

@@ -2,6 +2,7 @@
 using LuckyDefense.Heroes;
 using LuckyDefense.Heroes.Data;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace LuckyDefense.Core.Manager
 {
@@ -34,7 +35,11 @@ namespace LuckyDefense.Core.Manager
         public GridCell GetCell(int index)
         {
             if (index < 0 || index >= cells.Count)
+            {
+                UnityEngine.Debug.Log(index);
                 return null;
+            }
+
 
             return cells[index];
         }

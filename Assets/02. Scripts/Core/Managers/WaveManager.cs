@@ -37,8 +37,7 @@ namespace LuckyDefense.Core.Manager
 
             IsWaveRunning = true;
 
-            EventBus.Publish(
-                new WaveStartedEvent(data));
+            EventBus.Publish(new WaveStartedEvent(data));
 
             return true;
         }
