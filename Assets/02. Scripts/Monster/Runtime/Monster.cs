@@ -37,14 +37,8 @@ namespace LuckyDefense.Monsters
         {
             Stats.CurrentHP -= damage;
 
-            EventBus.Publish(new MonsterDamagedEvent(this, damage));
-
             if (Stats.CurrentHP < 0)
-            {
                 Stats.CurrentHP = 0;
-                EventBus.Publish(new MonsterDeadEvent(this));
-            }
-
         }
 
         public void Heal(int amount)

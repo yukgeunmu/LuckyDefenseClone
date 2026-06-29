@@ -1,34 +1,29 @@
+using LuckyDefense.Core.Combat;
 using LuckyDefense.Core.Events;
-using LuckyDefense.Core.Manager;
 using LuckyDefense.Heroes;
 using LuckyDefense.Monsters;
 
 
 namespace LuckyDefense.Core.Service
 {
-    public class DamageSystem
+    public class DamageService
     {
-        public void DealDamage(Hero hero, Monster monster)
+        public DamageResult DealDamage(Hero attacker, Monster target)
         {
-            if (monster == null)
-                return;
+            if (target == null)
+                return new DamageResult(0, false);
 
-            if (monster.IsDead)
-                return;
+            if (target.IsDead)
+                return new DamageResult(0, true);
 
-            monster.TakeDamage(hero.Stats.Attack);
+            int damage = attacker.Stats.Attack;
 
-            if (monster.IsDead)
-            {
-                EventBus.Publish(
-                    new MonsterDeadEvent(
-                        monster));
+            target.TakeDamage(damage);
 
-                GameManager.Instance
-                    .Spawn
-                    .RemoveMonster(
-                        monster);
-            }
+            EventBus.Publish(new MonsterDamagedEvent(target, damage));
+
+            return new DamageResult(damage, target.IsDead);
         }
     }
+
 }

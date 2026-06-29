@@ -18,7 +18,6 @@ namespace LuckyDefense.Core.Manager
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance { get; private set; }
-
         public ResourceManager Resource { get; private set; }
         public DataManager Data { get; private set; }
         public BoardManager Board { get; private set; }
@@ -31,6 +30,8 @@ namespace LuckyDefense.Core.Manager
         public MergeService Merge { get; private set; }
 
         public PlacementService Placement { get; private set; }
+
+        public DamageService Damage { get; private set; }
 
         [SerializeField]
         private HeroDatabase heroDatabase;
@@ -46,9 +47,6 @@ namespace LuckyDefense.Core.Manager
 
         [SerializeField]
         private Transform pathRoot;
-
-
-
 
         private HeroFactory heroFactory;
 
@@ -94,6 +92,7 @@ namespace LuckyDefense.Core.Manager
 
             Merge = new MergeService(heroFactory);
             Placement = new PlacementService(Board);
+            Damage = new DamageService();
 
             Data.Init(heroDatabase, recipeDatabase, monsterDatabase, waveDatabase);
             Path.Initialize(pathRoot);

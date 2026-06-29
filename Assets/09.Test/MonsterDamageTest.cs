@@ -1,4 +1,8 @@
+using LuckyDefense.Core.Combat;
 using LuckyDefense.Core.Manager;
+using LuckyDefense.Heroes;
+using LuckyDefense.Heroes.Data;
+using LuckyDefense.Heroes.Factory;
 using LuckyDefense.Monsters;
 using UnityEngine;
 
@@ -11,17 +15,18 @@ public class MonsterDamageTest : MonoBehaviour
                 .Data
                 .GetMonster(1000));
 
-        Debug.Log(monster.Stats.CurrentHP);
 
-        monster.TakeDamage(30);
+        Hero hero = GameManager.Instance.Spawn.SpawnHeroTest();
 
-        Debug.Log(monster.Stats.CurrentHP);
 
-        monster.TakeDamage(100);
 
-        Debug.Log(monster.Stats.CurrentHP);
+        while (!monster.IsDead)
+        {
+            DamageResult result = GameManager.Instance.Damage.DealDamage(hero, monster);
 
-        Debug.Log( monster.IsDead);
+            Debug.Log(
+                monster.Stats.CurrentHP);
+        }
     }
 
 

@@ -76,5 +76,13 @@ namespace LuckyDefense.Core.Manager
         {
             monsters.Clear();
         }
+
+        public Hero SpawnHeroTest()
+        {
+            HeroData heroData = GameManager.Instance.Data.GetRandomCommonHero();
+
+            return heroFactory.Create(heroData);
+        }
+
     }
 }
