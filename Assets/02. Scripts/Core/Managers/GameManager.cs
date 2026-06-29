@@ -1,18 +1,14 @@
-using LuckyDefense.Board;
-using LuckyDefense.Board.View;
-using LuckyDefense.Core.Events;
-using LuckyDefense.Heroes;
+using LuckyDefense.Core.Combat;
+using LuckyDefense.Core.Service;
 using LuckyDefense.Heroes.Data;
 using LuckyDefense.Heroes.Factory;
-using LuckyDefense.Core.Service;
+using LuckyDefense.Heroes.Runtime;
 using LuckyDefense.Heroes.View;
-using System;
-using UnityEngine;
 using LuckyDefense.Monsters.Data;
 using LuckyDefense.Monsters.Factory;
-using LuckyDefense.Wave.Data;
 using LuckyDefense.Monsters.View;
-using LuckyDefense.Core.Combat;
+using LuckyDefense.Wave.Data;
+using UnityEngine;
 
 
 namespace LuckyDefense.Core.Manager
@@ -29,11 +25,13 @@ namespace LuckyDefense.Core.Manager
 
         public PathManager Path { get; private set; }
 
-        public HeroViewManager HeroView {  get; private set; }
+        public HeroViewManager HeroView { get; private set; }
 
         public HeroCombatManager HeroCombat { get; private set; }
 
-        public MonsterViewManager MonsterView {  get; private set; }
+        public ProjectileManager ProjectileManager { get; private set; }
+
+        public MonsterViewManager MonsterView { get; private set; }
 
         public MergeService Merge { get; private set; }
 
@@ -44,6 +42,8 @@ namespace LuckyDefense.Core.Manager
         public TargetService Target { get; private set; }
 
         public CombatService Combat { get; private set; }
+
+        public ProjectileService Projectile { get; private set; }
 
 
         [SerializeField]
@@ -105,12 +105,14 @@ namespace LuckyDefense.Core.Manager
             HeroView = new HeroViewManager();
             MonsterView = new MonsterViewManager();
             HeroCombat = new HeroCombatManager();
+            ProjectileManager = new ProjectileManager();
 
             Merge = new MergeService(heroFactory);
             Placement = new PlacementService(Board);
             Damage = new DamageService();
             Target = new TargetService();
-            Combat = new CombatService(HeroCombat, Target, Damage);
+            Combat = new CombatService(HeroCombat);
+            Projectile = new ProjectileService(heroFactory, ProjectileManager);
 
 
             Data.Init(heroDatabase, recipeDatabase, monsterDatabase, waveDatabase);

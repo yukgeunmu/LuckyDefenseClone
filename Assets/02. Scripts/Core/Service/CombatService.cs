@@ -1,4 +1,5 @@
 using LuckyDefense.Core.Combat;
+using LuckyDefense.Core.Manager;
 using LuckyDefense.Heroes;
 using LuckyDefense.Monsters;
 
@@ -8,17 +9,10 @@ namespace LuckyDefense.Core.Service
     {
         private readonly HeroCombatManager heroCombatManager;
 
-        private readonly TargetService targetService;
-
-        private readonly DamageService damageService;
-
-        public CombatService(HeroCombatManager heroCombatManager, TargetService targetService, DamageService damageService)
+        public CombatService(HeroCombatManager heroCombatManager)
         {
             this.heroCombatManager = heroCombatManager;
 
-            this.targetService = targetService;
-
-            this.damageService = damageService;
         }
 
         public void Update()
@@ -43,7 +37,7 @@ namespace LuckyDefense.Core.Service
                 if(target == null)
                     continue;
 
-                damageService.DealDamage( hero,target);
+                GameManager.Instance.Projectile.Fire(hero, target);
             }
         }
     }

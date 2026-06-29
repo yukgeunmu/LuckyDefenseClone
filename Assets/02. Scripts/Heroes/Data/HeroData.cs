@@ -18,11 +18,14 @@ namespace LuckyDefense.Heroes.Data
         public HeroRace RaceType;
         public TargetType PrimaryTarget;
         public TargetType FallbackTarget;
+        public ProjectileType ProjectileType;
+
 
         [Header("전투")]
         public int AttackPower;
         public float AttackSpeed;
         public float Range;
+        public float ProjectileSpeed = 10f;
 
         [Header("설명")]
         [TextArea]

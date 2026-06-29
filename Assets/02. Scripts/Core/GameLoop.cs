@@ -7,5 +7,7 @@ public class GameLoop : MonoBehaviour
     void Update()
     {
         GameManager.Instance.Combat.Update();
+
+        GameManager.Instance.Projectile.Update();
     }
 }

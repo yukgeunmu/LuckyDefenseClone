@@ -1,5 +1,7 @@
 using LuckyDefense.Core.Combat;
 using LuckyDefense.Heroes.Data;
+using LuckyDefense.Heroes.Runtime;
+using LuckyDefense.Monsters;
 using NUnit.Framework.Constraints;
 
 namespace LuckyDefense.Heroes.Factory
@@ -36,6 +38,14 @@ namespace LuckyDefense.Heroes.Factory
                 default:
                     return new FrontTargetStrategy();
             }
+        }
+        public Projectile CreateProjectile(Hero hero, Monster target)
+        {
+            return new Projectile(
+                hero,
+                target,
+                hero.CurrentCell.WorldPosition,
+                hero.Data.ProjectileSpeed);
         }
     }
 }

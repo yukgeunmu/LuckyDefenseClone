@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace LuckyDefense.Monsters.View
 {
-    public class MonsterViewSpawner : MonoBehaviour
+    public class MonsterPresenter : MonoBehaviour
     {
         [SerializeField]
         private Transform monsterRoot;

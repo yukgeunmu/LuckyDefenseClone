@@ -12,7 +12,7 @@ using UnityEngine;
 
 namespace Game.Heroes.View
 {
-    public class HeroViewSpawner : MonoBehaviour
+    public class HeroPresenter : MonoBehaviour
     {
         [SerializeField]
         private BoardView boardView;
