@@ -8,7 +8,7 @@ namespace LuckyDefense.Heroes.Data
     [System.Serializable]
     public class HeroStats
     {
-        public float Attack;
+        public int Attack;
 
         public float AttackSpeed;
 

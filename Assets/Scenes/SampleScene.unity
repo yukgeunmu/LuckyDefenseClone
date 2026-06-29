@@ -2285,9 +2285,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2110208229}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25c24ecc1b5e5ec46bea57d72bea0719, type: 3}
+  m_Script: {fileID: 11500000, guid: 545f450de46f5574aa643c715bd5de07, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WaveTest
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterDamageTest
 --- !u!1 &2122553117
 GameObject:
   m_ObjectHideFlags: 0

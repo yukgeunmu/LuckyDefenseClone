@@ -1,5 +1,6 @@
 using LuckyDefense.Monsters.Data;
 using LuckyDefense.Core.Manager;
+using LuckyDefense.Core.Events;
 
 namespace LuckyDefense.Monsters
 {
@@ -8,6 +9,16 @@ namespace LuckyDefense.Monsters
         public MonsterData Data { get; }
 
         public MonsterStats Stats { get; }
+
+        public float HPPercent
+        {
+            get
+            {
+                return
+                    (float)Stats.CurrentHP
+                    / Stats.MaxHP;
+            }
+        }
 
         public bool IsDead => Stats.CurrentHP <= 0;
 
@@ -26,8 +37,14 @@ namespace LuckyDefense.Monsters
         {
             Stats.CurrentHP -= damage;
 
+            EventBus.Publish(new MonsterDamagedEvent(this, damage));
+
             if (Stats.CurrentHP < 0)
+            {
                 Stats.CurrentHP = 0;
+                EventBus.Publish(new MonsterDeadEvent(this));
+            }
+
         }
 
         public void Heal(int amount)

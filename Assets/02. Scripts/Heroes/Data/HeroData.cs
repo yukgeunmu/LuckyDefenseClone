@@ -17,7 +17,7 @@ namespace LuckyDefense.Heroes.Data
         public HeroRace RaceType;
 
         [Header("ÀüÅõ")]
-        public float AttackPower;
+        public int AttackPower;
         public float AttackSpeed;
         public float Range;
 
