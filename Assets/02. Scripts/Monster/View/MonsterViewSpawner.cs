@@ -1,5 +1,6 @@
 using LuckyDefense.Core;
 using LuckyDefense.Core.Events;
+using LuckyDefense.Core.Manager;
 using UnityEngine;
 
 namespace LuckyDefense.Monsters.View
@@ -12,12 +13,6 @@ namespace LuckyDefense.Monsters.View
         [SerializeField]
         private MonsterView monsterPrefab;
 
-        private MonsterViewManager monsterViewManager;
-
-        private void Awake()
-        {
-            monsterViewManager = new MonsterViewManager();
-        }
 
         private void OnEnable()
         {
@@ -38,7 +33,7 @@ namespace LuckyDefense.Monsters.View
 
             view.Initialize(evt.Monster);
 
-            monsterViewManager.Add(evt.Monster, view);
+           GameManager.Instance.MonsterView.Add(evt.Monster, view);
         }
     }
 }

@@ -22,6 +22,11 @@ namespace LuckyDefense.Core.Service
 
             EventBus.Publish(new MonsterDamagedEvent(target, damage));
 
+            if (target.IsDead)
+            {
+                EventBus.Publish( new MonsterDeadEvent(target));
+            }
+
             return new DamageResult(damage, target.IsDead);
         }
     }

@@ -11,6 +11,7 @@ using UnityEngine;
 using LuckyDefense.Monsters.Data;
 using LuckyDefense.Monsters.Factory;
 using LuckyDefense.Wave.Data;
+using LuckyDefense.Monsters.View;
 
 
 namespace LuckyDefense.Core.Manager
@@ -26,6 +27,9 @@ namespace LuckyDefense.Core.Manager
         public WaveManager Wave { get; private set; }
 
         public PathManager Path { get; private set; }
+
+        public HeroViewManager HeroView {  get; private set; }
+        public MonsterViewManager MonsterView {  get; private set; }
 
         public MergeService Merge { get; private set; }
 
@@ -89,6 +93,8 @@ namespace LuckyDefense.Core.Manager
             Wave = new WaveManager();
             Path = new PathManager();
 
+            HeroView = new HeroViewManager();
+            MonsterView = new MonsterViewManager();
 
             Merge = new MergeService(heroFactory);
             Placement = new PlacementService(Board);

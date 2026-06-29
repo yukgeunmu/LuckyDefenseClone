@@ -20,12 +20,10 @@ namespace Game.Heroes.View
         private HeroView heroPrefab;
 
         private HeroViewFactory heroViewFactory;
-        private HeroViewManager heroViewManager;
 
         private void Awake()
         {
             heroViewFactory = new HeroViewFactory(heroPrefab);
-            heroViewManager = new HeroViewManager();
         }
 
         private void OnEnable()
@@ -60,7 +58,7 @@ namespace Game.Heroes.View
 
             cellView.HeroStackView.AddHeroView(heroView);
 
-            heroViewManager.Add(hero, heroView);
+            GameManager.Instance.HeroView.Add(hero, heroView);
         }
 
         private void OnCellMoved(IEvent e)
@@ -80,7 +78,7 @@ namespace Game.Heroes.View
 
             foreach (Hero hero in cell.Heroes)
             {
-                views.Add(heroViewManager.GetView(hero));
+                views.Add(GameManager.Instance.HeroView.GetView(hero));
             }
 
             cellView.HeroStackView.SetHeroes(views);
