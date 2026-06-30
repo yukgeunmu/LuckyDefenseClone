@@ -42,8 +42,6 @@ namespace LuckyDefense.Monsters
         {
             Stats.CurrentHP -= damage;
 
-            Debug.Log(Stats.CurrentHP);
-
             if (Stats.CurrentHP < 0)
                 Stats.CurrentHP = 0;
 

@@ -19,6 +19,7 @@ namespace LuckyDefense.Core.Service
             target.TakeDamage(damage);
 
             EventBus.Publish(new MonsterDamagedEvent(target, damage, false, target.Position));
+            EventBus.Publish(new HitEvent(target));
 
             if (target.IsDead)
             {

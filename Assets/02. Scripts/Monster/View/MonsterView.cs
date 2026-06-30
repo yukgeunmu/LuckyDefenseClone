@@ -8,13 +8,22 @@ namespace LuckyDefense.Monsters.View
         [SerializeField]
         private SpriteRenderer spriteRenderer;
 
+        private Vector3 originalScale;
+
         public Monster Monster { get; private set; }
 
         private bool isMoving;
 
+        private bool hit;
+
+        private float hitTimer;
+
+
         public void Initialize(Monster monster)
         {
             Monster = monster;
+
+            originalScale = transform.localScale;
 
             if (monster.Data.Icon != null)
             {
@@ -35,6 +44,23 @@ namespace LuckyDefense.Monsters.View
             Move();
 
             Monster.Position = transform.position;
+
+            if (!hit)
+                return;
+
+            if (hitTimer > 0)
+            {
+                hitTimer -= Time.deltaTime;
+
+                if (hitTimer <= 0)
+                {
+                    hit = false;
+
+                    spriteRenderer.color = Color.white;
+
+                    transform.localScale = originalScale;
+                }
+            }
         }
 
         private void Move()
@@ -59,6 +85,16 @@ namespace LuckyDefense.Monsters.View
                 Monster.MoveNextPath();
             }
         }
+
+        public void PlayHit()
+        {
+            hit = true;
+            hitTimer = 0.1f;
+
+            transform.localScale = originalScale * 1.2f;
+            spriteRenderer.color = Color.red;
+        }
+
 
     }
 

@@ -1668,6 +1668,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 682229858335540154, guid: 5c79ae88974d18e47a027be4f783cfcd, type: 3}
   m_PrefabInstance: {fileID: 1382340738}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1432176608
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1432176609}
+  - component: {fileID: 1432176610}
+  m_Layer: 0
+  m_Name: HitEffectPresenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1432176609
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432176608}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.28271, y: -0.46269, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1432176610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432176608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1438a3b59e51f0143a333f181fa01d37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Monsters.View.HitEffectPresenter
 --- !u!1001 &1494628159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2499,3 +2543,4 @@ SceneRoots:
   - {fileID: 131114020}
   - {fileID: 1320267455}
   - {fileID: 1800701956}
+  - {fileID: 1432176609}
