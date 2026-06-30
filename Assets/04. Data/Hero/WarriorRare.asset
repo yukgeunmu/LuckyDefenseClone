@@ -24,8 +24,7 @@ MonoBehaviour:
   AttackSpeed: 1.1
   Range: 1.5
   ProjectileSpeed: 10
-  PassiveSkills:
-  - {fileID: 11400000, guid: b46f71d1c15e12346b6c6c28a859bdbd, type: 2}
-  - {fileID: 11400000, guid: 9c924d31f684e2f40abbbacf10f78fc7, type: 2}
-  ActiveSkills: []
+  PassiveSkills: []
+  ActiveSkills:
+  - {fileID: 11400000, guid: ab9a1327a759a08498d05e5c9091d3f0, type: 2}
   Description: 

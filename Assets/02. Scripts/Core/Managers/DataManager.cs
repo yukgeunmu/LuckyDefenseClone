@@ -1,5 +1,7 @@
 using LuckyDefense.Heroes.Data;
 using LuckyDefense.Monsters.Data;
+using LuckyDefense.Skill;
+using LuckyDefense.Skill.View;
 using LuckyDefense.Wave.Data;
 using System.Collections.Generic;
 
@@ -17,14 +19,19 @@ namespace LuckyDefense.Core.Manager
 
         private Dictionary<int, WaveData> waveDict = new();
 
+        private Dictionary<SkillEffectType, SkillEffectData> skillEffects = new();
+
         public void Init(
             HeroDatabase heroDB,
             RecipeDatabase recipeDatabase,
             MonsterDatabase monsterDB,
-            WaveDatabase waveDB)
+            WaveDatabase waveDB,
+            SkillEffectDatabase skillEffectDB
+            )
         {
             heroDict.Clear();
             recipes.Clear();
+            skillEffects.Clear();
 
             foreach (HeroData hero in heroDB.Heroes)
             {
@@ -54,6 +61,13 @@ namespace LuckyDefense.Core.Manager
                 waveDict.Add(
                     wave.WaveNumber,
                     wave);
+            }
+
+            foreach (var effect in skillEffectDB.Effects)
+            {
+                skillEffects.Add(
+                    effect.Type,
+                    effect);
             }
 
             recipes = recipeDatabase.Recipes;
@@ -99,20 +113,23 @@ namespace LuckyDefense.Core.Manager
 
         public MonsterData GetMonster(int id)
         {
-            monsterDict.TryGetValue(
-                id,
-                out MonsterData monster);
+            monsterDict.TryGetValue( id, out MonsterData monster);
 
             return monster;
         }
 
         public WaveData GetWave(int wave)
         {
-            waveDict.TryGetValue(
-                wave,
-                out WaveData data);
+            waveDict.TryGetValue( wave, out WaveData data);
 
             return data;
+        }
+
+        public SkillEffectData GetSkillEffect(SkillEffectType type)
+        {
+            skillEffects.TryGetValue(type, out var effect);
+
+            return effect;
         }
     }
 }

@@ -1,3 +1,4 @@
+using LuckyDefense.Core.Events;
 using LuckyDefense.Core.Manager;
 using LuckyDefense.Monsters;
 using UnityEngine;
@@ -21,6 +22,9 @@ namespace LuckyDefense.Skill
 
         public override void Cast(Monster target)
         {
+
+            EventBus.Publish(new SkillEffectEvent(SkillEffectType.Explosion, target.Position, radius));
+
             foreach (var monster in GameManager.Instance.Spawn.Monsters)
             {
                 if (monster.IsDead)
