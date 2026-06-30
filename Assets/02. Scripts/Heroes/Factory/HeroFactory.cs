@@ -2,15 +2,61 @@ using LuckyDefense.Core.Combat;
 using LuckyDefense.Heroes.Data;
 using LuckyDefense.Heroes.Runtime;
 using LuckyDefense.Monsters;
+using LuckyDefense.Skill;
+using LuckyDefense.Skill.Passive;
 using NUnit.Framework.Constraints;
+using System.Diagnostics;
+using Unity.VisualScripting;
 
 namespace LuckyDefense.Heroes.Factory
 {
     public class HeroFactory
     {
+        private readonly SkillFactory skillFactory;
+
+        public HeroFactory(SkillFactory skillFactory)
+        {
+            this.skillFactory = skillFactory;
+        }
         public Hero Create(HeroData heroData)
         {
-            return new Hero(heroData);
+            Hero hero = new Hero(heroData);
+
+            HeroSkillComponent skillComponent = new HeroSkillComponent();
+
+            foreach (var skillData in heroData.PassiveSkills)
+            {
+                ISkill skill = skillFactory.Create(skillData);
+
+                skill.Initialize(hero);
+
+                if (skill is PassiveSkill passive)
+                {
+                    skillComponent.PassiveSkills.Add(passive);
+                }
+            }
+
+            foreach (var skillData in heroData.ActiveSkills)
+            {
+                ISkill skill = skillFactory.Create(skillData);
+
+                skill.Initialize(hero);
+
+                if (skill is ActiveSkill active)
+                {
+                    skillComponent.ActiveSkills.Add(active);
+                }
+            }
+
+            hero.SkillComponent = skillComponent;
+
+
+            ITargetStrategy primary = CreateTargetStrategy(heroData.PrimaryTarget);
+            ITargetStrategy fallback = CreateTargetStrategy(heroData.FallbackTarget);
+
+            hero.Combat = new HeroCombat(hero, primary, fallback);
+
+            return hero;
         }
 
         public ITargetStrategy CreateTargetStrategy(TargetType targetType)

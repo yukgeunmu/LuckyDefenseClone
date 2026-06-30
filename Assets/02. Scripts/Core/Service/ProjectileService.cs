@@ -67,11 +67,19 @@ namespace LuckyDefense.Core.Service
 
                 if (distance < 0.1f)
                 {
+                    int damage = projectile.Owner.Stats.Attack;
+
+                    foreach (var skill in projectile.Owner.SkillComponent.PassiveSkills)
+                    {
+                       damage = skill.ModifyDamage(projectile.Target, damage);
+                    }
+
                     GameManager.Instance
                         .Damage
                         .DealDamage(
                             projectile.Owner,
-                            projectile.Target);
+                            projectile.Target,
+                            damage);
 
                     removeList.Add(projectile);
                 }

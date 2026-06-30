@@ -13,6 +13,8 @@ namespace LuckyDefense.Monsters
 
         public Vector3 Position{ get;set; }
 
+        public bool IsBoss => Data.Type == MonsterType.Boss;
+
         public float HPPercent
         {
             get

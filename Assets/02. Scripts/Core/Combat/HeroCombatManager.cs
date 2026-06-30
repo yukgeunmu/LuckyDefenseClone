@@ -9,9 +9,9 @@ namespace LuckyDefense.Core.Combat
 
         public IReadOnlyDictionary<Hero, HeroCombat> Combats => combats;
 
-        public void Add(Hero hero, ITargetStrategy primary, ITargetStrategy fallback)
+        public void Add(Hero hero)
         {
-            combats.Add(hero, new HeroCombat(hero, primary, fallback));
+            combats.Add(hero, hero.Combat);
         }
 
         public void Remove(Hero hero)

@@ -1,4 +1,5 @@
 using LuckyDefense.Heroes;
+using LuckyDefense.Monsters;
 
 namespace LuckyDefense.Core.Combat
 {
@@ -32,6 +33,18 @@ namespace LuckyDefense.Core.Combat
             attackTimer = 0;
 
             return true;
+        }
+
+        public Monster FindTarget()
+        {
+            Monster target = PrimaryStrategy.FindTarget(Hero);
+
+            if (target == null)
+            {
+                target = FallbackStrategy.FindTarget(Hero);
+            }
+
+            return target;
         }
     }
 }

@@ -74,7 +74,7 @@ namespace LuckyDefense.Core.Manager
                     0,
                     commonHeroes.Count);
 
-            return commonHeroes[index];
+            return commonHeroes[0];
         }
 
         public RecipeData FindRecipe(HeroData heroData)

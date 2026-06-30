@@ -31,7 +31,7 @@ public class MonsterDamageTest : MonoBehaviour
         while (!monster.IsDead)
         {
             // 데미지 주기
-            DamageResult result = GameManager.Instance.Damage.DealDamage(hero, monster);
+            //DamageResult result = GameManager.Instance.Damage.DealDamage(hero, monster);
 
             // 현재 체력 로그 출력
             Debug.Log(monster.Stats.CurrentHP);

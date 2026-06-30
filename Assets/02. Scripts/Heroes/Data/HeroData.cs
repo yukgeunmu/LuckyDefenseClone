@@ -1,3 +1,4 @@
+using LuckyDefense.Skill.Data;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,11 +9,11 @@ namespace LuckyDefense.Heroes.Data
         fileName = "HeroData")]
     public class HeroData : ScriptableObject
     {
-        [Header("기본 정보")]
+        [Header("Info")]
         public int HeroID;
         public string HeroName;
 
-        [Header("분류")]
+        [Header("Type")]
         public HeroGrade Grade;
         public HeroClass ClassType;
         public HeroRace RaceType;
@@ -21,13 +22,19 @@ namespace LuckyDefense.Heroes.Data
         public ProjectileType ProjectileType;
 
 
-        [Header("전투")]
+        [Header("Battle")]
         public int AttackPower;
         public float AttackSpeed;
         public float Range;
         public float ProjectileSpeed = 10f;
 
-        [Header("설명")]
+        [Header("Passive Skills")]
+        public List<SkillData> PassiveSkills = new();
+
+        [Header("Active Skills")]
+        public List<SkillData> ActiveSkills = new();
+
+        [Header("Description")]
         [TextArea]
         public string Description;
     }

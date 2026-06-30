@@ -23,8 +23,6 @@ namespace LuckyDefense.Monsters.Handler
         {
             MonsterDeadEvent evt = (MonsterDeadEvent)e;
 
-            GameManager.Instance.Spawn.RemoveMonster(evt.Monster);
-
             MonsterView view = GameManager.Instance.MonsterView.GetView(evt.Monster);
 
             if (view != null)

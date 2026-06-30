@@ -39,9 +39,7 @@ namespace LuckyDefense.Heroes.View
 
             view.Initialize(evt.Projectile);
 
-            projectileViews.Add(
-                evt.Projectile,
-                view);
+            projectileViews.Add(evt.Projectile,view);
         }
 
         private void OnProjectileDestroyed(IEvent e)

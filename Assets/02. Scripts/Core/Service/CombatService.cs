@@ -1,6 +1,5 @@
 using LuckyDefense.Core.Combat;
 using LuckyDefense.Core.Manager;
-using LuckyDefense.Heroes;
 using LuckyDefense.Monsters;
 
 namespace LuckyDefense.Core.Service
@@ -24,20 +23,12 @@ namespace LuckyDefense.Core.Service
                 if (!combat.CanAttack())
                     continue;
 
-                Hero hero = combat.Hero;
-
-                Monster target = combat.PrimaryStrategy.FindTarget(hero);
+                Monster target = combat.FindTarget();
 
                 if (target == null)
-                {
-                    target =  combat.FallbackStrategy.FindTarget(hero);
-                }
-
-
-                if(target == null)
                     continue;
 
-                GameManager.Instance.Projectile.Fire(hero, target);
+                GameManager.Instance.Projectile.Fire(combat.Hero, target);
             }
         }
     }

@@ -7,6 +7,7 @@ using LuckyDefense.Heroes.View;
 using LuckyDefense.Monsters.Data;
 using LuckyDefense.Monsters.Factory;
 using LuckyDefense.Monsters.View;
+using LuckyDefense.Skill;
 using LuckyDefense.Wave.Data;
 using UnityEngine;
 
@@ -45,6 +46,8 @@ namespace LuckyDefense.Core.Manager
 
         public ProjectileService Projectile { get; private set; }
 
+        public SkillService Skill { get; private set; }
+
 
         [SerializeField]
         private HeroDatabase heroDatabase;
@@ -64,6 +67,8 @@ namespace LuckyDefense.Core.Manager
         private HeroFactory heroFactory;
 
         private MonsterFactory monsterFactory;
+
+        private SkillFactory skillFactory;
 
 
         private void Awake()
@@ -92,7 +97,8 @@ namespace LuckyDefense.Core.Manager
 
         private void Init()
         {
-            heroFactory = new HeroFactory();
+            skillFactory = new SkillFactory();
+            heroFactory = new HeroFactory(skillFactory);
             monsterFactory = new MonsterFactory();
 
             Resource = new ResourceManager();
@@ -113,6 +119,7 @@ namespace LuckyDefense.Core.Manager
             Target = new TargetService();
             Combat = new CombatService(HeroCombat);
             Projectile = new ProjectileService(heroFactory, ProjectileManager);
+            Skill = new SkillService();
 
 
             Data.Init(heroDatabase, recipeDatabase, monsterDatabase, waveDatabase);

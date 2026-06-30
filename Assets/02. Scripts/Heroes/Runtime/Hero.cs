@@ -1,6 +1,8 @@
 using LuckyDefense.Board;
+using LuckyDefense.Core.Combat;
 using LuckyDefense.Heroes.Buff;
 using LuckyDefense.Heroes.Data;
+using LuckyDefense.Skill;
 
 namespace LuckyDefense.Heroes
 {
@@ -9,6 +11,10 @@ namespace LuckyDefense.Heroes
         public HeroData Data { get; }
 
         public HeroStats Stats { get; }
+
+        public HeroSkillComponent SkillComponent { get; set; }
+
+        public HeroCombat Combat { get; set; }
         public HeroBuffController BuffController { get; }
 
         public int Level { get; private set; } = 1;
