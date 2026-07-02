@@ -2,6 +2,8 @@ using LuckyDefense.Heroes.Data;
 using LuckyDefense.Monsters.Data;
 using LuckyDefense.Skill;
 using LuckyDefense.Skill.View;
+using LuckyDefense.StatusEffects;
+using LuckyDefense.StatusEffects.Data;
 using LuckyDefense.Wave.Data;
 using System.Collections.Generic;
 
@@ -21,12 +23,15 @@ namespace LuckyDefense.Core.Manager
 
         private Dictionary<SkillEffectType, SkillEffectData> skillEffects = new();
 
+        private Dictionary<StatusEffectType,StatusEffectConfig>  statusEffectDict = new();
+
         public void Init(
             HeroDatabase heroDB,
             RecipeDatabase recipeDatabase,
             MonsterDatabase monsterDB,
             WaveDatabase waveDB,
-            SkillEffectDatabase skillEffectDB
+            SkillEffectDatabase skillEffectDB,
+            StatusEffectDatabase statusDB
             )
         {
             heroDict.Clear();
@@ -68,6 +73,14 @@ namespace LuckyDefense.Core.Manager
                 skillEffects.Add(
                     effect.Type,
                     effect);
+            }
+
+            foreach (var effect in statusDB.Effects)
+            {
+                if (statusEffectDict.ContainsKey(effect.Type))
+                    continue;
+
+                statusEffectDict.Add(effect.Type,effect);
             }
 
             recipes = recipeDatabase.Recipes;
@@ -130,6 +143,13 @@ namespace LuckyDefense.Core.Manager
             skillEffects.TryGetValue(type, out var effect);
 
             return effect;
+        }
+
+        public StatusEffectConfig GetStatusEffect(StatusEffectType type)
+        {
+            statusEffectDict.TryGetValue(type, out var config);
+
+            return config;
         }
     }
 }

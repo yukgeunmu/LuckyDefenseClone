@@ -12,7 +12,7 @@ namespace LuckyDefense.Monsters.View
 
         public Monster Monster { get; private set; }
 
-        private bool isMoving;
+        private Color originColor;
 
         private bool hit;
 
@@ -23,6 +23,8 @@ namespace LuckyDefense.Monsters.View
         {
             Monster = monster;
 
+            originColor = Color.white;
+
             originalScale = transform.localScale;
 
             if (monster.Data.Icon != null)
@@ -30,20 +32,17 @@ namespace LuckyDefense.Monsters.View
                 spriteRenderer.sprite = monster.Data.Icon;
             }
 
-            this.transform.position = GameManager.Instance.Path.GetStartPoint().position;
+            transform.position = GameManager.Instance.Path.GetStartPoint().position;
 
-            isMoving = true;
-
+            Monster.Start();
         }
+
 
         private void Update()
         {
-            if (!isMoving)
-                return;
+            Monster.Update();
 
-            Move();
-
-            Monster.Position = transform.position;
+            transform.position = Monster.Position;
 
             if (!hit)
                 return;
@@ -56,33 +55,10 @@ namespace LuckyDefense.Monsters.View
                 {
                     hit = false;
 
-                    spriteRenderer.color = Color.white;
+                    spriteRenderer.color = originColor;
 
                     transform.localScale = originalScale;
                 }
-            }
-        }
-
-        private void Move()
-        {
-            int pathIndex = Monster.CurrentPathIndex;
-
-            Transform target =  GameManager.Instance.Path.GetPoint(pathIndex);
-
-            transform.position = Vector3.MoveTowards(
-                    transform.position,
-                    target.position,
-                    Monster.Stats.MoveSpeed
-                    * Time.deltaTime);
-
-            float distance =
-                Vector3.Distance(
-                    transform.position,
-                    target.position);
-
-            if (distance < 0.05f)
-            {
-                Monster.MoveNextPath();
             }
         }
 

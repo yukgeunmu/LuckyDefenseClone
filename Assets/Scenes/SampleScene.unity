@@ -671,7 +671,7 @@ Transform:
   m_GameObject: {fileID: 472651673}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.11029, y: -1.42145, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -905,6 +905,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Board.HeroStackDragController
   mainCamera: {fileID: 519420031}
+--- !u!1 &537173396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 537173398}
+  - component: {fileID: 537173397}
+  m_Layer: 0
+  m_Name: StatusEffectSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &537173397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537173396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf1b4c3ec6a43544daafc6db8cf6e7ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.StatusEffects.View.StatusEffectViewSpawner
+--- !u!4 &537173398
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537173396}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.48206, y: -0.46626, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &563050756
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1738,7 +1782,7 @@ Transform:
   m_GameObject: {fileID: 1432176608}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.28271, y: -0.46269, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2557,6 +2601,7 @@ MonoBehaviour:
   monsterDatabase: {fileID: 11400000, guid: 1fb3be1e351c375478303ada9b40e943, type: 2}
   waveDatabase: {fileID: 11400000, guid: 06af512f1a814f14eb474b541822f412, type: 2}
   skillEffectDatabase: {fileID: 11400000, guid: 81030627d46c5d14eb317fa02c2b2525, type: 2}
+  statusEffectDatabase: {fileID: 11400000, guid: beef481d3411b7c428652edb5a78be78, type: 2}
   pathRoot: {fileID: 1059944096}
 --- !u!4 &2122553119
 Transform:
@@ -2590,3 +2635,4 @@ SceneRoots:
   - {fileID: 1800701956}
   - {fileID: 1432176609}
   - {fileID: 472651675}
+  - {fileID: 537173398}

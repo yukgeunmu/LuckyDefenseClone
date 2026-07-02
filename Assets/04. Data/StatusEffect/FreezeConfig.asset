@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01c334bc890402442b68f1b3eeee830b, type: 3}
+  m_Name: FreezeConfig
+  m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.StatusEffects.Data.StatusEffectConfig
+  Type: 0
+  ViewPrefab: {fileID: 6880139228965040233, guid: 559af3dbe25e12242a3f615c75fc00af, type: 3}
+  Offset: {x: 0, y: 1, z: 0}

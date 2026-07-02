@@ -18,7 +18,7 @@ namespace LuckyDefense.Skill.Data
 
         public float Radius;
 
-        public int Duration;
+        public float Duration;
 
         public int Cooldown;
     }

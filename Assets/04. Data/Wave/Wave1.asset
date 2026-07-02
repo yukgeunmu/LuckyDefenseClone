@@ -15,7 +15,7 @@ MonoBehaviour:
   WaveNumber: 1
   Monsters:
   - Monster: {fileID: 11400000, guid: c4bf1ae6b75ddca4b92e7962f079ff1a, type: 2}
-    Count: 100
+    Count: 5
     SpawnInterval: 0.5
   RewardSilver: 1
   IsBossWave: 0

@@ -25,10 +25,14 @@ namespace LuckyDefense.Skill
                         data.Radius,
                         (int)data.Value);
 
-                //case SkillType.Freeze:
-                //    return new FreezeSkill(
-                //        data.Cooldown,
-                //        data.Duration);
+                case SkillType.Freeze:
+                    return new FrozenSkill(
+                        data.Cooldown,
+                        data.Radius,
+                        data.Value,
+                        data.Duration);
+                case SkillType.Stun:
+                    return new StunSkill();
 
                 default:
                     return null;

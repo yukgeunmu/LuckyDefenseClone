@@ -1,6 +1,7 @@
-using LuckyDefense.Monsters.Data;
 using LuckyDefense.Core.Manager;
-using LuckyDefense.Core.Events;
+using LuckyDefense.Monsters.Data;
+using LuckyDefense.Monsters.States;
+using LuckyDefense.StatusEffects;
 using UnityEngine;
 
 namespace LuckyDefense.Monsters
@@ -11,9 +12,18 @@ namespace LuckyDefense.Monsters
 
         public MonsterStats Stats { get; }
 
-        public Vector3 Position{ get;set; }
+        public MonsterStatusComponent Status { get; }
+
+        public MonsterStateMachine StateMachine { get; }
+
+        public float SpeedModifier { get; set; } = 1f;
+
+        public Vector3 Position { get; set; }
 
         public bool IsBoss => Data.Type == MonsterType.Boss;
+
+        public bool IsDead => Stats.CurrentHP <= 0;
+
 
         public float HPPercent
         {
@@ -25,7 +35,7 @@ namespace LuckyDefense.Monsters
             }
         }
 
-        public bool IsDead => Stats.CurrentHP <= 0;
+        //public bool IsDead => Stats.CurrentHP <= 0;
 
         public int CurrentPathIndex { get; set; }
 
@@ -35,7 +45,46 @@ namespace LuckyDefense.Monsters
 
             Stats = new MonsterStats(data);
 
+            Status = new MonsterStatusComponent(this);
+
+            this.StateMachine = new MonsterStateMachine(this);
+
             CurrentPathIndex = 1;
+        }
+
+        public void Start()
+        {
+            StateMachine.ChangeState(StateMachine.MoveState);
+            Position = GameManager.Instance.Path.GetStartPoint().position;
+        }
+
+        public void Update()
+        {
+            Status.Update();
+
+            StateMachine.Update();
+        }
+
+        public void Move()
+        {
+            Transform target = GameManager.Instance.Path.GetPoint(CurrentPathIndex);
+
+            Position = Vector3.MoveTowards(
+                    Position,
+                    target.position,
+                    Stats.MoveSpeed
+                    * SpeedModifier
+                    * Time.deltaTime);
+
+            float distance =
+                Vector3.Distance(
+                    Position,
+                    target.position);
+
+            if (distance < 0.05f)
+            {
+                MoveNextPath();
+            }
         }
 
         public void TakeDamage(int damage)
@@ -44,8 +93,6 @@ namespace LuckyDefense.Monsters
 
             if (Stats.CurrentHP < 0)
                 Stats.CurrentHP = 0;
-
-           
         }
 
         public void Heal(int amount)

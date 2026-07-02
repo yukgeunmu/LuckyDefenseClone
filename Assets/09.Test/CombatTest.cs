@@ -10,7 +10,7 @@ public class CombatTest : MonoBehaviour
     {
         GameManager.Instance.Resource.AddSilver(1000);
 
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 3; i++)
         {
             GameManager.Instance.Spawn.SummonHero();
         }

@@ -13,5 +13,6 @@ namespace LuckyDefense.Skill.Data
         Explosion,
         Freeze,
         Chain,
+        Stun,
     }
 }

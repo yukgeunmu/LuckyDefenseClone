@@ -9,6 +9,7 @@ using LuckyDefense.Monsters.Factory;
 using LuckyDefense.Monsters.View;
 using LuckyDefense.Skill;
 using LuckyDefense.Skill.View;
+using LuckyDefense.StatusEffects.Data;
 using LuckyDefense.Wave.Data;
 using UnityEngine;
 
@@ -64,6 +65,9 @@ namespace LuckyDefense.Core.Manager
 
         [SerializeField]
         private SkillEffectDatabase skillEffectDatabase;
+
+        [SerializeField]
+        private StatusEffectDatabase statusEffectDatabase;
 
         [SerializeField]
         private Transform pathRoot;
@@ -126,7 +130,7 @@ namespace LuckyDefense.Core.Manager
             Skill = new SkillService();
 
 
-            Data.Init(heroDatabase, recipeDatabase, monsterDatabase, waveDatabase, skillEffectDatabase);
+            Data.Init(heroDatabase, recipeDatabase, monsterDatabase, waveDatabase, skillEffectDatabase, statusEffectDatabase);
             Path.Initialize(pathRoot);
         }
 

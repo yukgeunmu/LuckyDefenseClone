@@ -15,6 +15,8 @@ namespace LuckyDefense.Heroes.Factory
         {
             this.skillFactory = skillFactory;
         }
+
+
         public Hero Create(HeroData heroData)
         {
             Hero hero = new Hero(heroData);
