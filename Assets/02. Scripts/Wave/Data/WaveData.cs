@@ -12,6 +12,7 @@ namespace LuckyDefense.Wave.Data
         public int WaveNumber;
 
         [Header("Spawn")]
+        public float SpawnInterval = 0.5f;
         public List<MonsterSpawnEntry> Monsters = new();
 
         [Header("Reward")]

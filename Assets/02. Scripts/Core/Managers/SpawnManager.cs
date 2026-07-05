@@ -5,7 +5,10 @@ using LuckyDefense.Heroes.Factory;
 using LuckyDefense.Monsters;
 using LuckyDefense.Monsters.Data;
 using LuckyDefense.Monsters.Factory;
+using LuckyDefense.Wave.Data;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 namespace LuckyDefense.Core.Manager
 {
@@ -18,6 +21,16 @@ namespace LuckyDefense.Core.Manager
         private readonly List<Monster> monsters = new();
 
         public IReadOnlyList<Monster> Monsters => monsters;
+
+        public int AliveMonsterCount;
+   
+        private readonly Queue<MonsterData> spawnQueue = new();
+
+        private float spawnTimer;
+
+        private float spawnInterval;
+
+        public bool IsSpawnFinished { get; private set; }
 
         public SpawnManager(HeroFactory heroFactory, MonsterFactory monsterFactory)
         {
@@ -66,14 +79,53 @@ namespace LuckyDefense.Core.Manager
         }
 
 
-        public void RemoveMonster(Monster monster)
-        {
-            monsters.Remove(monster);
-        }
-
         public void ClearMonster()
         {
             monsters.Clear();
+        }
+
+
+        public void StartWave(WaveData wave)
+        {
+            spawnQueue.Clear();
+
+            foreach (var info in wave.Monsters)
+            {
+                for (int i = 0; i < info.Count; i++)
+                {
+                    spawnQueue.Enqueue(info.Monster);
+                    AliveMonsterCount++;
+                }
+            }
+
+            spawnInterval = wave.SpawnInterval;
+
+            spawnTimer = 0f;
+
+            IsSpawnFinished = false;
+        }
+
+        public void Update()
+        {
+            if (IsSpawnFinished)
+                return;
+
+            spawnTimer += Time.deltaTime;
+
+            if (spawnTimer < spawnInterval)
+                return;
+
+            spawnTimer = 0f;
+
+            if (spawnQueue.Count > 0)
+            {
+                SpawnMonster(spawnQueue.Dequeue());
+            }
+
+            if (spawnQueue.Count == 0)
+            {
+                IsSpawnFinished = true;
+            }
         }
 
         public Hero SpawnHeroTest()

@@ -28,6 +28,7 @@ namespace LuckyDefense.Monsters.Handler
             if (view != null)
             {
                 GameManager.Instance.MonsterView.Remove(evt.Monster);
+                GameManager.Instance.Spawn.AliveMonsterCount--;
             }
         }
     }

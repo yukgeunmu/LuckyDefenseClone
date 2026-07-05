@@ -95,8 +95,6 @@ namespace LuckyDefense.Core.Manager
 
             Instance = this;
             DontDestroyOnLoad(gameObject);
-
-            Init();
         }
 
         private void OnDrawGizmos()
@@ -109,7 +107,7 @@ namespace LuckyDefense.Core.Manager
                 ?.DrawGizmos();
         }
 
-        private void Init()
+        public void Init()
         {
             skillFactory = new SkillFactory();
             heroFactory = new HeroFactory(skillFactory);
@@ -145,6 +143,23 @@ namespace LuckyDefense.Core.Manager
                 statusEffectDatabase,
                 skillProjectileDatabase);
             Path.Initialize(pathRoot);
+        }
+
+        public void StartGame()
+        {
+            Wave.StartGame();
+
+            WaveTest();
+        }
+
+        public void WaveTest()
+        {
+            GameManager.Instance.Resource.AddSilver(1000);
+
+            for (int i = 0; i < 1; i++)
+            {
+                Spawn.SummonHero();
+            }
         }
 
     }
