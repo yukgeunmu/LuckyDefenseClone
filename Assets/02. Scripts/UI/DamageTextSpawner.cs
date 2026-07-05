@@ -21,8 +21,7 @@ namespace LuckyDefense.UI
                 OnDamage);
         }
 
-        private void OnDamage(
-            IEvent e)
+        private void OnDamage(IEvent e)
         {
             MonsterDamagedEvent evt = (MonsterDamagedEvent)e;
 

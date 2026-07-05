@@ -1,11 +1,14 @@
 using LuckyDefense.Heroes.Data;
+using LuckyDefense.Heroes.View;
 using LuckyDefense.Monsters.Data;
 using LuckyDefense.Skill;
+using LuckyDefense.Skill.Data;
 using LuckyDefense.Skill.View;
 using LuckyDefense.StatusEffects;
 using LuckyDefense.StatusEffects.Data;
 using LuckyDefense.Wave.Data;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 namespace LuckyDefense.Core.Manager
 {
@@ -25,13 +28,16 @@ namespace LuckyDefense.Core.Manager
 
         private Dictionary<StatusEffectType,StatusEffectConfig>  statusEffectDict = new();
 
+        private Dictionary<SkillProjectileType, SkillProjectileConfig> skillProjectileDict = new();
+
         public void Init(
             HeroDatabase heroDB,
-            RecipeDatabase recipeDatabase,
+            RecipeDatabase recipeDB,
             MonsterDatabase monsterDB,
             WaveDatabase waveDB,
             SkillEffectDatabase skillEffectDB,
-            StatusEffectDatabase statusDB
+            StatusEffectDatabase statusDB,
+            SkillProjectileDatabase skillProjectileDB
             )
         {
             heroDict.Clear();
@@ -83,7 +89,15 @@ namespace LuckyDefense.Core.Manager
                 statusEffectDict.Add(effect.Type,effect);
             }
 
-            recipes = recipeDatabase.Recipes;
+            foreach (var projectile in skillProjectileDB.SkillProjectileConfigs)
+            {
+                if (skillProjectileDict.ContainsKey(projectile.Type))
+                    continue;
+
+                skillProjectileDict.Add(projectile.Type, projectile);
+            }
+
+            recipes = recipeDB.Recipes;
 
         }
 
@@ -150,6 +164,13 @@ namespace LuckyDefense.Core.Manager
             statusEffectDict.TryGetValue(type, out var config);
 
             return config;
+        }
+
+        public ProjectileView GetProjectile(SkillProjectileType type)
+        {
+            skillProjectileDict.TryGetValue(type, out var projectile);
+
+            return projectile.Prefab;
         }
     }
 }

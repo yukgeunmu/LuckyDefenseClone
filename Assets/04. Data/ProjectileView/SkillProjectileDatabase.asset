@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b33495fe1a3a602479eefdd4e2abbd10, type: 3}
+  m_Name: SkillProjectileDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Skill.View.SkillProjectileDatabase
+  SkillProjectileConfigs:
+  - {fileID: 11400000, guid: 2265b584e79e5a14aa1b8bdc39dabf04, type: 2}
+  - {fileID: 11400000, guid: e2af465c8fb0a5d4084cc00331ae9bc3, type: 2}
+  - {fileID: 11400000, guid: c31d17447b9205c479c8b6ee8ab1f839, type: 2}
+  - {fileID: 11400000, guid: 12b9e2b85077b5141a0e959657458ca0, type: 2}
+  - {fileID: 11400000, guid: 153b03a38c8818d4aac8bee9a906e312, type: 2}
+  - {fileID: 11400000, guid: 29734fd7ed641ed47bc5d393df91154b, type: 2}

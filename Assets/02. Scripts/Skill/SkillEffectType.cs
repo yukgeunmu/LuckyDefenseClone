@@ -9,5 +9,7 @@ namespace LuckyDefense.Skill
         Freeze,
 
         ChainLightning,
+
+        Whirlwind,
     }
 }

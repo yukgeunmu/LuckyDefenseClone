@@ -3,6 +3,7 @@ using LuckyDefense.Heroes.Data;
 using LuckyDefense.Heroes.Runtime;
 using LuckyDefense.Monsters;
 using LuckyDefense.Skill;
+using LuckyDefense.Skill.Data;
 using LuckyDefense.Skill.Passive;
 
 namespace LuckyDefense.Heroes.Factory
@@ -23,11 +24,10 @@ namespace LuckyDefense.Heroes.Factory
 
             HeroSkillComponent skillComponent = new HeroSkillComponent();
 
+
             foreach (var skillData in heroData.PassiveSkills)
             {
                 ISkill skill = skillFactory.Create(skillData);
-
-                skill.Initialize(hero);
 
                 if (skill is PassiveSkill passive)
                 {
@@ -38,8 +38,6 @@ namespace LuckyDefense.Heroes.Factory
             foreach (var skillData in heroData.ActiveSkills)
             {
                 ISkill skill = skillFactory.Create(skillData);
-
-                skill.Initialize(hero);
 
                 if (skill is ActiveSkill active)
                 {
@@ -84,13 +82,14 @@ namespace LuckyDefense.Heroes.Factory
                     return new FrontTargetStrategy();
             }
         }
-        public Projectile CreateProjectile(Hero hero, Monster target)
+        public Projectile CreateProjectile(Hero hero, Monster target,SkillProjectileType skillProjectileType = SkillProjectileType.None)
         {
             return new Projectile(
                 hero,
                 target,
                 hero.CurrentCell.WorldPosition,
-                hero.Data.ProjectileSpeed);
+                hero.Data.ProjectileSpeed,
+                skillProjectileType);
         }
     }
 }

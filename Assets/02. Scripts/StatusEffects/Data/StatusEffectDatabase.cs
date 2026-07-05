@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LuckyDefense.StatusEffects.Data
 {
-    [CreateAssetMenu( menuName = "Game/StatusEffectDatabase", fileName = "StatusEffectDatabase")]
+    [CreateAssetMenu( menuName = "Game/Skill/StatusEffectDatabase", fileName = "StatusEffectDatabase")]
     public class StatusEffectDatabase : ScriptableObject
     {
         public List<StatusEffectConfig> Effects = new();

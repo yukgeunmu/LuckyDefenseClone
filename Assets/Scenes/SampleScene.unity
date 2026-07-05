@@ -2602,6 +2602,7 @@ MonoBehaviour:
   waveDatabase: {fileID: 11400000, guid: 06af512f1a814f14eb474b541822f412, type: 2}
   skillEffectDatabase: {fileID: 11400000, guid: 81030627d46c5d14eb317fa02c2b2525, type: 2}
   statusEffectDatabase: {fileID: 11400000, guid: beef481d3411b7c428652edb5a78be78, type: 2}
+  skillProjectileDatabase: {fileID: 11400000, guid: a8f63088a5082ba49ba23b89a3f7abd9, type: 2}
   pathRoot: {fileID: 1059944096}
 --- !u!4 &2122553119
 Transform:

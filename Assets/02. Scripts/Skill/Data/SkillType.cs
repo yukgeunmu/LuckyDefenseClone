@@ -1,18 +1,22 @@
 namespace LuckyDefense.Skill.Data
 {
-    public enum SkillType
+    public enum PassiveSkillType
     {
         None,
-
-        // 패시브
-        BonusDamage,
-        BossDamage,
+        Economy,
+        Buff,
         Critical,
-
-        // 액티브
-        Explosion,
-        Freeze,
-        Chain,
-        Stun,
+        Utility
     }
+
+
+    public enum ActiveSkillType
+    {
+        None,
+        Projectile,
+        Explosion,
+        Summon,
+        CrowdControl
+    }
+
 }

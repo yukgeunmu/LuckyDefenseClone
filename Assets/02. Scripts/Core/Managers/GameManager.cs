@@ -8,6 +8,7 @@ using LuckyDefense.Monsters.Data;
 using LuckyDefense.Monsters.Factory;
 using LuckyDefense.Monsters.View;
 using LuckyDefense.Skill;
+using LuckyDefense.Skill.Data;
 using LuckyDefense.Skill.View;
 using LuckyDefense.StatusEffects.Data;
 using LuckyDefense.Wave.Data;
@@ -50,6 +51,8 @@ namespace LuckyDefense.Core.Manager
 
         public SkillService Skill { get; private set; }
 
+        public StatusEffectService StatusEffect { get; private set; }
+
 
         [SerializeField]
         private HeroDatabase heroDatabase;
@@ -68,6 +71,9 @@ namespace LuckyDefense.Core.Manager
 
         [SerializeField]
         private StatusEffectDatabase statusEffectDatabase;
+
+        [SerializeField]
+        private SkillProjectileDatabase skillProjectileDatabase;
 
         [SerializeField]
         private Transform pathRoot;
@@ -128,9 +134,16 @@ namespace LuckyDefense.Core.Manager
             Combat = new CombatService(HeroCombat);
             Projectile = new ProjectileService(heroFactory, ProjectileManager);
             Skill = new SkillService();
+            StatusEffect = new StatusEffectService();
 
 
-            Data.Init(heroDatabase, recipeDatabase, monsterDatabase, waveDatabase, skillEffectDatabase, statusEffectDatabase);
+            Data.Init(heroDatabase, 
+                recipeDatabase,
+                monsterDatabase,
+                waveDatabase,
+                skillEffectDatabase,
+                statusEffectDatabase,
+                skillProjectileDatabase);
             Path.Initialize(pathRoot);
         }
 

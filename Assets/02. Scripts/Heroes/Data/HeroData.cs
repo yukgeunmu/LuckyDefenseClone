@@ -5,7 +5,7 @@ using UnityEngine;
 namespace LuckyDefense.Heroes.Data
 {
     [CreateAssetMenu(
-        menuName = "Game/Hero Data",
+        menuName = "Game/Hero/Hero Data",
         fileName = "HeroData")]
     public class HeroData : ScriptableObject
     {

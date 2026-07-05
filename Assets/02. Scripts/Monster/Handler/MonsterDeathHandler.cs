@@ -28,7 +28,6 @@ namespace LuckyDefense.Monsters.Handler
             if (view != null)
             {
                 GameManager.Instance.MonsterView.Remove(evt.Monster);
-                Destroy(view.gameObject);
             }
         }
     }

@@ -1,9 +1,10 @@
+using LuckyDefense.StatusEffects;
 using UnityEngine;
 
 namespace LuckyDefense.Skill.Data
 {
     [CreateAssetMenu(
-        menuName = "Game/SkillData",fileName = "SkillData")]
+        menuName = "Game/Skill/SkillData",fileName = "SkillData")]
     public class SkillData : ScriptableObject
     {
         public int SkillID;
@@ -12,14 +13,30 @@ namespace LuckyDefense.Skill.Data
 
         public SkillCategory Category;
 
-        public SkillType SkillType;
+        public SkillClass SkillClass;
+
+        public StatusEffectType StatusEffectType;
+
+        public SkillEffectType SkillEffect;
+
+        public SkillProjectileType ProjectileType;
 
         public float Value;
+
+        public float StatusEffectValue;
 
         public float Radius;
 
         public float Duration;
 
         public int Cooldown;
+
+        private void OnValidate()
+        {
+            if (string.IsNullOrEmpty(SkillName))
+            {
+                SkillName = this.name;
+            }
+        }
     }
 }

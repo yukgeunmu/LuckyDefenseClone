@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Skill.View.SkillEffectDatabase
   Effects:
   - {fileID: 11400000, guid: e94a4e9393b2523428c81a689ecdd8f1, type: 2}
+  - {fileID: 11400000, guid: 3bc52864dc5c92d42b51ffdaaa769235, type: 2}

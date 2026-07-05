@@ -1,5 +1,6 @@
 using LuckyDefense.Core;
 using LuckyDefense.Core.Events;
+using LuckyDefense.Core.Manager;
 using LuckyDefense.Heroes.Runtime;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,11 +32,10 @@ namespace LuckyDefense.Heroes.View
         {
             ProjectileSpawnedEvent evt = (ProjectileSpawnedEvent)e;
 
-            ProjectileView view =
-                Instantiate(
-                    projectilePrefab,
-                    evt.Projectile.Position,
-                    Quaternion.identity);
+            ProjectileView view = Instantiate(
+                GameManager.Instance.Data.GetProjectile(evt.Projectile.SkillProjectileType), 
+                evt.Projectile.Position, 
+                Quaternion.identity);
 
             view.Initialize(evt.Projectile);
 
@@ -46,13 +46,9 @@ namespace LuckyDefense.Heroes.View
         {
             ProjectileDestroyedEvent evt = (ProjectileDestroyedEvent)e;
 
-            if (!projectileViews.TryGetValue(
-                    evt.Projectile,
-                    out ProjectileView view))
-            {
-                return;
-            }
-
+            if (!projectileViews.TryGetValue(evt.Projectile,  out ProjectileView view))
+                 return;
+            
             Destroy(view.gameObject);
 
             projectileViews.Remove(evt.Projectile);
@@ -60,9 +56,7 @@ namespace LuckyDefense.Heroes.View
 
         public ProjectileView GetView(Projectile projectile)
         {
-            projectileViews.TryGetValue(
-                projectile,
-                out ProjectileView view);
+            projectileViews.TryGetValue(projectile, out ProjectileView view);
 
             return view;
         }

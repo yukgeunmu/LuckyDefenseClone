@@ -10,17 +10,14 @@ public class SkillService
         {
             foreach (var hero in cell.Heroes)
             {
+                Monster target = FindTarget(hero);
+
+                if (target == null)
+                    continue;
+
                 foreach (var skill in hero.SkillComponent.ActiveSkills)
                 {
-                    if (!skill.CanCast())
-                        continue;
-
-                    Monster target = FindTarget(hero);
-
-                    if (target == null)
-                        continue;
-
-                    skill.Cast(target);
+                    skill.Execute(hero, target);
                 }
             }
         }

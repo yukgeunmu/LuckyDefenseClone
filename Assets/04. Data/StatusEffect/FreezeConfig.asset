@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01c334bc890402442b68f1b3eeee830b, type: 3}
   m_Name: FreezeConfig
   m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.StatusEffects.Data.StatusEffectConfig
-  Type: 0
+  Type: 1
   ViewPrefab: {fileID: 6880139228965040233, guid: 559af3dbe25e12242a3f615c75fc00af, type: 3}
   Offset: {x: 0, y: 1, z: 0}

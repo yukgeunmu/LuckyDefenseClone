@@ -5,7 +5,7 @@ using UnityEngine;
 namespace LuckyDefense.Heroes.Data
 {
     [CreateAssetMenu(
-        menuName = "Game/Recipe Database")]
+        menuName = "Game/Hero/Recipe Database")]
     public class RecipeDatabase : ScriptableObject
     {
         public List<RecipeData> Recipes;

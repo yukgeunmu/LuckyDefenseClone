@@ -8,7 +8,7 @@ namespace LuckyDefense.Core.Service
 {
     public class DamageService
     {
-        public DamageResult DealDamage(Hero attacker, Monster target, int damage)
+        public DamageResult DealDamage(Monster target, int damage)
         {
             if (target == null)
                 return new DamageResult(0, false);

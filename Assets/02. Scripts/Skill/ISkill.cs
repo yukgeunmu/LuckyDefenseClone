@@ -1,12 +1,12 @@
 using LuckyDefense.Heroes;
+using LuckyDefense.Skill.Data;
 
 namespace LuckyDefense.Skill
 {
     public interface ISkill
     {
-        Hero Owner { get; }
+        SkillData Data { get; }
 
-        public void Initialize(Hero hero);
-
+        SkillCategory SkillType { get; }
     }
 }

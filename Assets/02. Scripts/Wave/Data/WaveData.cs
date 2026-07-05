@@ -5,7 +5,7 @@ namespace LuckyDefense.Wave.Data
 {
     [CreateAssetMenu(
         fileName = "WaveData",
-        menuName = "Game/Wave Data")]
+        menuName = "Game/Wave/Wave Data")]
     public class WaveData : ScriptableObject
     {
         [Header("Wave")]

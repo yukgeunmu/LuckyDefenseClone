@@ -1,45 +1,41 @@
+
 using LuckyDefense.Core.Events;
 using LuckyDefense.Core.Manager;
+using LuckyDefense.Heroes;
 using LuckyDefense.Monsters;
+using LuckyDefense.Skill.Data;
 using UnityEngine;
 
-namespace LuckyDefense.Skill
+namespace LuckyDefense.Skill.Active
 {
     public class ExplosionSkill : ActiveSkill
     {
-        private readonly float radius;
-
-        private readonly int damage;
-
-        public ExplosionSkill(float cooldown, float radius, int damage)
+        public ExplosionSkill(SkillData data) : base(data)
         {
-            this.cooldown = cooldown;
-
-            this.radius = radius;
-
-            this.damage = damage;
         }
 
-        public override void Cast(Monster target)
+        public override void Execute(Hero hero, Monster target)
         {
+            if (!CanCast())
+                return;
 
-            EventBus.Publish(new SkillEffectEvent(SkillEffectType.Explosion, target.Position, radius));
+            ResetCooldown();
 
             foreach (var monster in GameManager.Instance.Spawn.Monsters)
             {
                 if (monster.IsDead)
                     continue;
 
-                float distance =
-                    Vector3.Distance(
-                        target.Position,
-                        monster.Position);
-
-                if (distance > radius)
+                if (Vector3.Distance(monster.Position, target.Position) > Data.Radius)
                     continue;
 
-                GameManager.Instance.Damage.DealDamage(Owner, monster, damage);
+                AddStatusEffect(hero, monster);
+
+                GameManager.Instance.Damage.DealDamage(monster, (int)Data.Value);
+
             }
+
+            EventBus.Publish(new SkillEffectEvent(Data.SkillEffect, target.Position, Data.Radius));
         }
     }
 }

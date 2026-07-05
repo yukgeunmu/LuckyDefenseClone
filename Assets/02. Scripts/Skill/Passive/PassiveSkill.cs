@@ -1,21 +1,37 @@
 using LuckyDefense.Heroes;
 using LuckyDefense.Monsters;
+using LuckyDefense.Skill.Data;
+using NUnit.Framework.Internal.Commands;
 
 namespace LuckyDefense.Skill.Passive
 {
+
+    /*
+        항상 적용
+        이벤트 구독 가능
+        공격 시 발동 가능
+        처치 시 발동 가능  
+        버프 적용 가능
+     */
     public abstract class PassiveSkill: ISkill
     {
-        public Hero Owner
+        public SkillData Data { get; }
+
+        public SkillCategory SkillType => SkillCategory.Passive;
+        protected PassiveSkill(SkillData data)
         {
-            get;
-            private set;
+            this.Data = data;
         }
 
-        public virtual void Initialize(Hero hero)
-        {
-            Owner = hero;
-        }
+        /// 영웅 배치 시 호출
+        /// </summary>
+        public abstract void Apply(Hero hero);
 
-        public abstract int ModifyDamage(Monster target, int damage);
+        /// <summary>
+        /// 영웅 제거 시 호출
+        /// </summary>
+        public virtual void Remove(Hero hero)
+        {
+        }
     }
 }

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01c334bc890402442b68f1b3eeee830b, type: 3}
   m_Name: PoisonConfig
   m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.StatusEffects.Data.StatusEffectConfig
-  Type: 2
+  Type: 3
   ViewPrefab: {fileID: 7098495118732207461, guid: 6131309ca622141478a73f10753d3cb8, type: 3}
   Offset: {x: 0, y: 1, z: 0}

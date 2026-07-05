@@ -3,7 +3,7 @@ namespace LuckyDefense.Monsters.Data
 {
     using UnityEngine;
 
-    [CreateAssetMenu( fileName = "MonsterData", menuName = "Game/Monster Data")]
+    [CreateAssetMenu( fileName = "MonsterData", menuName = "Game/Monster/Monster Data")]
     public class MonsterData : ScriptableObject
     {
         [Header("Info")]
