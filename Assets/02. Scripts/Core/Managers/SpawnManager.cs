@@ -50,19 +50,18 @@ namespace LuckyDefense.Core.Manager
 
 
             Hero hero = heroFactory.Create(heroData);
-            GameManager.Instance.HeroCombat.Add(hero);
 
             bool result = GameManager.Instance.Placement.PlaceHero(hero);
 
             if (!result)
             {
-                GameManager.Instance.Resource
-                    .AddGold(GameConst.HeroSummonCost);
-
-                GameManager.Instance.HeroCombat.Remove(hero);
+                GameManager.Instance.Resource.AddGold(GameConst.HeroSummonCost);
 
                 return false;
             }
+            else
+                GameManager.Instance.HeroCombat.Add(hero);
+
 
             EventBus.Publish(new HeroSummonedEvent(hero));
             return true;
