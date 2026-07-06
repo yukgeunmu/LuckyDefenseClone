@@ -1,5 +1,3 @@
-using LuckyDefense.Core;
-using LuckyDefense.Core.Combat;
 using LuckyDefense.Core.Events;
 using LuckyDefense.Core.Manager;
 using UnityEngine;

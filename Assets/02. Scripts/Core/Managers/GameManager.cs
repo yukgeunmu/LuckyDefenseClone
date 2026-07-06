@@ -76,6 +76,9 @@ namespace LuckyDefense.Core.Manager
         private SkillProjectileDatabase skillProjectileDatabase;
 
         [SerializeField]
+        private HeroSummonTable summonTable;
+
+        [SerializeField]
         private Transform pathRoot;
 
         private HeroFactory heroFactory;
@@ -144,7 +147,8 @@ namespace LuckyDefense.Core.Manager
                 waveDatabase,
                 skillEffectDatabase,
                 statusEffectDatabase,
-                skillProjectileDatabase);
+                skillProjectileDatabase,
+                summonTable);
             Path.Initialize(pathRoot);
         }
 
@@ -157,9 +161,9 @@ namespace LuckyDefense.Core.Manager
 
         public void WaveTest()
         {
-            GameManager.Instance.Resource.AddSilver(1000);
+            GameManager.Instance.Resource.AddGold(1000);
 
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < 10; i++)
             {
                 Spawn.SummonHero();
             }

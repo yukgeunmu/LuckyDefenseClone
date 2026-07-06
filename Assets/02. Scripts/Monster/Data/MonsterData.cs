@@ -23,7 +23,7 @@ namespace LuckyDefense.Monsters.Data
         public float MoveSpeed;
 
         [Header("Reward")]
-        public int RewardSilver;
+        public int RewardGold;
 
         [Header("View")]
         public Sprite Icon;

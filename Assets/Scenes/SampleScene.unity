@@ -1353,6 +1353,7 @@ GameObject:
   - component: {fileID: 916707277}
   - component: {fileID: 916707279}
   - component: {fileID: 916707280}
+  - component: {fileID: 916707281}
   m_Layer: 0
   m_Name: MonsterSpawner
   m_TagString: Untagged
@@ -1413,6 +1414,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e8d9742c344ac546acd542295c95ee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Monsters.Handler.MonsterDeathHandler
+--- !u!114 &916707281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916707276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27072a7c461d98340a0e2c62fcc6d6d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Monsters.MonsterRewardHandler
 --- !u!1001 &922823804
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2532,7 +2545,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2110208231}
   - component: {fileID: 2110208233}
-  - component: {fileID: 2110208234}
   m_Layer: 0
   m_Name: GameBootstrap
   m_TagString: Untagged
@@ -2567,18 +2579,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8c3d59e608592469cf1ffd77c1b8ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameBootstrap
---- !u!114 &2110208234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2110208229}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb205cfa55c413a4b88f98f1fd71cfdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CombatTest
 --- !u!1 &2122553117
 GameObject:
   m_ObjectHideFlags: 0
@@ -2615,6 +2615,7 @@ MonoBehaviour:
   skillEffectDatabase: {fileID: 11400000, guid: 81030627d46c5d14eb317fa02c2b2525, type: 2}
   statusEffectDatabase: {fileID: 11400000, guid: beef481d3411b7c428652edb5a78be78, type: 2}
   skillProjectileDatabase: {fileID: 11400000, guid: a8f63088a5082ba49ba23b89a3f7abd9, type: 2}
+  summonTable: {fileID: 11400000, guid: 25c6bb07df0475947a23a1343926db71, type: 2}
   pathRoot: {fileID: 1059944096}
 --- !u!4 &2122553119
 Transform:

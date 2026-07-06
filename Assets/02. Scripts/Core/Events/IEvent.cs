@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace LuckyDefense.Core
+namespace LuckyDefense.Core.Events
 {
     public interface IEvent
     {

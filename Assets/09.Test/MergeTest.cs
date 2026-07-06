@@ -9,7 +9,7 @@ public class MergeTest : MonoBehaviour
             GameManager.Instance.Spawn;
 
         GameManager.Instance.Resource
-            .AddSilver(100);
+            .AddGold(100);
 
         spawn.SummonHero();
         spawn.SummonHero();

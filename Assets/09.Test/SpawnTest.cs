@@ -6,7 +6,7 @@ public class SummonTest : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.Resource
-            .AddSilver(100);
+            .AddGold(100);
 
         for (int i = 0; i < 5; i++)
         {

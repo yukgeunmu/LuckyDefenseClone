@@ -11,7 +11,7 @@ public class CombatTest : MonoBehaviour
 
         GameManager.Instance.Init();
 
-        GameManager.Instance.Resource.AddSilver(1000);
+        GameManager.Instance.Resource.AddGold(1000);
 
         for (int i = 0; i < 1; i++)
         {

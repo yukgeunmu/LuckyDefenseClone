@@ -136,3 +136,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c510ccdd402c32d4b8c798f5fd324122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Heroes.View.HeroView
+  spriteRenderer: {fileID: 1934731580308123969}

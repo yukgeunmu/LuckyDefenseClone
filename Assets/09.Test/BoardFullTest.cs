@@ -6,7 +6,7 @@ public class BoardFullTest : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GameManager.Instance.Resource.AddSilver(10000);
+        GameManager.Instance.Resource.AddGold(10000);
 
         for (int i = 0; i < 25; i++)
         {

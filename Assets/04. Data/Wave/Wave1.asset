@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Wave1
   m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Wave.Data.WaveData
   WaveNumber: 1
+  SpawnInterval: 0.5
   Monsters:
   - Monster: {fileID: 11400000, guid: c4bf1ae6b75ddca4b92e7962f079ff1a, type: 2}
     Count: 1

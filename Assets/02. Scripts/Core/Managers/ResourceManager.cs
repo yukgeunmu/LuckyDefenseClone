@@ -4,24 +4,23 @@ namespace LuckyDefense.Core.Manager
 {
     public class ResourceManager
     {
-        public int Silver { get; private set; }
+        public int Gold { get; private set; }
 
-        public void AddSilver(int amount)
+        public void AddGold(int amount)
         {
-            Silver += amount;
+            Gold += amount;
 
-            EventBus.Publish(new SilverChangedEvent(Silver));
+            EventBus.Publish(new GoldChangedEvent(Gold));
         }
 
-        public bool SpendSilver(int amount)
+        public bool SpendGold(int amount)
         {
-            if (Silver < amount)
+            if (Gold < amount)
                 return false;
 
-            Silver -= amount;
+            Gold -= amount;
 
-            EventBus.Publish(
-                new SilverChangedEvent(Silver));
+            EventBus.Publish(new GoldChangedEvent(Gold));
 
             return true;
         }

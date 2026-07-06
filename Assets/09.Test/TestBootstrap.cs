@@ -5,6 +5,6 @@ public class TestBootstrap : MonoBehaviour
 {
     private void Start()
     {
-        GameManager.Instance.Resource.AddSilver(100);
+        GameManager.Instance.Resource.AddGold(100);
     }
 }

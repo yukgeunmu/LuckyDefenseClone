@@ -1,6 +1,6 @@
 using LuckyDefense.Monsters;
 
-namespace LuckyDefense.Core.Combat
+namespace LuckyDefense.Core.Events
 {
     public struct HitEvent : IEvent
     {

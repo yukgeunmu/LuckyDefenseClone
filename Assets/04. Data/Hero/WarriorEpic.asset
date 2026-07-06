@@ -10,22 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 722f9fc9d9a469b439060dc9181b0cec, type: 3}
-  m_Name: WarriorCommon
+  m_Name: WarriorEpic
   m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Heroes.Data.HeroData
-  HeroID: 1001
-  HeroName: "\uAC80\uC0AC"
-  Grade: 0
+  HeroID: 3001
+  HeroName: "\uC5D0\uD53D\uAC80\uC0AC"
+  Grade: 2
   ClassType: 0
   RaceType: 0
   PrimaryTarget: 5
   FallbackTarget: 0
   ProjectileType: 0
   AttackPower: 1
-  AttackSpeed: 1
-  Range: 1
+  AttackSpeed: 1.1
+  Range: 1.5
   ProjectileSpeed: 10
-  PassiveSkills:
-  - {fileID: 11400000, guid: f95b90a4b0284d641bca0807048b0dd0, type: 2}
-  - {fileID: 11400000, guid: e4f25d5f2e51ae445ae835cddedc8604, type: 2}
-  ActiveSkills: []
+  PassiveSkills: []
+  ActiveSkills:
+  - {fileID: 11400000, guid: ab9a1327a759a08498d05e5c9091d3f0, type: 2}
   Description: 

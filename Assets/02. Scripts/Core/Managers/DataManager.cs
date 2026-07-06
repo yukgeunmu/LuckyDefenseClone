@@ -20,6 +20,8 @@ namespace LuckyDefense.Core.Manager
 
         private List<RecipeData> recipes = new();
 
+        private List<SummonRate> summonRates = new();
+
         private Dictionary<int, MonsterData> monsterDict = new();
 
         private Dictionary<int, WaveData> waveDict = new();
@@ -37,7 +39,8 @@ namespace LuckyDefense.Core.Manager
             WaveDatabase waveDB,
             SkillEffectDatabase skillEffectDB,
             StatusEffectDatabase statusDB,
-            SkillProjectileDatabase skillProjectileDB
+            SkillProjectileDatabase skillProjectileDB,
+            HeroSummonTable heroSummonTable
             )
         {
             heroDict.Clear();
@@ -99,6 +102,8 @@ namespace LuckyDefense.Core.Manager
 
             recipes = recipeDB.Recipes;
 
+            summonRates = heroSummonTable.Rates;
+
         }
 
         public HeroData GetHero(int heroID)
@@ -106,6 +111,21 @@ namespace LuckyDefense.Core.Manager
             heroDict.TryGetValue(heroID, out HeroData hero);
 
             return hero;
+        }
+
+        public HeroData GetGradeHero(HeroGrade grade)
+        {
+            List<HeroData> selectedGradeList = new List<HeroData>();
+
+            foreach (var hero in heroDict)
+            {
+                if (hero.Value.Grade == grade)
+                    selectedGradeList.Add(hero.Value);
+            }
+
+            int index = UnityEngine.Random.Range(0, selectedGradeList.Count);
+
+            return selectedGradeList[index];
         }
 
         public HeroData GetRandomCommonHero()
@@ -116,6 +136,44 @@ namespace LuckyDefense.Core.Manager
                     commonHeroes.Count);
 
             return commonHeroes[0];
+        }
+
+        public HeroData GetRandomHero()
+        {
+            HeroGrade grade = GetRandomGrade();
+
+            return GetGradeHero(grade);
+        }
+
+
+        private HeroGrade GetRandomGrade()
+        {
+            if (summonRates == null || summonRates.Count == 0)
+            {
+                return HeroGrade.Common;
+            }
+
+            float totalProbability = 0f;
+            foreach (var rate in summonRates)
+            {
+                totalProbability += rate.Probability;
+            }
+
+
+            float randomValue = UnityEngine.Random.Range(0f, totalProbability);
+
+            foreach (var rate in summonRates)
+            {
+                if (randomValue < rate.Probability)
+                {
+                    return rate.Grade;
+                }
+
+                randomValue -= rate.Probability;
+            }
+
+            return summonRates[summonRates.Count - 1].Grade;
+
         }
 
         public RecipeData FindRecipe(HeroData heroData)
