@@ -5,8 +5,7 @@ public class GameBootstrap : MonoBehaviour
 {
     private void Start()
     {
-        GameManager.Instance.Init();
-
         GameManager.Instance.StartGame();
     }
+
 }

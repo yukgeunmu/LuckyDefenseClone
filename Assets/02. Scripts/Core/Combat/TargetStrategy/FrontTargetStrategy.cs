@@ -20,12 +20,18 @@ namespace LuckyDefense.Core.Combat
             foreach (Monster monster in GameManager.Instance.Spawn.Monsters)
             {
                 if (monster.IsDead)
+                {
                     continue;
+                }
+
 
                 float distance = Vector3.Distance(heroPos, monster.Position);
 
                 if (distance > range)
+                {
                     continue;
+                }
+
 
                 if (monster.CurrentPathIndex > highestPath)
                 {

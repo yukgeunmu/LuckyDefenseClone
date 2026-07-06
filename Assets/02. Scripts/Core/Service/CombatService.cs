@@ -20,14 +20,17 @@ namespace LuckyDefense.Core.Service
             {
                 HeroCombat combat = pair.Value;
 
-                if (!combat.CanAttack())           
+                if (!combat.CanAttack()) 
                     continue;
                 
                 Monster target = combat.FindTarget();
 
                 if (target == null)
+                {
                     continue;
+                }
 
+ 
                 GameManager.Instance.Projectile.Fire(combat.Hero,target, combat.Hero.Stats.Attack);
             }
         }

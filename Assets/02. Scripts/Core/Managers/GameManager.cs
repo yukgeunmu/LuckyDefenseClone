@@ -95,6 +95,9 @@ namespace LuckyDefense.Core.Manager
 
             Instance = this;
             DontDestroyOnLoad(gameObject);
+
+
+            Init();
         }
 
         private void OnDrawGizmos()
@@ -147,9 +150,9 @@ namespace LuckyDefense.Core.Manager
 
         public void StartGame()
         {
-            Wave.StartGame();
-
             WaveTest();
+
+            Wave.StartGame();
         }
 
         public void WaveTest()

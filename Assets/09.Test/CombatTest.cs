@@ -8,6 +8,9 @@ public class CombatTest : MonoBehaviour
 
     void Start()
     {
+
+        GameManager.Instance.Init();
+
         GameManager.Instance.Resource.AddSilver(1000);
 
         for (int i = 0; i < 1; i++)
@@ -18,8 +21,8 @@ public class CombatTest : MonoBehaviour
         GameManager.Instance.Wave.StartGame();
     }
 
-    void Update()
-    {
-        GameManager.Instance.Combat.Update();
-    }
+    //void Update()
+    //{
+    //    GameManager.Instance.Combat.Update();
+    //}
 }
