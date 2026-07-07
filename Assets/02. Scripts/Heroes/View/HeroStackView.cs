@@ -13,7 +13,7 @@ namespace LuckyDefense.Heroes.View
         [SerializeField]
         private Transform heroRoot;
 
-        private readonly List<HeroView> heroViews = new();
+        public readonly List<HeroView> HeroViews = new();
 
 
         public CellView OwnerCell { get; private set; }
@@ -26,7 +26,7 @@ namespace LuckyDefense.Heroes.View
 
         public void AddHeroView(HeroView heroView)
         {
-            heroViews.Add(heroView);
+            HeroViews.Add(heroView);
 
             heroView.transform.SetParent(heroRoot, false);
 
@@ -35,18 +35,18 @@ namespace LuckyDefense.Heroes.View
 
         public void RemoveHeroView( HeroView heroView)
         {
-            heroViews.Remove(heroView);
+            HeroViews.Remove(heroView);
 
             Refresh();
         }
 
         public void SetHeroes(List<HeroView> views)
         {
-            heroViews.Clear();
+            HeroViews.Clear();
 
             foreach (HeroView view in views)
             {
-                heroViews.Add(view);
+                HeroViews.Add(view);
 
                 view.transform.SetParent(heroRoot, false);
             }
@@ -57,7 +57,7 @@ namespace LuckyDefense.Heroes.View
 
         public void Refresh()
         {
-            int childCount = heroViews.Count;
+            int childCount = HeroViews.Count;
             if (childCount <= 1) return;
 
             // 원의 반지름
@@ -82,7 +82,7 @@ namespace LuckyDefense.Heroes.View
             for (int i = 0; i < childCount; i++)
             {
                 //Transform hero = heroRoot.GetChild(i);
-                Transform hero = heroViews[i].transform;
+                Transform hero = HeroViews[i].transform;
 
                 // 1개만 있을 때는 회전 계산 없이 정중앙(0, 0)에 배치
                 if (childCount == 1)

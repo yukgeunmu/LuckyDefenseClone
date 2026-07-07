@@ -12,6 +12,11 @@ namespace LuckyDefense.Board.View
 
         public HeroStackView HeroStackView => heroStackView;
 
+        [SerializeField]
+        private CellSelectionView selectionView;
+
+        public CellSelectionView SelectionView => selectionView;
+
 
         public GridCell GridCell
         {

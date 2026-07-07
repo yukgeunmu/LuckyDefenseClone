@@ -1,10 +1,8 @@
-using LuckyDefense.Core.Events;
 using LuckyDefense.Core.Manager;
 using LuckyDefense.Heroes;
 using LuckyDefense.Heroes.Data;
 using LuckyDefense.Heroes.Factory;
 using System.Collections.Generic;
-using UnityEngine;
 
 
 namespace LuckyDefense.Core.Service
@@ -15,7 +13,7 @@ namespace LuckyDefense.Core.Service
         private MergeService mergeService;
 
 
-        public RecipeService(MergeService mergeService,HeroFactory heroFactory)
+        public RecipeService(MergeService mergeService, HeroFactory heroFactory)
         {
             this.mergeService = mergeService;
             this.heroFactory = heroFactory;
@@ -24,7 +22,7 @@ namespace LuckyDefense.Core.Service
 
         public Hero Merge(RecipeData recipe)
         {
-            if(recipe == null)
+            if (recipe == null)
                 return null;
 
 
@@ -57,7 +55,7 @@ namespace LuckyDefense.Core.Service
 
             foreach (var recipe in GameManager.Instance.Data.Recipes)
             {
-                if (IsMatched( heroes, recipe.Materials))
+                if (IsMatched(heroes, recipe.Materials))
                 {
                     result.Add(recipe);
                 }
@@ -66,7 +64,7 @@ namespace LuckyDefense.Core.Service
             return result;
         }
 
-        public bool IsMatched( List<Hero> heroes, List<RecipeMaterial> materials)
+        public bool IsMatched(List<Hero> heroes, List<RecipeMaterial> materials)
         {
             if (heroes == null || materials == null)
                 return false;
