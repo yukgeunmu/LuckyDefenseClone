@@ -2,6 +2,7 @@ using LuckyDefense.Board;
 using LuckyDefense.Core.Events;
 using LuckyDefense.Core.Manager;
 using LuckyDefense.Heroes;
+using System.Collections.Generic;
 
 
 namespace LuckyDefense.Core.Service
@@ -80,6 +81,21 @@ namespace LuckyDefense.Core.Service
                 hero.CurrentCell = null;
 
             return result;
+        }
+
+        public List<Hero> GetAllHeroes()
+        {
+            var list = new List<Hero>();
+
+            foreach (var cell in  board.Cells)
+            {
+                foreach (var hero in cell.Heroes)
+                {
+                    list.Add(hero);
+                }
+            }
+
+            return list;
         }
     }
 }

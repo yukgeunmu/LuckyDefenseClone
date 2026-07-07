@@ -163,7 +163,7 @@ namespace LuckyDefense.Core.Manager
         {
             GameManager.Instance.Resource.AddGold(1000);
 
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 3; i++)
             {
                 Spawn.SummonHero();
             }

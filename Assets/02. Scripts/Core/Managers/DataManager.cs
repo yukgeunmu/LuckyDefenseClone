@@ -20,6 +20,8 @@ namespace LuckyDefense.Core.Manager
 
         private List<RecipeData> recipes = new();
 
+        public IReadOnlyList<RecipeData> Recipes => recipes;
+
         private List<SummonRate> summonRates = new();
 
         private Dictionary<int, MonsterData> monsterDict = new();
@@ -143,6 +145,11 @@ namespace LuckyDefense.Core.Manager
             HeroGrade grade = GetRandomGrade();
 
             return GetGradeHero(grade);
+        }
+
+        public HeroData GetRandomHero(HeroGrade heroGrade)
+        {
+            return GetGradeHero(heroGrade);
         }
 
 
