@@ -22,12 +22,12 @@ namespace LuckyDefense.UI.HeroPanel
 
         public void Show()
         {
-            root.SetActive(true);
+            gameObject.SetActive(true);
         }
 
         public void Hide()
         {
-            root.SetActive(false);
+            gameObject.SetActive(false);
         }
 
         public void Refresh(Hero hero)

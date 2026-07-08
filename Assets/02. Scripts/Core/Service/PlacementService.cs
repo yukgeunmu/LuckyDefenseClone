@@ -3,6 +3,7 @@ using LuckyDefense.Core.Events;
 using LuckyDefense.Core.Manager;
 using LuckyDefense.Heroes;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 
 namespace LuckyDefense.Core.Service
@@ -22,6 +23,7 @@ namespace LuckyDefense.Core.Service
 
             if (cell == null)
                 return false;
+            
 
             cell.AddHero(hero);
             hero.CurrentCell = cell;

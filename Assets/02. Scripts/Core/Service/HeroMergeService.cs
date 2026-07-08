@@ -1,24 +1,20 @@
 using LuckyDefense.Board;
-using LuckyDefense.Core.Events;
 using LuckyDefense.Core.Manager;
 using LuckyDefense.Heroes;
 using LuckyDefense.Heroes.Data;
-using LuckyDefense.Heroes.Factory;
+using System.Collections.Generic;
 
 
 namespace LuckyDefense.Core.Service
 {
     public class HeroMergeService
     {
-        private HeroFactory heroFactory;
 
         private MergeService mergeService;
 
-
-        public HeroMergeService(MergeService mergeService, HeroFactory heroFactory)
+        public HeroMergeService(MergeService mergeService)
         {
             this.mergeService = mergeService;
-            this.heroFactory = heroFactory;
         }
 
         public bool CanMerge(GridCell cell, out Hero hero)
@@ -41,12 +37,18 @@ namespace LuckyDefense.Core.Service
 
             HeroGrade nextGrade = hero.Data.Grade + 1;
 
-            foreach (var h in cell.Heroes)
+            List<Hero> consumeHeroes = cell.GetHeroes();
+
+            foreach (Hero h in consumeHeroes)
             {
                 GameManager.Instance.Placement.RemoveHero(h);
+
+                GameManager.Instance.HeroCombat.Remove(h);
             }
 
-            return mergeService.SpawnResultHero(hero.Data, cell.Heroes);
+            HeroData heroData = GameManager.Instance.Data.GetRandomHero(nextGrade);
+
+            return mergeService.SpawnResultHero(heroData, consumeHeroes);
 
         }
     }

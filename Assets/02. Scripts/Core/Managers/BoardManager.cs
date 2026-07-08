@@ -57,16 +57,19 @@ namespace LuckyDefense.Core.Manager
 
         public GridCell GetAvailableCell(HeroData heroData)
         {
+            GridCell firstEmptyCell = null;
+
             foreach (var cell in cells)
             {
-                if (cell.IsEmpty)
-                    return cell;
 
                 if (cell.HeroData == heroData && !cell.IsFull)
                     return cell;
+
+                if (cell.IsEmpty && firstEmptyCell == null)
+                    firstEmptyCell = cell;
             }
 
-            return null;
+            return firstEmptyCell;
         }
 
 

@@ -9,15 +9,15 @@ namespace LuckyDefense.Core.Service
 {
     public class MergeService
     {
-        public HeroMergeService TripleMergeService { get; private set; }
+        public HeroMergeService HeroMergeService { get; private set; }
         public RecipeService RecipeService { get; private set; }
 
         private HeroFactory heroFactory;
 
         public MergeService(HeroFactory heroFactory)
         {
-            this.TripleMergeService = new(this, heroFactory);
-            this.RecipeService = new(this, heroFactory);
+            this.HeroMergeService = new(this);
+            this.RecipeService = new(this);
             this.heroFactory = heroFactory;
         }
 
@@ -28,11 +28,9 @@ namespace LuckyDefense.Core.Service
             GameManager.Instance.Placement.PlaceHero(hero);
             GameManager.Instance.HeroCombat.Add(hero);
 
-            EventBus.Publish(
-                new HeroMergedEvent(hero, consumes));
+            EventBus.Publish(new HeroMergedEvent(hero, consumes));
 
-            EventBus.Publish(
-                new HeroSummonedEvent(hero));
+            EventBus.Publish(new HeroSummonedEvent(hero));
 
             return hero;
         }

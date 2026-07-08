@@ -9,14 +9,11 @@ namespace LuckyDefense.Core.Service
 {
     public class RecipeService
     {
-        private HeroFactory heroFactory;
         private MergeService mergeService;
 
-
-        public RecipeService(MergeService mergeService, HeroFactory heroFactory)
+        public RecipeService(MergeService mergeService)
         {
             this.mergeService = mergeService;
-            this.heroFactory = heroFactory;
         }
 
 

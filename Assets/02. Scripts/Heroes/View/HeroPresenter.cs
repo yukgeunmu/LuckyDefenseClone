@@ -31,12 +31,15 @@ namespace Game.Heroes.View
         {
             EventBus.Subscribe<HeroSummonedEvent>(OnHeroSummoned);
             EventBus.Subscribe<CellMovedEvent>(OnCellMoved);
+            EventBus.Subscribe<HeroMergedEvent>(OnRefresh);
+
         }
 
         private void OnDisable()
         {
             EventBus.Unsubscribe<HeroSummonedEvent>(OnHeroSummoned);
             EventBus.Unsubscribe<CellMovedEvent>(OnCellMoved);
+            EventBus.Unsubscribe<HeroMergedEvent>(OnRefresh);
         }
 
         private void OnHeroSummoned(IEvent e)
@@ -49,9 +52,7 @@ namespace Game.Heroes.View
                 GameManager.Instance.Board.FindCell(hero);
 
             if (cell == null)
-            {
                 return;
-            }
 
             CellView cellView = boardView.GetCellView(cell.Index);
 
@@ -72,6 +73,23 @@ namespace Game.Heroes.View
             RefreshCell(evt.TargetCell);
         }
 
+        private void OnRefresh(IEvent e)
+        {
+            HeroMergedEvent evt = (HeroMergedEvent)e;
+
+            GridCell cell = GameManager.Instance.CellSelection.SelectedCell;
+
+            CellView cellView = boardView.GetCellView(cell.Index);
+
+            cellView.HeroStackView.ClearHeroView();
+
+            foreach (var h in evt.ConsumedHeroes)
+            {
+                GameManager.Instance.HeroView.Remove(h);
+            }
+
+        }
+
         private void RefreshCell(GridCell cell)
         {
             CellView cellView = boardView.GetCellView(cell.Index);
@@ -85,5 +103,9 @@ namespace Game.Heroes.View
 
             cellView.HeroStackView.SetHeroes(views);
         }
+
+        
+
+
     }
 }

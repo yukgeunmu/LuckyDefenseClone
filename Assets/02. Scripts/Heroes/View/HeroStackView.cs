@@ -1,6 +1,5 @@
 using LuckyDefense.Board.View;
-using LuckyDefense.Heroes.Factory;
-using LuckyDefense.Heroes.View;
+using LuckyDefense.Core.Manager;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,7 +32,14 @@ namespace LuckyDefense.Heroes.View
             Refresh();
         }
 
-        public void RemoveHeroView( HeroView heroView)
+        public void ClearHeroView()
+        {
+            HeroViews.Clear();
+
+            Refresh();
+        }
+
+        public void RemoveHeroView(HeroView heroView)
         {
             HeroViews.Remove(heroView);
 
@@ -58,6 +64,7 @@ namespace LuckyDefense.Heroes.View
         public void Refresh()
         {
             int childCount = HeroViews.Count;
+
             if (childCount <= 1) return;
 
             // 원의 반지름
