@@ -28,6 +28,9 @@ namespace LuckyDefense.Heroes.Data
         public float Range;
         public float ProjectileSpeed = 10f;
 
+        [Header("Sell")]
+        public int SellPrice;
+
         [Header("Passive Skills")]
         public List<SkillData> PassiveSkills = new();
 

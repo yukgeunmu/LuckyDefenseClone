@@ -2,6 +2,7 @@ using LuckyDefense.Board;
 using LuckyDefense.Core.Events;
 using LuckyDefense.Core.Manager;
 using LuckyDefense.Heroes;
+using LuckyDefense.Heroes.Data;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -82,6 +83,10 @@ namespace LuckyDefense.Core.Service
             if (result)
                 hero.CurrentCell = null;
 
+            EventBus.Publish(new HeroRemovedEvent(hero, cell));
+
+            board.OptimizeHeroStacks();
+
             return result;
         }
 
@@ -99,5 +104,7 @@ namespace LuckyDefense.Core.Service
 
             return list;
         }
+
+          
     }
 }

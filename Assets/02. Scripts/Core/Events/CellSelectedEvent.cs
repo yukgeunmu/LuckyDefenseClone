@@ -2,7 +2,7 @@ using LuckyDefense.Board;
 
 namespace LuckyDefense.Core.Events
 {
-    public class CellSelectedEvent : IEvent
+    public struct CellSelectedEvent : IEvent
     {
         public GridCell Cell { get; }
 

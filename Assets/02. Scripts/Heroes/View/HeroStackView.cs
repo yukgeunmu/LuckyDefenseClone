@@ -65,7 +65,13 @@ namespace LuckyDefense.Heroes.View
         {
             int childCount = HeroViews.Count;
 
-            if (childCount <= 1) return;
+            if (childCount <= 1)
+            {
+                if(HeroViews.Count != 0)
+                    HeroViews[0].transform.localPosition = Vector3.zero;
+
+                return;
+            }
 
             // 원의 반지름
             float radius = 0.2f;

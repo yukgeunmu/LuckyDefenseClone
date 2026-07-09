@@ -1,7 +1,5 @@
 using LuckyDefense.Board;
 using LuckyDefense.Board.View;
-using LuckyDefense.Core;
-using LuckyDefense.Core.Combat;
 using LuckyDefense.Core.Events;
 using LuckyDefense.Core.Manager;
 using LuckyDefense.Heroes;
@@ -31,7 +29,8 @@ namespace Game.Heroes.View
         {
             EventBus.Subscribe<HeroSummonedEvent>(OnHeroSummoned);
             EventBus.Subscribe<CellMovedEvent>(OnCellMoved);
-            EventBus.Subscribe<HeroMergedEvent>(OnRefresh);
+            EventBus.Subscribe<HeroMovedEvent>(OnHeroMoved);
+            EventBus.Subscribe<HeroRemovedEvent>(OnHeroRemoved);
 
         }
 
@@ -39,7 +38,8 @@ namespace Game.Heroes.View
         {
             EventBus.Unsubscribe<HeroSummonedEvent>(OnHeroSummoned);
             EventBus.Unsubscribe<CellMovedEvent>(OnCellMoved);
-            EventBus.Unsubscribe<HeroMergedEvent>(OnRefresh);
+            EventBus.Unsubscribe<HeroMovedEvent>(OnHeroMoved);
+            EventBus.Unsubscribe<HeroRemovedEvent>(OnHeroRemoved);
         }
 
         private void OnHeroSummoned(IEvent e)
@@ -73,22 +73,42 @@ namespace Game.Heroes.View
             RefreshCell(evt.TargetCell);
         }
 
-        private void OnRefresh(IEvent e)
+
+        private void OnHeroMoved(IEvent e)
         {
-            HeroMergedEvent evt = (HeroMergedEvent)e;
+            HeroMovedEvent evt = (HeroMovedEvent)e;
 
-            GridCell cell = GameManager.Instance.CellSelection.SelectedCell;
+            HeroView heroView =
+                GameManager.Instance.HeroView.GetView(evt.Hero);
 
-            CellView cellView = boardView.GetCellView(cell.Index);
+            if (heroView == null)
+                return;
 
-            cellView.HeroStackView.ClearHeroView();
+            CellView fromCell =  boardView.GetCellView(evt.FromCell.Index);
 
-            foreach (var h in evt.ConsumedHeroes)
-            {
-                GameManager.Instance.HeroView.Remove(h);
-            }
+            CellView toCell = boardView.GetCellView(evt.ToCell.Index);
 
+            fromCell.HeroStackView.RemoveHeroView(heroView);
+
+            toCell.HeroStackView.AddHeroView(heroView);
         }
+
+        private void OnHeroRemoved(IEvent e)
+        {
+            HeroRemovedEvent evt = (HeroRemovedEvent)e;
+
+            HeroView heroView = GameManager.Instance.HeroView.GetView(evt.Hero);
+
+            if (heroView == null)
+                return;
+
+            CellView cellView = boardView.GetCellView(evt.Cell.Index);
+
+            cellView.HeroStackView.RemoveHeroView(heroView);
+
+            GameManager.Instance.HeroView.Remove(evt.Hero);
+        }
+
 
         private void RefreshCell(GridCell cell)
         {
@@ -104,7 +124,7 @@ namespace Game.Heroes.View
             cellView.HeroStackView.SetHeroes(views);
         }
 
-        
+
 
 
     }

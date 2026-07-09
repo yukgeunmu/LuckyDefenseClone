@@ -24,6 +24,7 @@ MonoBehaviour:
   AttackSpeed: 1.3
   Range: 2
   ProjectileSpeed: 10
+  SellPrice: 10
   PassiveSkills:
   - {fileID: 11400000, guid: b46f71d1c15e12346b6c6c28a859bdbd, type: 2}
   - {fileID: 11400000, guid: 9c924d31f684e2f40abbbacf10f78fc7, type: 2}

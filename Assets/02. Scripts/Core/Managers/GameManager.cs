@@ -55,6 +55,8 @@ namespace LuckyDefense.Core.Manager
 
         public CellSelectionService CellSelection { get; private set; }
 
+        public HeroSellService HeroSell { get; private set; }
+
 
         [SerializeField]
         private HeroDatabase heroDatabase;
@@ -142,6 +144,7 @@ namespace LuckyDefense.Core.Manager
             Skill = new SkillService();
             StatusEffect = new StatusEffectService();
             CellSelection = new CellSelectionService();
+            HeroSell = new HeroSellService();
 
 
             Data.Init(heroDatabase, 

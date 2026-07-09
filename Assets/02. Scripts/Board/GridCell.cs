@@ -17,13 +17,6 @@ namespace LuckyDefense.Board
 
         public Vector3 WorldPosition;
 
-
-        public GridCell CurrentCell
-        {
-            get;
-            internal set;
-        }
-
         public HeroData HeroData
         {
             get

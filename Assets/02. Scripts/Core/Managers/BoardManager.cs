@@ -1,8 +1,8 @@
 ﻿using LuckyDefense.Board;
+using LuckyDefense.Core.Events;
 using LuckyDefense.Heroes;
 using LuckyDefense.Heroes.Data;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace LuckyDefense.Core.Manager
 {
@@ -83,6 +83,74 @@ namespace LuckyDefense.Core.Manager
                     return cell;
                 }
 
+            }
+
+            return null;
+        }
+
+        public void OptimizeHeroStacks()
+        {
+            Dictionary<HeroData, List<GridCell>> groups = new();
+
+            foreach (GridCell cell in cells)
+            {
+                if (cell.HeroCount == 0)
+                    continue;
+
+                HeroData data = cell.Heroes[0].Data;
+
+                if (!groups.TryGetValue(data, out var list))
+                {
+                    list = new List<GridCell>();
+                    groups.Add(data, list);
+                }
+
+                list.Add(cell);
+            }
+
+            foreach (var pair in groups)
+            {
+                OptimizeGroup(pair.Value);
+            }
+        }
+
+        private void OptimizeGroup(List<GridCell> cells)
+        {
+            if (cells.Count <= 1)
+                return;
+
+            cells.Sort((a, b) => a.Index.CompareTo(b.Index));
+
+            for (int i = 0; i < cells.Count; i++)
+            {
+                GridCell target = cells[i];
+
+                while (target.HeroCount < GameConst.MaxHeroStack)
+                {
+                    GridCell source = FindSourceCell(cells, i);
+
+                    if (source == null)
+                        return;
+
+                    Hero hero = source.Heroes[source.HeroCount - 1];
+
+                    source.RemoveHero(hero);
+
+                    target.AddHero(hero);
+
+                    EventBus.Publish(new HeroMovedEvent(hero, source, target));
+                }
+            }
+        }
+
+        private GridCell FindSourceCell(List<GridCell> cells, int targetIndex)
+        {
+            for (int i = cells.Count - 1; i > targetIndex; i--)
+            {
+                GridCell cell = cells[i];
+
+                if (cell.HeroCount > 0)
+                    return cell;
             }
 
             return null;
