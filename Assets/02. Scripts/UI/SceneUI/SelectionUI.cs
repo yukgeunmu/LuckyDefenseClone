@@ -4,24 +4,22 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace LuckyDefense.UI
+namespace LuckyDefense.UI.Scene
 {
     public class SelectionUI : SceneUI
     {
-        [Header("Hero Info")]
-        [SerializeField] private GameObject heroInfoPanel;
-        [SerializeField] private TextMeshProUGUI heroName;
-        [SerializeField] private TextMeshProUGUI attack;
-        [SerializeField] private TextMeshProUGUI attackSpeed;
-        [SerializeField] private TextMeshProUGUI grade;
-        [SerializeField] private Image icon;
+        [SerializeField]
+        private HeroInfoPanel heroInfoPanel;
 
         [Header("Buttons")]
         [SerializeField] private Button mergeButton;
         [SerializeField] private Button sellButton;
+        [SerializeField] private Button recipeButton;
 
         public Button MergeButton => mergeButton;
         public Button SellButton => sellButton;
+
+        public Button RecipeButton => recipeButton;
 
         public override void Initialize()
         {
@@ -35,23 +33,14 @@ namespace LuckyDefense.UI
 
         public override void Hide()
         {
-            heroInfoPanel.SetActive(false);
-
-            mergeButton.gameObject.SetActive(false);
-            sellButton.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
 
-        public void Refresh(Hero hero)
+        public void RefreshHero(Hero hero)
         {
-            heroInfoPanel.SetActive(true);
-
-            heroName.text = hero.Data.HeroName;
-            attack.text = $"ATK {hero.Stats.Attack}";
-            attackSpeed.text = $"ASPD {hero.Stats.AttackSpeed}";
-            grade.text = hero.Data.Grade.ToString();
-
-            // icon.sprite = hero.Data.Icon;
+            heroInfoPanel.Refresh(hero);
         }
+
 
         public void SetMergeVisible(bool value)
         {

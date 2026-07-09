@@ -17,23 +17,22 @@ namespace LuckyDefense.Core.Service
             this.mergeService = mergeService;
         }
 
-        public bool CanMerge(GridCell cell, out Hero hero)
+        public bool CanMerge(GridCell cell)
         {
-            hero = null;
 
             if (cell == null) return false;
 
             if (cell.Heroes.Count < 3) return false;
-
-            hero = cell.Heroes[0];
 
             return true;
         }
 
         public Hero Merge(GridCell cell)
         {
-            if (!CanMerge(cell, out var hero))
+            if (!CanMerge(cell))
                 return null;
+
+            Hero hero = cell.Heroes[0];
 
             HeroGrade nextGrade = hero.Data.Grade + 1;
 

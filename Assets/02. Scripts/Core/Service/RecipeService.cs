@@ -39,6 +39,8 @@ namespace LuckyDefense.Core.Service
             foreach (var hero in consumes)
             {
                 GameManager.Instance.Placement.RemoveHero(hero);
+
+                GameManager.Instance.HeroCombat.Remove(hero);
             }
 
             return mergeService.SpawnResultHero(recipe.ResultHero, consumes);

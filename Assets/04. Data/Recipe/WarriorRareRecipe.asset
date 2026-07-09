@@ -16,4 +16,6 @@ MonoBehaviour:
   ResultHero: {fileID: 11400000, guid: 1b00db58e3365694fa2e4404ccd4d6da, type: 2}
   Materials:
   - HeroData: {fileID: 11400000, guid: 5899626d88bf5b44aaf1a6f2a67bf407, type: 2}
-    Count: 3
+    Count: 2
+  - HeroData: {fileID: 11400000, guid: cd7097ea854044d4d8cc0bf2b594c62d, type: 2}
+    Count: 1

@@ -2,18 +2,20 @@ using LuckyDefense.Board;
 using LuckyDefense.Core.Events;
 using LuckyDefense.Core.Manager;
 using LuckyDefense.Heroes;
+using LuckyDefense.UI.Popup;
 using UnityEngine;
 
-namespace LuckyDefense.UI
+namespace LuckyDefense.UI.Scene
 {
     public class SelectionUIPresenter : MonoBehaviour
     {
         [SerializeField]
         private SelectionUI selectionUI;
 
-        private void Awake()
+
+        private void Start()
         {
-            selectionUI.Initialize();
+            GameManager.Instance.UI.Register(selectionUI);
         }
 
         private void OnEnable()
@@ -23,6 +25,7 @@ namespace LuckyDefense.UI
 
             selectionUI.MergeButton.onClick.AddListener(OnMergeClicked);
             selectionUI.SellButton.onClick.AddListener(OnSellClicked);
+            selectionUI.RecipeButton.onClick.AddListener(OnClickRecipe);
         }
 
         private void OnDisable()
@@ -32,6 +35,8 @@ namespace LuckyDefense.UI
 
             selectionUI.MergeButton.onClick.RemoveListener(OnMergeClicked);
             selectionUI.SellButton.onClick.RemoveListener(OnSellClicked);
+            selectionUI.RecipeButton.onClick.RemoveListener(OnClickRecipe);
+
         }
 
         private void OnCellSelected(IEvent e)
@@ -46,15 +51,14 @@ namespace LuckyDefense.UI
                 return;
             }
 
-            bool canMerge = GameManager.Instance.Merge.HeroMergeService.CanMerge(cell, out var hero);
-            bool canSell = GameManager.Instance.HeroSell.CanSell(cell);
+            Hero hero = cell.Heroes[0];
 
-            if (hero == null)
-                hero = cell.Heroes[0];
+            bool canMerge = GameManager.Instance.Merge.HeroMergeService.CanMerge(cell);
+            bool canSell = GameManager.Instance.HeroSell.CanSell(cell);
 
             selectionUI.Show();
 
-            selectionUI.Refresh(hero);
+            selectionUI.RefreshHero(hero);
 
             selectionUI.SetMergeVisible(canMerge);
 
@@ -91,6 +95,11 @@ namespace LuckyDefense.UI
             GameManager.Instance.HeroSell.Sell(cell);
 
             GameManager.Instance.CellSelection.Deselect();
+        }
+
+        private void OnClickRecipe()
+        {
+            GameManager.Instance.UI.Open<RecipePopup>();
         }
     }
 }

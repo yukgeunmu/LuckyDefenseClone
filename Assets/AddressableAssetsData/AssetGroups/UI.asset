@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: UI
   m_GUID: 8a70f463f551926468fd7ed259be8c40
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 6ccd5b0b887712a4cb534a987f28807a
+    m_Address: RecipeItemUI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4d90d44b1b8a46f4fbb1c14a3e42de01, type: 2}
   m_SchemaSet:

@@ -33,6 +33,9 @@ namespace LuckyDefense.Heroes.View
                 case Data.HeroGrade.Legendary:
                     spriteRenderer.color = Color.yellowNice;
                     break;
+                case Data.HeroGrade.Mythic:
+                    spriteRenderer.color = Color.blueViolet;
+                    break;
             }
         }
     }

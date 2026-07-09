@@ -1,5 +1,6 @@
 
 using LuckyDefense.Core.Manager;
+using Unity.VisualScripting;
 
 namespace LuckyDefense.UI.Base
 {
@@ -7,7 +8,8 @@ namespace LuckyDefense.UI.Base
     {
         public virtual void Close()
         {
-            GameManager.Instance.UI.Close(this);
+
+            GameManager.Instance.UI.Close(GetType());
         }
     }
 }
