@@ -37,6 +37,8 @@ namespace LuckyDefense.Core.Manager
 
         public MonsterViewManager MonsterView { get; private set; }
 
+        public UIManager UI {  get; private set; }
+
         public MergeService Merge { get; private set; }
 
         public PlacementService Placement { get; private set; }
@@ -129,6 +131,7 @@ namespace LuckyDefense.Core.Manager
             Spawn = new SpawnManager(heroFactory, monsterFactory);
             Wave = new WaveManager();
             Path = new PathManager();
+            UI = new UIManager();
 
             HeroView = new HeroViewManager();
             MonsterView = new MonsterViewManager();
