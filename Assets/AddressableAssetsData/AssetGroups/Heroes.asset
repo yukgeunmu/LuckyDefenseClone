@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: Heroes
   m_GUID: 17565a2b27c52b346b126506167e0d98
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: fb3b8198e178a5748bd04c8f7bb78fbe
+    m_Address: HeroView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4d90d44b1b8a46f4fbb1c14a3e42de01, type: 2}
   m_SchemaSet:

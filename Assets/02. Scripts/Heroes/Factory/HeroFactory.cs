@@ -1,10 +1,14 @@
+using Cysharp.Threading.Tasks;
 using LuckyDefense.Core.Combat;
+using LuckyDefense.Core.Manager;
 using LuckyDefense.Heroes.Data;
 using LuckyDefense.Heroes.Runtime;
+using LuckyDefense.Heroes.View;
 using LuckyDefense.Monsters;
 using LuckyDefense.Skill;
 using LuckyDefense.Skill.Data;
 using LuckyDefense.Skill.Passive;
+using System.Threading.Tasks;
 
 namespace LuckyDefense.Heroes.Factory
 {
@@ -82,8 +86,9 @@ namespace LuckyDefense.Heroes.Factory
                     return new FrontTargetStrategy();
             }
         }
-        public Projectile CreateProjectile(Hero hero, Monster target,SkillProjectileType skillProjectileType = SkillProjectileType.None)
+        public Projectile CreateProjectile(Hero hero, Monster target,ProjectileType skillProjectileType = ProjectileType.None)
         {
+
             return new Projectile(
                 hero,
                 target,

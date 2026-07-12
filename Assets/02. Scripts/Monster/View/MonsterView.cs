@@ -1,9 +1,10 @@
 using LuckyDefense.Core.Manager;
+using LuckyDefense.Core.Pool;
 using UnityEngine;
 
 namespace LuckyDefense.Monsters.View
 {
-    public class MonsterView : MonoBehaviour
+    public class MonsterView : MonoBehaviour, IPoolable
     {
         [SerializeField]
         private SpriteRenderer spriteRenderer;
@@ -71,7 +72,13 @@ namespace LuckyDefense.Monsters.View
             spriteRenderer.color = Color.red;
         }
 
+        public void OnSpawn()
+        {
+        }
 
+        public void OnDespawn()
+        {
+        }
     }
 
 }

@@ -6,7 +6,7 @@ public class HeroViewSpawnTest : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GameManager.Instance.Resource.AddGold(100);
+        GameManager.Instance.Goods.AddGold(100);
 
         GameManager.Instance.Spawn.SummonHero();
     }

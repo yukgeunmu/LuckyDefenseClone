@@ -1,6 +1,7 @@
 using LuckyDefense.Skill.Data;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace LuckyDefense.Heroes.Data
 {
@@ -40,5 +41,9 @@ namespace LuckyDefense.Heroes.Data
         [Header("Description")]
         [TextArea]
         public string Description;
+
+        [Header("Prefab")]
+        public AssetReferenceGameObject ViewPrefab;
+
     }
 }

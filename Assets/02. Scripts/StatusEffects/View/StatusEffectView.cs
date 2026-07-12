@@ -1,9 +1,10 @@
+using LuckyDefense.Core.Pool;
 using LuckyDefense.Monsters;
 using UnityEngine;
 
 namespace LuckyDefense.StatusEffects.View
 {
-    public abstract class StatusEffectView : MonoBehaviour
+    public abstract class StatusEffectView : MonoBehaviour, IPoolable
     {
         protected Monster monster;
 
@@ -37,6 +38,14 @@ namespace LuckyDefense.StatusEffects.View
         }
 
         public virtual void Stop()
+        {
+        }
+
+        public void OnSpawn()
+        {
+        }
+
+        public void OnDespawn()
         {
         }
     }

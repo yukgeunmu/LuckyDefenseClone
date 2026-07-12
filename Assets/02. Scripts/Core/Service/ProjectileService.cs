@@ -1,8 +1,10 @@
+using Cysharp.Threading.Tasks;
 using LuckyDefense.Core.Events;
 using LuckyDefense.Core.Manager;
 using LuckyDefense.Heroes;
 using LuckyDefense.Heroes.Factory;
 using LuckyDefense.Heroes.Runtime;
+using LuckyDefense.Heroes.View;
 using LuckyDefense.Monsters;
 using LuckyDefense.Skill.Data;
 using LuckyDefense.StatusEffects;
@@ -24,9 +26,19 @@ namespace LuckyDefense.Core.Service
             this.projectileManager = projectileManager;
         }
 
-        public void Fire(Hero hero, Monster target,int damage)
+        public async UniTask Initialize()
         {
-            Projectile projectile = heroFactory.CreateProjectile(hero, target);
+            foreach (var p in GameManager.Instance.Data.ProjectileDict)
+            {
+                var v = p.Value;
+
+                await GameManager.Instance.Pool.Prewarm<ProjectileView>(v.ViewPrefab, 20);
+            }
+        }
+
+        public void Fire(Hero hero, Monster target, int damage)
+        {
+            Projectile projectile = heroFactory.CreateProjectile(hero, target, hero.Data.ProjectileType);
 
             projectile.OnHit = p =>
             {
@@ -42,7 +54,7 @@ namespace LuckyDefense.Core.Service
         }
 
         public void FireSkill(
-            Hero hero, 
+            Hero hero,
             Monster target,
             SkillData skillData)
         {
@@ -55,7 +67,7 @@ namespace LuckyDefense.Core.Service
                     (int)skillData.Value
                     );
 
-                if(skillData.StatusEffectType != StatusEffectType.None)
+                if (skillData.StatusEffectType != StatusEffectType.None)
                 {
                     GameManager.Instance.StatusEffect.Apply(
                         target,
@@ -87,6 +99,10 @@ namespace LuckyDefense.Core.Service
 
             foreach (var projectile in projectileManager.Projectiles)
             {
+                if (!projectile.IsReady)
+                    continue;
+
+
                 if (projectile.Target == null)
                 {
                     removeList.Add(projectile);
@@ -116,15 +132,6 @@ namespace LuckyDefense.Core.Service
 
                 if (distance < 0.1f)
                 {
-                    //int damage = projectile.Damage;
-
-                    //GameManager.Instance
-                    //    .Damage
-                    //    .DealDamage(
-                    //        projectile.Owner,
-                    //        projectile.Target,
-                    //        damage);
-
                     projectile.Hit();
 
                     removeList.Add(projectile);
@@ -133,8 +140,6 @@ namespace LuckyDefense.Core.Service
 
             foreach (var projectile in removeList)
             {
-                projectile.Destroy();
-
                 projectileManager.Remove(projectile);
 
                 EventBus.Publish(new ProjectileDestroyedEvent(projectile));

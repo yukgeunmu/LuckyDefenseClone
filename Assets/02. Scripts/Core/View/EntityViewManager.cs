@@ -1,3 +1,4 @@
+using LuckyDefense.Core.Manager;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,7 +27,7 @@ namespace  LuckyDefense.Core.View
             if (!views.TryGetValue(entity, out TView view))
                 return;
 
-            Object.Destroy(view.gameObject);
+            //Object.Destroy(view.gameObject);
 
             views.Remove(entity);
         }

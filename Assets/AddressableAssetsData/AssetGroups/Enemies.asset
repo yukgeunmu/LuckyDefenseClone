@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: Enemies
   m_GUID: 209c7d41e24b91a438bbbe83a5d838d0
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 288ba98de89892e42bd6893c707d1102
+    m_Address: MonsterView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4d90d44b1b8a46f4fbb1c14a3e42de01, type: 2}
   m_SchemaSet:

@@ -19,5 +19,11 @@ MonoBehaviour:
   MaxHp: 50
   Attack: 5
   MoveSpeed: 2
-  RewardSilver: 5
+  RewardGold: 0
+  ViewPrefab:
+    m_AssetGUID: 288ba98de89892e42bd6893c707d1102
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   Icon: {fileID: 0}

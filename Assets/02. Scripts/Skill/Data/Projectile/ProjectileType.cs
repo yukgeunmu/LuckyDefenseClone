@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LuckyDefense.Skill.Data
 {
-    public enum SkillProjectileType
+    public enum ProjectileType
     {
         None,
         Arrow,

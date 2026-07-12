@@ -1,14 +1,18 @@
+using LuckyDefense.Core.Events;
+using LuckyDefense.Core.Pool;
 using TMPro;
 using UnityEngine;
 
 namespace LuckyDefense.UI
 {
-    public class DamageTextView : MonoBehaviour
+    public class DamageTextView : MonoBehaviour, IPoolable
     {
         [SerializeField]
         private TextMeshPro text;
 
-        private float life = 0.7f;
+        private float MaxLife = 0.7f;
+
+        private float life;
 
         public void Initialize( float damage, bool critical)
         {
@@ -19,6 +23,7 @@ namespace LuckyDefense.UI
                 text.text = $"CRIT\n{text.text}";
             }
         }
+
 
         private void Update()
         {
@@ -31,8 +36,21 @@ namespace LuckyDefense.UI
 
             if (life <= 0)
             {
-                Destroy(gameObject);
+                EventBus.Publish(new DamageTextExpiredEvent(this));
             }
         }
+
+        public void OnSpawn()
+        {
+            life = MaxLife;
+
+            text.alpha = 1.0f;
+        }
+
+        public void OnDespawn()
+        {
+            text.text = "";
+        }
+
     }
 }

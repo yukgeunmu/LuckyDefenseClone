@@ -19,7 +19,7 @@ namespace LuckyDefense.Skill.Data
 
         public SkillEffectType SkillEffect;
 
-        public SkillProjectileType ProjectileType;
+        public ProjectileType ProjectileType;
 
         public float Value;
 

@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Heroes.Data.HeroDatabase
   Heroes:
   - {fileID: 11400000, guid: 5899626d88bf5b44aaf1a6f2a67bf407, type: 2}
-  - {fileID: 11400000, guid: cd7097ea854044d4d8cc0bf2b594c62d, type: 2}
   - {fileID: 11400000, guid: 1b00db58e3365694fa2e4404ccd4d6da, type: 2}
   - {fileID: 11400000, guid: ce8bd1d58ad883742a11c1cfa019f56b, type: 2}
   - {fileID: 11400000, guid: 0883287fd3f5da8449118ddf0bc14194, type: 2}

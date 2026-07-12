@@ -40,7 +40,7 @@ namespace LuckyDefense.Core.Manager
 
         public bool SummonHero()
         {
-            if (!GameManager.Instance.Resource.SpendGold(GameConst.HeroSummonCost))
+            if (!GameManager.Instance.Goods.SpendGold(GameConst.HeroSummonCost))
             {
                 return false;
             }
@@ -55,7 +55,7 @@ namespace LuckyDefense.Core.Manager
 
             if (!result)
             {
-                GameManager.Instance.Resource.AddGold(GameConst.HeroSummonCost);
+                GameManager.Instance.Goods.AddGold(GameConst.HeroSummonCost);
 
                 return false;
             }
@@ -126,13 +126,6 @@ namespace LuckyDefense.Core.Manager
             {
                 IsSpawnFinished = true;
             }
-        }
-
-        public Hero SpawnHeroTest()
-        {
-            HeroData heroData = GameManager.Instance.Data.GetRandomCommonHero();
-
-            return heroFactory.Create(heroData);
         }
 
     }

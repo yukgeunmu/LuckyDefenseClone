@@ -1,13 +1,12 @@
-using LuckyDefense.Heroes;
+using LuckyDefense.Core.Pool;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace LuckyDefense.Heroes.View
 {
-    public class HeroView : MonoBehaviour
+    public class HeroView : MonoBehaviour, IPoolable
     {
         public Hero Hero { get; private set; }
-        public SpriteRenderer spriteRenderer; 
+        public SpriteRenderer spriteRenderer;
 
         private Vector3 originalPosition;
         private Transform originalParent;
@@ -37,6 +36,18 @@ namespace LuckyDefense.Heroes.View
                     spriteRenderer.color = Color.blueViolet;
                     break;
             }
+        }
+
+
+        public void OnSpawn()
+        {
+        }
+
+        public void OnDespawn()
+        {
+            Hero = null;
+
+            transform.SetParent(null);
         }
     }
 }

@@ -19,14 +19,18 @@ MonoBehaviour:
   RaceType: 0
   PrimaryTarget: 5
   FallbackTarget: 0
-  ProjectileType: 0
+  ProjectileType: 1
   AttackPower: 1
   AttackSpeed: 1.3
   Range: 2
   ProjectileSpeed: 10
   SellPrice: 10
-  PassiveSkills:
-  - {fileID: 11400000, guid: b46f71d1c15e12346b6c6c28a859bdbd, type: 2}
-  - {fileID: 11400000, guid: 9c924d31f684e2f40abbbacf10f78fc7, type: 2}
+  PassiveSkills: []
   ActiveSkills: []
   Description: 
+  ViewPrefab:
+    m_AssetGUID: fb3b8198e178a5748bd04c8f7bb78fbe
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0

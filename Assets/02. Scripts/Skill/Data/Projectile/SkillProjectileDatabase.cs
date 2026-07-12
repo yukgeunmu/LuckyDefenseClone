@@ -8,7 +8,7 @@ namespace LuckyDefense.Skill.Data
         menuName = "Game/Skill/SkillProjectileDatabase", fileName = "SkillProjectileDatabase")]
     public class SkillProjectileDatabase : ScriptableObject
     {
-        public List<SkillProjectileConfig> SkillProjectileConfigs = new();
+        public List<ProjectileConfig> SkillProjectileConfigs = new();
     }
 
 }

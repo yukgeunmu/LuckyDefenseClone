@@ -8,7 +8,7 @@ public class MergeTest : MonoBehaviour
         var spawn =
             GameManager.Instance.Spawn;
 
-        GameManager.Instance.Resource
+        GameManager.Instance.Goods
             .AddGold(100);
 
         spawn.SummonHero();

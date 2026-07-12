@@ -1,5 +1,4 @@
 using LuckyDefense.Heroes.Data;
-using LuckyDefense.Heroes.View;
 using LuckyDefense.Monsters.Data;
 using LuckyDefense.Skill;
 using LuckyDefense.Skill.Data;
@@ -8,7 +7,6 @@ using LuckyDefense.StatusEffects;
 using LuckyDefense.StatusEffects.Data;
 using LuckyDefense.Wave.Data;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 
 namespace LuckyDefense.Core.Manager
 {
@@ -30,9 +28,11 @@ namespace LuckyDefense.Core.Manager
 
         private Dictionary<SkillEffectType, SkillEffectData> skillEffects = new();
 
-        private Dictionary<StatusEffectType,StatusEffectConfig>  statusEffectDict = new();
+        private Dictionary<StatusEffectType, StatusEffectConfig> statusEffectDict = new();
 
-        private Dictionary<SkillProjectileType, SkillProjectileConfig> skillProjectileDict = new();
+        private Dictionary<ProjectileType, ProjectileConfig> skillProjectileDict = new();
+
+        public  IDictionary<ProjectileType, ProjectileConfig> ProjectileDict => skillProjectileDict;
 
         public void Init(
             HeroDatabase heroDB,
@@ -91,7 +91,7 @@ namespace LuckyDefense.Core.Manager
                 if (statusEffectDict.ContainsKey(effect.Type))
                     continue;
 
-                statusEffectDict.Add(effect.Type,effect);
+                statusEffectDict.Add(effect.Type, effect);
             }
 
             foreach (var projectile in skillProjectileDB.SkillProjectileConfigs)
@@ -205,14 +205,14 @@ namespace LuckyDefense.Core.Manager
 
         public MonsterData GetMonster(int id)
         {
-            monsterDict.TryGetValue( id, out MonsterData monster);
+            monsterDict.TryGetValue(id, out MonsterData monster);
 
             return monster;
         }
 
         public WaveData GetWave(int wave)
         {
-            waveDict.TryGetValue( wave, out WaveData data);
+            waveDict.TryGetValue(wave, out WaveData data);
 
             return data;
         }
@@ -231,11 +231,11 @@ namespace LuckyDefense.Core.Manager
             return config;
         }
 
-        public ProjectileView GetProjectile(SkillProjectileType type)
+        public ProjectileConfig GetProjectile(ProjectileType type)
         {
             skillProjectileDict.TryGetValue(type, out var projectile);
 
-            return projectile.Prefab;
+            return projectile;
         }
     }
 }

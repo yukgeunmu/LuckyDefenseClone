@@ -20,8 +20,8 @@ namespace LuckyDefense.Core.Manager
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance { get; private set; }
-        public ResourceManager Resource { get; private set; }
         public DataManager Data { get; private set; }
+        public ResourceManager Resource { get; private set; }
         public BoardManager Board { get; private set; }
         public SpawnManager Spawn { get; private set; }
 
@@ -38,6 +38,8 @@ namespace LuckyDefense.Core.Manager
         public MonsterViewManager MonsterView { get; private set; }
 
         public UIManager UI {  get; private set; }
+
+        public PoolManager Pool { get; private set; }
 
         public MergeService Merge { get; private set; }
 
@@ -58,6 +60,8 @@ namespace LuckyDefense.Core.Manager
         public CellSelectionService CellSelection { get; private set; }
 
         public HeroSellService HeroSell { get; private set; }
+
+        public GoodsService Goods { get; private set; }
 
 
         [SerializeField]
@@ -126,12 +130,14 @@ namespace LuckyDefense.Core.Manager
             monsterFactory = new MonsterFactory();
 
             Resource = new ResourceManager();
+            Goods = new GoodsService();
             Data = new DataManager();
             Board = new BoardManager();
             Spawn = new SpawnManager(heroFactory, monsterFactory);
             Wave = new WaveManager();
             Path = new PathManager();
             UI = new UIManager();
+            Pool = new PoolManager();
 
             HeroView = new HeroViewManager();
             MonsterView = new MonsterViewManager();
@@ -159,6 +165,7 @@ namespace LuckyDefense.Core.Manager
                 skillProjectileDatabase,
                 summonTable);
             Path.Initialize(pathRoot);
+
         }
 
         public void StartGame()
@@ -170,9 +177,9 @@ namespace LuckyDefense.Core.Manager
 
         public void WaveTest()
         {
-            GameManager.Instance.Resource.AddGold(1000);
+            GameManager.Instance.Goods.AddGold(1000);
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 1; i++)
             {
                 Spawn.SummonHero();
             }

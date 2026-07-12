@@ -24,7 +24,7 @@ namespace LuckyDefense.Core.Service
 
             int price = hero.Data.SellPrice;
 
-            GameManager.Instance.Resource.AddGold(price);
+            GameManager.Instance.Goods.AddGold(price);
 
             GameManager.Instance.Placement.RemoveHero(hero);
 

@@ -1,16 +1,17 @@
 using LuckyDefense.Heroes.View;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 
 namespace LuckyDefense.Skill.Data
 {
     [CreateAssetMenu(
         menuName = "Game/Skill/ProjectileData", fileName = "ProjectileData")]
-    public class SkillProjectileConfig : ScriptableObject
+    public class ProjectileConfig : ScriptableObject
     {
-        public SkillProjectileType Type;
+        public ProjectileType Type;
 
-        public ProjectileView Prefab;
+        public AssetReferenceGameObject ViewPrefab;
     }
 }
 

@@ -20,7 +20,7 @@ MonoBehaviour:
   PrimaryTarget: 5
   FallbackTarget: 0
   ProjectileType: 0
-  AttackPower: 1
+  AttackPower: 100
   AttackSpeed: 1.1
   Range: 1.5
   ProjectileSpeed: 10
@@ -29,3 +29,9 @@ MonoBehaviour:
   ActiveSkills:
   - {fileID: 11400000, guid: ab9a1327a759a08498d05e5c9091d3f0, type: 2}
   Description: 
+  ViewPrefab:
+    m_AssetGUID: fb3b8198e178a5748bd04c8f7bb78fbe
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0

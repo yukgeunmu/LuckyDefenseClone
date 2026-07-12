@@ -36,7 +36,7 @@ namespace LuckyDefense.Skill.Passive
         {
             if (Data.SkillName == "Heist")
             {
-                GameManager.Instance.Resource.AddGold((int)Data.Value);
+                GameManager.Instance.Goods.AddGold((int)Data.Value);
             }
         }
     }

@@ -1,9 +1,10 @@
+using LuckyDefense.Core.Pool;
 using LuckyDefense.Heroes.Runtime;
 using UnityEngine;
 
 namespace LuckyDefense.Heroes.View
 {
-    public class ProjectileView : MonoBehaviour
+    public class ProjectileView : MonoBehaviour, IPoolable
     {
         private Projectile projectile;
 
@@ -12,6 +13,14 @@ namespace LuckyDefense.Heroes.View
             this.projectile = projectile;
 
             transform.position = projectile.Position;
+        }
+
+        public void OnDespawn()
+        {
+        }
+
+        public void OnSpawn()
+        {
         }
 
         private void Update()

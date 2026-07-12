@@ -1143,37 +1143,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 682229858335540154, guid: 5c79ae88974d18e47a027be4f783cfcd, type: 3}
   m_PrefabInstance: {fileID: 563050756}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &572973094
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 572973095}
-  m_Layer: 0
-  m_Name: MergePresenter
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &572973095
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 572973094}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 548.34515, y: 1223.1106, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1454,7 +1423,7 @@ GameObject:
   - component: {fileID: 840547194}
   - component: {fileID: 840547195}
   m_Layer: 0
-  m_Name: HeroSpanwer
+  m_Name: HeroPresenter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1488,7 +1457,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Heroes.View.HeroViewSpawner
   boardView: {fileID: 429812589}
-  heroPrefab: {fileID: 4771151951329704774, guid: fb3b8198e178a5748bd04c8f7bb78fbe, type: 3}
 --- !u!1 &916707276
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,29 +1466,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 916707278}
-  - component: {fileID: 916707277}
   - component: {fileID: 916707279}
-  - component: {fileID: 916707280}
-  - component: {fileID: 916707281}
   m_Layer: 0
-  m_Name: MonsterSpawner
+  m_Name: MonsterPresenter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &916707277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 916707276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2ad9ccd5e59fdd40b7301b839a8328d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Monsters.MonsterSpawner
 --- !u!4 &916707278
 Transform:
   m_ObjectHideFlags: 0
@@ -1548,32 +1501,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 302dedf7b0bc457438ed05ca630d7fae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Monsters.View.MonsterViewSpawner
-  monsterRoot: {fileID: 916707278}
-  monsterPrefab: {fileID: 2902826358595848487, guid: 288ba98de89892e42bd6893c707d1102, type: 3}
---- !u!114 &916707280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 916707276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e8d9742c344ac546acd542295c95ee1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Monsters.Handler.MonsterDeathHandler
---- !u!114 &916707281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 916707276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27072a7c461d98340a0e2c62fcc6d6d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Monsters.MonsterRewardHandler
+  prefab:
+    m_AssetGUID: ed6cdd43829c024469048533aeb34de0
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
 --- !u!1001 &922823804
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1884,7 +1817,7 @@ GameObject:
   - component: {fileID: 1320267455}
   - component: {fileID: 1320267456}
   m_Layer: 0
-  m_Name: ProjectileViewSpawner
+  m_Name: ProjectilePresenter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1917,7 +1850,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50fe1c252d8790048807bbc4c20c25fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Heroes.View.ProjectileViewSpawner
-  projectilePrefab: {fileID: 7098078041555579087, guid: 315dc2c6a8ba6cb4b836f5f309a1fe83, type: 3}
 --- !u!1001 &1382340738
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2039,51 +1971,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1438a3b59e51f0143a333f181fa01d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Monsters.View.HitEffectPresenter
---- !u!1 &1440205607
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1440205609}
-  - component: {fileID: 1440205608}
-  m_Layer: 0
-  m_Name: SelectionPresenter
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1440205608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1440205607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b604f142e9e3a34f9d24a8ab70332d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.UI.SelectionPresenter
-  boardView: {fileID: 429812589}
---- !u!4 &1440205609
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1440205607}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1494628159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2602,51 +2489,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4779771713492240272, guid: d14abc7522f32424e9d0df581a9ed781, type: 3}
   m_PrefabInstance: {fileID: 1790829399}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1800701955
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1800701956}
-  - component: {fileID: 1800701957}
-  m_Layer: 0
-  m_Name: DamageTextSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1800701956
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800701955}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1800701957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800701955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd2db42bd4610ff488595fd9ce9c1b66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.UI.DamageTextSpawner
-  prefab: {fileID: 7555765423162551028, guid: ed6cdd43829c024469048533aeb34de0, type: 3}
 --- !u!1 &1873945020
 GameObject:
   m_ObjectHideFlags: 0
@@ -3122,11 +2964,8 @@ SceneRoots:
   - {fileID: 1320267455}
   - {fileID: 1059944096}
   - {fileID: 131114020}
-  - {fileID: 1800701956}
   - {fileID: 1432176609}
   - {fileID: 472651675}
   - {fileID: 537173398}
-  - {fileID: 1440205609}
   - {fileID: 179659422}
   - {fileID: 1247837299}
-  - {fileID: 572973095}

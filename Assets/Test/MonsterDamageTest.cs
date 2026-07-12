@@ -15,7 +15,7 @@ public class MonsterDamageTest : MonoBehaviour
                 .GetMonster(1000));
 
 
-        Hero hero = GameManager.Instance.Spawn.SpawnHeroTest();
+        //Hero hero = GameManager.Instance.Spawn.SpawnHeroTest();
 
     }
 

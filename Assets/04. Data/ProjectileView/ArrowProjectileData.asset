@@ -9,8 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14643524644a3a640b17875547a07b48, type: 3}
+  m_Script: {fileID: 11500000, guid: 821d2935d0248ce478bc5b99f74d4819, type: 3}
   m_Name: ArrowProjectileData
   m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Skill.SkillProjectileConfig
   Type: 1
-  Prefab: {fileID: 7156949089412998610, guid: ead3badb4a67dba46a80827792bf6574, type: 3}
+  ViewPrefab:
+    m_AssetGUID: ead3badb4a67dba46a80827792bf6574
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0

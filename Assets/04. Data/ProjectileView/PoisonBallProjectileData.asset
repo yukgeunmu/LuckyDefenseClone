@@ -9,8 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14643524644a3a640b17875547a07b48, type: 3}
+  m_Script: {fileID: 11500000, guid: 821d2935d0248ce478bc5b99f74d4819, type: 3}
   m_Name: PoisonBallProjectileData
   m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Skill.SkillProjectileConfig
   Type: 4
-  Prefab: {fileID: 2826469527155099825, guid: 84aa3c2ceab6ef948a25c8a1f8068dab, type: 3}
+  ViewPrefab:
+    m_AssetGUID: 84aa3c2ceab6ef948a25c8a1f8068dab
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0

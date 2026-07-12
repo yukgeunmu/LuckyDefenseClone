@@ -1,7 +1,9 @@
 
 namespace LuckyDefense.Monsters.Data
 {
+    using LuckyDefense.Monsters.View;
     using UnityEngine;
+    using UnityEngine.AddressableAssets;
 
     [CreateAssetMenu( fileName = "MonsterData", menuName = "Game/Monster/Monster Data")]
     public class MonsterData : ScriptableObject
@@ -26,6 +28,8 @@ namespace LuckyDefense.Monsters.Data
         public int RewardGold;
 
         [Header("View")]
+        public AssetReferenceGameObject ViewPrefab;
         public Sprite Icon;
+
     }
 }

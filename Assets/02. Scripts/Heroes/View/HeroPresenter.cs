@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using LuckyDefense.Board;
 using LuckyDefense.Board.View;
 using LuckyDefense.Core.Events;
@@ -15,14 +16,13 @@ namespace Game.Heroes.View
         [SerializeField]
         private BoardView boardView;
 
-        [SerializeField]
-        private HeroView heroPrefab;
+        private CellView currentView;
 
         private HeroViewFactory heroViewFactory;
 
         private void Awake()
         {
-            heroViewFactory = new HeroViewFactory(heroPrefab);
+            heroViewFactory = new HeroViewFactory();
         }
 
         private void OnEnable()
@@ -31,6 +31,8 @@ namespace Game.Heroes.View
             EventBus.Subscribe<CellMovedEvent>(OnCellMoved);
             EventBus.Subscribe<HeroMovedEvent>(OnHeroMoved);
             EventBus.Subscribe<HeroRemovedEvent>(OnHeroRemoved);
+            EventBus.Subscribe<CellSelectedEvent>(OnCellSelected);
+            EventBus.Subscribe<CellDeselectedEvent>(OnCellDeselected);
 
         }
 
@@ -40,11 +42,18 @@ namespace Game.Heroes.View
             EventBus.Unsubscribe<CellMovedEvent>(OnCellMoved);
             EventBus.Unsubscribe<HeroMovedEvent>(OnHeroMoved);
             EventBus.Unsubscribe<HeroRemovedEvent>(OnHeroRemoved);
+            EventBus.Unsubscribe<CellSelectedEvent>(OnCellSelected);
+            EventBus.Unsubscribe<CellDeselectedEvent>(OnCellDeselected);
         }
 
         private void OnHeroSummoned(IEvent e)
         {
-            HeroSummonedEvent evt = (HeroSummonedEvent)e;
+            SpawnAsync((HeroSummonedEvent)e).Forget();
+        }
+
+
+        private async UniTaskVoid SpawnAsync(HeroSummonedEvent evt)
+        {
 
             Hero hero = evt.Hero;
 
@@ -56,7 +65,7 @@ namespace Game.Heroes.View
 
             CellView cellView = boardView.GetCellView(cell.Index);
 
-            HeroView heroView = heroViewFactory.Create(hero);
+            HeroView heroView = await heroViewFactory.Create(hero);
 
             cellView.HeroStackView.AddHeroView(heroView);
 
@@ -84,7 +93,7 @@ namespace Game.Heroes.View
             if (heroView == null)
                 return;
 
-            CellView fromCell =  boardView.GetCellView(evt.FromCell.Index);
+            CellView fromCell = boardView.GetCellView(evt.FromCell.Index);
 
             CellView toCell = boardView.GetCellView(evt.ToCell.Index);
 
@@ -106,6 +115,7 @@ namespace Game.Heroes.View
 
             cellView.HeroStackView.RemoveHeroView(heroView);
 
+            GameManager.Instance.Pool.Release(heroView.gameObject);
             GameManager.Instance.HeroView.Remove(evt.Hero);
         }
 
@@ -124,6 +134,34 @@ namespace Game.Heroes.View
             cellView.HeroStackView.SetHeroes(views);
         }
 
+
+        private void OnCellSelected(IEvent e)
+        {
+            CellSelectedEvent evt = (CellSelectedEvent)e;
+
+            // 이전 선택 해제
+            if (currentView != null)
+            {
+                currentView.SelectionView.Hide();
+            }
+
+            currentView = boardView.GetCellView(evt.Cell.Index);
+
+            if (currentView != null)
+            {
+                currentView.SelectionView.Show();
+            }
+
+        }
+
+        private void OnCellDeselected(IEvent e)
+        {
+            if (currentView == null)
+                return;
+
+            currentView.SelectionView.Hide();
+            currentView = null;
+        }
 
 
 

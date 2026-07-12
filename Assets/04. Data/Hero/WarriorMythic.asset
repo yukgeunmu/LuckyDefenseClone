@@ -28,3 +28,9 @@ MonoBehaviour:
   PassiveSkills: []
   ActiveSkills: []
   Description: 
+  ViewPrefab:
+    m_AssetGUID: fb3b8198e178a5748bd04c8f7bb78fbe
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
