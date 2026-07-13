@@ -15,8 +15,18 @@ MonoBehaviour:
   m_GroupName: UI
   m_GUID: 8a70f463f551926468fd7ed259be8c40
   m_SerializeEntries:
+  - m_GUID: 5677b316b18a725439310480239928be
+    m_Address: SelectionUI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6ccd5b0b887712a4cb534a987f28807a
-    m_Address: RecipeItemUI
+    m_Address: RecipeSlotUI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d14abc7522f32424e9d0df581a9ed781
+    m_Address: RecipePopupUI
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

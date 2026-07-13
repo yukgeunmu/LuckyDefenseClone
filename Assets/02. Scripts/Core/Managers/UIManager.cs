@@ -1,7 +1,13 @@
 using Cysharp.Threading.Tasks;
 using LuckyDefense.UI.Base;
+using LuckyDefense.UI.Data;
+using LuckyDefense.UI.Popup;
+using LuckyDefense.UI.Recipe;
+using LuckyDefense.UI.Scene;
 using System;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 
 namespace LuckyDefense.Core.Manager
@@ -14,11 +20,74 @@ namespace LuckyDefense.Core.Manager
 
         private readonly Stack<PopupUI> popupStack = new();
 
+        private CanvasRoot canvasRoot;
+
         public bool HasPopup => popupStack.Count > 0;
+
+        public void Initialize( CanvasRoot canvasRoot)
+        {
+            this.canvasRoot = canvasRoot;
+        }
+
+        private async UniTask<T> CreateUI<T>(Transform parent) where T : BaseUI
+        {
+
+            AssetReferenceGameObject prefab =
+                GameManager.Instance.Data.GetUIAsset<T>();
+
+            GameObject uiPrefab =
+                await GameManager.Instance.Resource
+                    .LoadAsync<GameObject>(prefab);
+
+            GameObject instance =
+                UnityEngine.Object.Instantiate(
+                    uiPrefab,
+                    parent,
+                    false);
+
+            return instance.GetComponent<T>();
+        }
+
+        public async UniTask<T> ShowScene<T>()  where T : SceneUI
+        {
+            if (sceneUIs.TryGetValue(typeof(T), out SceneUI ui))
+            {
+                ui.Show();
+
+                return ui as T;
+            }
+
+            T scene = await CreateUI<T>(canvasRoot.SceneRoot);
+
+            Register(scene);
+
+            scene.Show();
+
+            return scene;
+        }
+
+        public async UniTask<T> Open<T>() where T : PopupUI
+        {
+            if (!popupUIs.TryGetValue(typeof(T), out PopupUI popup))
+            {
+                T newPopup = await CreateUI<T>(canvasRoot.PopupRoot);
+
+                Register(newPopup);
+
+                popup = newPopup;
+            }
+
+            popup.Show();
+
+            popupStack.Push(popup);
+
+            return popup as T;
+        }
+
 
         #region SceneUI
 
-        public void Register(SceneUI ui)
+        private void Register(SceneUI ui)
         {
             sceneUIs[ui.GetType()] = ui;
 
@@ -30,7 +99,7 @@ namespace LuckyDefense.Core.Manager
 
         #region Popup
 
-        public void Register(PopupUI popup)
+        private void Register(PopupUI popup)
         {
             popupUIs[popup.GetType()] = popup;
 
@@ -39,20 +108,6 @@ namespace LuckyDefense.Core.Manager
             popup.Hide();
         }
 
-
-        public T Open<T>() where T : PopupUI
-        {
-            T popup = Get<T>();
-
-            if (popup == null)
-                return null;
-
-            popup.Show();
-
-            popupStack.Push(popup);
-
-            return popup;
-        }
 
         public void Close<T>() where T : PopupUI
         {
@@ -108,6 +163,7 @@ namespace LuckyDefense.Core.Manager
 
             if (popupUIs.TryGetValue(type, out PopupUI popup))
                 return popup as T;
+
 
             return null;
         }

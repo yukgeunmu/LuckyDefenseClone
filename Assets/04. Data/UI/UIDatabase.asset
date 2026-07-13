@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c25c552d97728b04b9b6df3bf13a26a1, type: 3}
+  m_Name: UIDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.UI.Data.UIDatabase
+  entries:
+  - Type: 0
+    Prefab:
+      m_AssetGUID: 5677b316b18a725439310480239928be
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+  - Type: 1
+    Prefab:
+      m_AssetGUID: d14abc7522f32424e9d0df581a9ed781
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 1
+  - Type: 2
+    Prefab:
+      m_AssetGUID: 6ccd5b0b887712a4cb534a987f28807a
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0

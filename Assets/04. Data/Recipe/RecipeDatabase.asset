@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Heroes.Data.RecipeDatabase
   Recipes:
   - {fileID: 11400000, guid: a09f02b6c1f496f4a8605879f027a3cb, type: 2}
+  - {fileID: 11400000, guid: 7d737a451cafb594194f037e7c7bfbe1, type: 2}

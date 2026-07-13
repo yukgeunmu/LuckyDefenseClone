@@ -20,27 +20,12 @@ namespace LuckyDefense.Core.Manager
             root = rootObj.transform;
         }
 
-        /// <summary>
-        /// Pool에서 GameObject를 가져온다.
-        /// </summary>
-        //public async UniTask<GameObject> Get(AssetReferenceGameObject prefabRef)
-        //{
-        //    if (prefabRef == null)
-        //    {
-        //        Debug.LogError("[Pool] Prefab Reference is null.");
-        //        return null;
-        //    }
 
-        //    PoolContainer pool = await GetOrCreatePool(prefabRef);
-
-        //    return pool.Get();
-        //}
-
-        public async UniTask<T> Get<T>(AssetReferenceGameObject prefab) where T : Component, IPoolable
+        public async UniTask<T> Get<T>(AssetReferenceGameObject prefab, Transform root = null) where T : Component, IPoolable
         {
             PoolContainer<T> pool =  await GetOrCreatePool<T>(prefab);
 
-            return pool.Get();
+            return pool.Get(root);
         }
 
         /// <summary>

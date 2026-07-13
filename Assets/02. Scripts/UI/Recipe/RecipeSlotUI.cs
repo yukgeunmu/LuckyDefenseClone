@@ -1,4 +1,5 @@
 using LuckyDefense.Core.Manager;
+using LuckyDefense.Core.Pool;
 using LuckyDefense.Heroes.Data;
 using TMPro;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine.UI;
 
 namespace LuckyDefense.UI.Recipe
 {
-    public class RecipeItemUI : MonoBehaviour
+    public class RecipeSlotUI : MonoBehaviour, IPoolable
     {
         [SerializeField] private TMP_Text resultName;
         [SerializeField] private TMP_Text materials;
@@ -30,6 +31,14 @@ namespace LuckyDefense.UI.Recipe
 
             mergeButton.onClick.RemoveAllListeners();
             mergeButton.onClick.AddListener(OnClickMerge);
+        }
+
+        public void OnDespawn()
+        {
+        }
+
+        public void OnSpawn()
+        {
         }
 
         private void OnClickMerge()

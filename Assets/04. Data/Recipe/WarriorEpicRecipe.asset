@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584331466d9481e47842c6caceaba22a, type: 3}
+  m_Name: WarriorEpicRecipe
+  m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Heroes.Data.RecipeData
+  RecipeID: 3002
+  ResultHero: {fileID: 11400000, guid: 3bec1dd620288304f9356b70b959b100, type: 2}
+  Materials:
+  - HeroData: {fileID: 11400000, guid: 5899626d88bf5b44aaf1a6f2a67bf407, type: 2}
+    Count: 3
+  - HeroData: {fileID: 11400000, guid: cd7097ea854044d4d8cc0bf2b594c62d, type: 2}
+    Count: 3

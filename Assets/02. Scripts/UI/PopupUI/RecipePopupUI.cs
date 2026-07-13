@@ -1,32 +1,33 @@
+using Cysharp.Threading.Tasks;
 using LuckyDefense.Core.Manager;
 using LuckyDefense.Heroes.Data;
 using LuckyDefense.UI.Base;
 using LuckyDefense.UI.Recipe;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 
 namespace LuckyDefense.UI.Popup
 {
-    public class RecipePopup : PopupUI
+    public class RecipePopupUI : PopupUI
     {
         [SerializeField]
         private Transform content;
 
         [SerializeField]
-        private RecipeItemUI recipeItemPrefab;
+        private AssetReferenceGameObject recipeItemPrefab;
 
         [SerializeField]
         private Button closeButton;
 
-        private readonly List<RecipeItemUI> items = new();
+        private readonly List<RecipeSlotUI> items = new();
 
         public override void Show()
         {
             base.Show();
 
-            Refresh();
+            Refresh().Forget();
         }
 
         private void OnEnable()
@@ -39,7 +40,7 @@ namespace LuckyDefense.UI.Popup
             closeButton.onClick.RemoveListener(Close);
         }
 
-        private void Refresh()
+        private async UniTask Refresh()
         {
             Clear();
 
@@ -48,8 +49,7 @@ namespace LuckyDefense.UI.Popup
 
             foreach (RecipeData recipe in recipes)
             {
-                RecipeItemUI item =
-                    Instantiate(recipeItemPrefab, content);
+                RecipeSlotUI item = await GameManager.Instance.Pool.Get<RecipeSlotUI>(recipeItemPrefab, content);
 
                 item.Initialize(recipe);
 
@@ -59,9 +59,9 @@ namespace LuckyDefense.UI.Popup
 
         private void Clear()
         {
-            foreach (RecipeItemUI item in items)
+            foreach (RecipeSlotUI item in items)
             {
-                Destroy(item.gameObject);
+                GameManager.Instance.Pool.Release(item.gameObject);
             }
 
             items.Clear();

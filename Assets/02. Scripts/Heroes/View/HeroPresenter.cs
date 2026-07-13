@@ -6,6 +6,7 @@ using LuckyDefense.Core.Manager;
 using LuckyDefense.Heroes;
 using LuckyDefense.Heroes.Factory;
 using LuckyDefense.Heroes.View;
+using LuckyDefense.UI.Scene;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -149,6 +150,8 @@ namespace Game.Heroes.View
 
             if (currentView != null)
             {
+                ShowSelectionUI(evt.Cell).Forget();
+
                 currentView.SelectionView.Show();
             }
 
@@ -159,11 +162,24 @@ namespace Game.Heroes.View
             if (currentView == null)
                 return;
 
+            GameManager.Instance.UI.Get<SelectionUI>().Hide();
             currentView.SelectionView.Hide();
             currentView = null;
         }
 
 
+        private async UniTask ShowSelectionUI(GridCell cell)
+        {
+            var scene = await  GameManager.Instance.UI.ShowScene<SelectionUI>();
+
+            bool canMerge = GameManager.Instance.Merge.HeroMergeService.CanMerge(cell);
+            bool canSell = GameManager.Instance.HeroSell.CanSell(cell);
+
+            scene.RefreshHero(cell.Heroes[0]);
+
+            scene.SetMergeVisible(canMerge);
+            scene.SetSellVisible(canSell);
+        }
 
     }
 }

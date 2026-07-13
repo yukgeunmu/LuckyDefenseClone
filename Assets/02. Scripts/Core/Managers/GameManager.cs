@@ -11,6 +11,8 @@ using LuckyDefense.Skill;
 using LuckyDefense.Skill.Data;
 using LuckyDefense.Skill.View;
 using LuckyDefense.StatusEffects.Data;
+using LuckyDefense.UI.Base;
+using LuckyDefense.UI.Data;
 using LuckyDefense.Wave.Data;
 using UnityEngine;
 
@@ -89,7 +91,13 @@ namespace LuckyDefense.Core.Manager
         private HeroSummonTable summonTable;
 
         [SerializeField]
+        private UIDatabase uiDatabase;
+
+        [SerializeField]
         private Transform pathRoot;
+
+        [SerializeField]
+        private CanvasRoot canvasRoot;
 
         private HeroFactory heroFactory;
 
@@ -163,8 +171,11 @@ namespace LuckyDefense.Core.Manager
                 skillEffectDatabase,
                 statusEffectDatabase,
                 skillProjectileDatabase,
-                summonTable);
+                summonTable,
+                uiDatabase);
             Path.Initialize(pathRoot);
+
+            UI.Initialize(canvasRoot);
 
         }
 
@@ -179,7 +190,7 @@ namespace LuckyDefense.Core.Manager
         {
             GameManager.Instance.Goods.AddGold(1000);
 
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < 10; i++)
             {
                 Spawn.SummonHero();
             }

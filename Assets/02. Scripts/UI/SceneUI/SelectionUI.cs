@@ -1,6 +1,10 @@
+using Cysharp.Threading.Tasks;
+using LuckyDefense.Board;
+using LuckyDefense.Core.Events;
+using LuckyDefense.Core.Manager;
 using LuckyDefense.Heroes;
 using LuckyDefense.UI.Base;
-using TMPro;
+using LuckyDefense.UI.Popup;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,6 +25,22 @@ namespace LuckyDefense.UI.Scene
 
         public Button RecipeButton => recipeButton;
 
+
+
+        private void OnEnable()
+        {
+            MergeButton.onClick.AddListener(OnMergeClicked);
+            SellButton.onClick.AddListener(OnSellClicked);
+            RecipeButton.onClick.AddListener(OnClickRecipe);
+        }
+
+        private void OnDisable()
+        {
+            MergeButton.onClick.RemoveListener(OnMergeClicked);
+            SellButton.onClick.RemoveListener(OnSellClicked);
+            RecipeButton.onClick.RemoveListener(OnClickRecipe);
+
+        }
         public override void Initialize()
         {
             Hide();
@@ -51,5 +71,39 @@ namespace LuckyDefense.UI.Scene
         {
             sellButton.gameObject.SetActive(value);
         }
+
+
+        private void OnMergeClicked()
+        {
+            GridCell cell = GameManager.Instance.CellSelection.SelectedCell;
+
+            if (cell == null)
+                return;
+
+            Hero hero = GameManager.Instance.Merge.HeroMergeService.Merge(cell);
+
+            if (hero == null)
+                return;
+
+            GameManager.Instance.CellSelection.Select(hero.CurrentCell);
+        }
+
+        private void OnSellClicked()
+        {
+            GridCell cell = GameManager.Instance.CellSelection.SelectedCell;
+
+            if (cell == null)
+                return;
+
+            GameManager.Instance.HeroSell.Sell(cell);
+
+            GameManager.Instance.CellSelection.Deselect();
+        }
+
+        private void OnClickRecipe()
+        {
+            GameManager.Instance.UI.Open<RecipePopupUI>().Forget();
+        }
+
     }
 }

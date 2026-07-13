@@ -39,7 +39,7 @@ namespace LuckyDefense.Core.Pool
         {
             T component = pool.Count > 0 ? pool.Dequeue() : CreateInstance();
 
-            component.transform.SetParent(this.root, false);
+            component.transform.SetParent(root, false);
 
             component.OnSpawn();
 

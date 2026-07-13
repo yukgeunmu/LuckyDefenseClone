@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using LuckyDefense.Board;
 using LuckyDefense.Core.Events;
 using LuckyDefense.Core.Manager;
@@ -12,11 +13,6 @@ namespace LuckyDefense.UI.Scene
         [SerializeField]
         private SelectionUI selectionUI;
 
-
-        private void Start()
-        {
-            GameManager.Instance.UI.Register(selectionUI);
-        }
 
         private void OnEnable()
         {
@@ -99,7 +95,7 @@ namespace LuckyDefense.UI.Scene
 
         private void OnClickRecipe()
         {
-            GameManager.Instance.UI.Open<RecipePopup>();
+            GameManager.Instance.UI.Open<RecipePopupUI>().Forget();
         }
     }
 }

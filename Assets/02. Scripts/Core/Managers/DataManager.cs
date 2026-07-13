@@ -5,8 +5,11 @@ using LuckyDefense.Skill.Data;
 using LuckyDefense.Skill.View;
 using LuckyDefense.StatusEffects;
 using LuckyDefense.StatusEffects.Data;
+using LuckyDefense.UI.Data;
 using LuckyDefense.Wave.Data;
+using System;
 using System.Collections.Generic;
+using UnityEngine.AddressableAssets;
 
 namespace LuckyDefense.Core.Manager
 {
@@ -32,7 +35,12 @@ namespace LuckyDefense.Core.Manager
 
         private Dictionary<ProjectileType, ProjectileConfig> skillProjectileDict = new();
 
+        private Dictionary<string, AssetReferenceGameObject> uiDict = new();
+
         public  IDictionary<ProjectileType, ProjectileConfig> ProjectileDict => skillProjectileDict;
+
+        public IDictionary<string, AssetReferenceGameObject> UIDct => uiDict;
+
 
         public void Init(
             HeroDatabase heroDB,
@@ -42,7 +50,8 @@ namespace LuckyDefense.Core.Manager
             SkillEffectDatabase skillEffectDB,
             StatusEffectDatabase statusDB,
             SkillProjectileDatabase skillProjectileDB,
-            HeroSummonTable heroSummonTable
+            HeroSummonTable heroSummonTable,
+            UIDatabase uIDatabase
             )
         {
             heroDict.Clear();
@@ -100,6 +109,14 @@ namespace LuckyDefense.Core.Manager
                     continue;
 
                 skillProjectileDict.Add(projectile.Type, projectile);
+            }
+
+            foreach (var entry in uIDatabase.entries)
+            {
+                if (uiDict.ContainsKey(entry.TypeName))
+                    continue;
+
+                uiDict.Add(entry.TypeName, entry.Prefab);
             }
 
             recipes = recipeDB.Recipes;
@@ -236,6 +253,15 @@ namespace LuckyDefense.Core.Manager
             skillProjectileDict.TryGetValue(type, out var projectile);
 
             return projectile;
+        }
+
+        public AssetReferenceGameObject GetUIAsset<T>()
+        {
+            string key = typeof(T).Name;
+
+            uiDict.TryGetValue(key, out var asset);
+
+            return asset;
         }
     }
 }

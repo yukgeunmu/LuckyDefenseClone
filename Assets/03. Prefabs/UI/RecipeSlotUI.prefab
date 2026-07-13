@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3055523026584797778}
   - component: {fileID: 6132297934767490153}
   m_Layer: 5
-  m_Name: RecipeItemUI
+  m_Name: RecipeSlotUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 622870604022370875}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd8bfe13bc967c04a94c08c9625fd5df, type: 3}
+  m_Script: {fileID: 11500000, guid: f55de3297c46a9141b5659990d684edd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.UI.Recipe.RecipeItemUI
   resultName: {fileID: 4198530026872796052}
