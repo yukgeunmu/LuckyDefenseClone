@@ -9,6 +9,6 @@ namespace LuckyDefense.Heroes.Data
         fileName = "HeroSummonTable")]
     public class HeroSummonTable : ScriptableObject
     {
-        public List<SummonRate> Rates;
+        public List<SummonInfo> GradeISummonInfo;
     }
 }

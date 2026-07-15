@@ -144,6 +144,7 @@ namespace Game.Heroes.View
             if (currentView != null)
             {
                 currentView.SelectionView.Hide();
+                currentView.AttackRangeView.Hide();
             }
 
             currentView = boardView.GetCellView(evt.Cell.Index);
@@ -153,6 +154,7 @@ namespace Game.Heroes.View
                 ShowSelectionUI(evt.Cell).Forget();
 
                 currentView.SelectionView.Show();
+                currentView.AttackRangeView.Show(evt.Cell.Heroes[0].Stats.Range);
             }
 
         }
@@ -164,6 +166,7 @@ namespace Game.Heroes.View
 
             GameManager.Instance.UI.Get<SelectionUI>().Hide();
             currentView.SelectionView.Hide();
+            currentView.AttackRangeView.Hide();
             currentView = null;
         }
 

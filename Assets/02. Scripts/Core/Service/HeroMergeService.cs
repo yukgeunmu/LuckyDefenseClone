@@ -36,6 +36,9 @@ namespace LuckyDefense.Core.Service
 
             HeroGrade nextGrade = hero.Data.Grade + 1;
 
+            if (nextGrade == HeroGrade.Mythic)
+                return null;
+
             List<Hero> consumeHeroes = cell.GetHeroes();
 
             foreach (Hero h in consumeHeroes)

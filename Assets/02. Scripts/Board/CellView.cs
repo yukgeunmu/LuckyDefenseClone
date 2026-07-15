@@ -15,7 +15,13 @@ namespace LuckyDefense.Board.View
         [SerializeField]
         private CellSelectionView selectionView;
 
+        [SerializeField]
+        private AttackRangeView attackRangeView;
+
+
         public CellSelectionView SelectionView => selectionView;
+
+        public AttackRangeView AttackRangeView => attackRangeView;
 
 
         public GridCell GridCell

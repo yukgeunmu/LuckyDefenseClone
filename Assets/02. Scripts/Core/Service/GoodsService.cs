@@ -1,4 +1,5 @@
 using LuckyDefense.Core.Events;
+using LuckyDefense.Heroes.Data;
 
 namespace LuckyDefense.Core.Service
 {
@@ -24,6 +25,7 @@ namespace LuckyDefense.Core.Service
 
             return true;
         }
+
     }
 }
 

@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using LuckyDefense.Core.Combat;
 using LuckyDefense.Core.Service;
 using LuckyDefense.Heroes.Data;
@@ -13,6 +14,7 @@ using LuckyDefense.Skill.View;
 using LuckyDefense.StatusEffects.Data;
 using LuckyDefense.UI.Base;
 using LuckyDefense.UI.Data;
+using LuckyDefense.UI.Scene;
 using LuckyDefense.Wave.Data;
 using UnityEngine;
 
@@ -181,19 +183,8 @@ namespace LuckyDefense.Core.Manager
 
         public void StartGame()
         {
-            WaveTest();
-
+            Goods.AddGold(99999);
             Wave.StartGame();
-        }
-
-        public void WaveTest()
-        {
-            GameManager.Instance.Goods.AddGold(1000);
-
-            for (int i = 0; i < 10; i++)
-            {
-                Spawn.SummonHero();
-            }
         }
 
     }

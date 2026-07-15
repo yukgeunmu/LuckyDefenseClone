@@ -8,7 +8,7 @@ namespace LuckyDefense.Core.Manager
 {
     public class BoardManager
     {
-        public const int Row = 4;
+        public const int Row = 5;
         public const int Col = 5;
 
         private readonly List<GridCell> cells = new();

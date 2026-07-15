@@ -38,15 +38,17 @@ namespace LuckyDefense.Core.Manager
             this.monsterFactory = monsterFactory;
         }
 
-        public bool SummonHero()
+        public bool SummonHero(HeroGrade grade)
         {
-            if (!GameManager.Instance.Goods.SpendGold(GameConst.HeroSummonCost))
+            int price = GameManager.Instance.Data.GetHeroPrice(grade);
+
+            if (!GameManager.Instance.Goods.SpendGold(price))
             {
                 return false;
             }
 
             HeroData heroData =
-                GameManager.Instance.Data.GetRandomHero();
+                GameManager.Instance.Data.GetRandomHero(grade); ;
 
 
             Hero hero = heroFactory.Create(heroData);

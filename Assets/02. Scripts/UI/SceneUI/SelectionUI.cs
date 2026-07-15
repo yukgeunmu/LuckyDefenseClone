@@ -1,6 +1,5 @@
 using Cysharp.Threading.Tasks;
 using LuckyDefense.Board;
-using LuckyDefense.Core.Events;
 using LuckyDefense.Core.Manager;
 using LuckyDefense.Heroes;
 using LuckyDefense.UI.Base;

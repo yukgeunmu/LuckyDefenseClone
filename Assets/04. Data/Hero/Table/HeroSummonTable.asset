@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c7901688232d942ae15c4d9e4e55e4, type: 3}
   m_Name: HeroSummonTable
   m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Heroes.Data.HeroSummonTable
-  Rates:
+  GradeISummonInfo:
   - Grade: 0
-    Probability: 60
+    SummonCost: 100
+    Probability: 100
   - Grade: 1
-    Probability: 25
+    SummonCost: 300
+    Probability: 100
   - Grade: 2
-    Probability: 10
+    SummonCost: 900
+    Probability: 100
   - Grade: 3
-    Probability: 5
+    SummonCost: 2700
+    Probability: 100

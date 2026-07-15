@@ -30,6 +30,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e1135865c1e1797468a432a561ae1e74
+    m_Address: SpawnUI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ed6cdd43829c024469048533aeb34de0
     m_Address: DamageTextView
     m_ReadOnly: 0

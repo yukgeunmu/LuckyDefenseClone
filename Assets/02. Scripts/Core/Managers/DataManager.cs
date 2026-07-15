@@ -23,7 +23,7 @@ namespace LuckyDefense.Core.Manager
 
         public IReadOnlyList<RecipeData> Recipes => recipes;
 
-        private List<SummonRate> summonRates = new();
+        private List<SummonInfo> summonInfo = new();
 
         private Dictionary<int, MonsterData> monsterDict = new();
 
@@ -121,7 +121,7 @@ namespace LuckyDefense.Core.Manager
 
             recipes = recipeDB.Recipes;
 
-            summonRates = heroSummonTable.Rates;
+            summonInfo = heroSummonTable.GradeISummonInfo;
 
         }
 
@@ -142,7 +142,7 @@ namespace LuckyDefense.Core.Manager
                     selectedGradeList.Add(hero.Value);
             }
 
-            int index = UnityEngine.Random.Range(0, selectedGradeList.Count);
+            int index = UnityEngine.Random.Range(0, selectedGradeList.Count-1);
 
             return selectedGradeList[index];
         }
@@ -164,6 +164,20 @@ namespace LuckyDefense.Core.Manager
             return GetGradeHero(grade);
         }
 
+        public int GetHeroPrice(HeroGrade heroGrade)
+        {
+
+            foreach (var s in summonInfo)
+            {
+                if(s.Grade == heroGrade)
+                {
+                    return s.SummonCost;
+                }
+            }
+
+            return 0;
+        }
+
         public HeroData GetRandomHero(HeroGrade heroGrade)
         {
             return GetGradeHero(heroGrade);
@@ -172,13 +186,13 @@ namespace LuckyDefense.Core.Manager
 
         private HeroGrade GetRandomGrade()
         {
-            if (summonRates == null || summonRates.Count == 0)
+            if (summonInfo == null || summonInfo.Count == 0)
             {
                 return HeroGrade.Common;
             }
 
             float totalProbability = 0f;
-            foreach (var rate in summonRates)
+            foreach (var rate in summonInfo)
             {
                 totalProbability += rate.Probability;
             }
@@ -186,7 +200,7 @@ namespace LuckyDefense.Core.Manager
 
             float randomValue = UnityEngine.Random.Range(0f, totalProbability);
 
-            foreach (var rate in summonRates)
+            foreach (var rate in summonInfo)
             {
                 if (randomValue < rate.Probability)
                 {
@@ -196,7 +210,7 @@ namespace LuckyDefense.Core.Manager
                 randomValue -= rate.Probability;
             }
 
-            return summonRates[summonRates.Count - 1].Grade;
+            return summonInfo[summonInfo.Count - 1].Grade;
 
         }
 
