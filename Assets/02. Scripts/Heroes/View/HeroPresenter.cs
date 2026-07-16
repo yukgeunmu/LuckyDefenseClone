@@ -163,7 +163,7 @@ namespace Game.Heroes.View
         {
             if (currentView == null)
                 return;
-
+        
             GameManager.Instance.UI.Get<SelectionUI>().Hide();
             currentView.SelectionView.Hide();
             currentView.AttackRangeView.Hide();
@@ -173,6 +173,13 @@ namespace Game.Heroes.View
 
         private async UniTask ShowSelectionUI(GridCell cell)
         {
+            if (cell == null)
+                return;
+
+            if (cell.HeroCount == 0)
+                return;
+
+
             var scene = await  GameManager.Instance.UI.ShowScene<SelectionUI>();
 
             bool canMerge = GameManager.Instance.Merge.HeroMergeService.CanMerge(cell);

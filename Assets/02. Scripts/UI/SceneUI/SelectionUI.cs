@@ -83,8 +83,8 @@ namespace LuckyDefense.UI.Scene
 
             if (hero == null)
                 return;
-
-            GameManager.Instance.CellSelection.Select(hero.CurrentCell);
+            
+            GameManager.Instance.CellSelection.Deselect();
         }
 
         private void OnSellClicked()

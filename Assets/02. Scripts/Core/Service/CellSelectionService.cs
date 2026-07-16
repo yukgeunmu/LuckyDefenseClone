@@ -33,6 +33,12 @@ namespace LuckyDefense.Core.Service
                 return;
             }
 
+            if (cell.Heroes.Count <=0)
+            {
+                Deselect();
+                return;
+            }
+
             SelectedCell = cell;
 
             EventBus.Publish(new CellSelectedEvent(cell));

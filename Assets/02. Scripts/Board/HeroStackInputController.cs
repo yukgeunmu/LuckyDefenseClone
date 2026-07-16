@@ -2,6 +2,7 @@ using LuckyDefense.Board.View;
 using LuckyDefense.Core.Manager;
 using LuckyDefense.Heroes.View;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace LuckyDefense.Board
@@ -27,6 +28,11 @@ namespace LuckyDefense.Board
 
         private bool isPressed;
 
+        private bool IsPointerOnUI()
+        {
+            return EventSystem.current != null &&
+                   EventSystem.current.IsPointerOverGameObject();
+        }
 
         private void Update()
         {
@@ -35,6 +41,10 @@ namespace LuckyDefense.Board
 
         private void HandleInput()
         {
+            if (IsPointerOnUI())
+                return;
+
+
             if (Mouse.current.leftButton.wasPressedThisFrame)
             {
                 OnMouseDown();
@@ -54,6 +64,7 @@ namespace LuckyDefense.Board
 
         private void OnMouseDown()
         {
+
             Vector2 mouse = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
             RaycastHit2D hit = Physics2D.Raycast(mouse, Vector2.zero);
@@ -125,6 +136,7 @@ namespace LuckyDefense.Board
 
         private void OnMouseUp()
         {
+
             if (!isPressed || selectedStack == null)
             {
                 ResetState();
