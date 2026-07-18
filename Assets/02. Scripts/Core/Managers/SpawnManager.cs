@@ -39,7 +39,7 @@ namespace LuckyDefense.Core.Manager
 
         public bool SummonHero(HeroGrade grade)
         {
-            int price = GameManager.Instance.Data.GetHeroPrice(grade);
+            int price = GameConst.HeroSummonCost;
 
             if (!GameManager.Instance.Goods.SpendGold(price))
             {

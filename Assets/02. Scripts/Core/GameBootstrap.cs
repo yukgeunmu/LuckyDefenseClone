@@ -16,7 +16,7 @@ public class GameBootstrap : MonoBehaviour
 
     private async UniTask Init()
     {
-        await GameManager.Instance.UI.ShowScene<SpawnUI>();
+        await GameManager.Instance.UI.ShowScene<BottomUI>();
         await GameManager.Instance.UI.ShowScene<StatusUI>();
     }
 
