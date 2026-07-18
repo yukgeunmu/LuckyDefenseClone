@@ -25,15 +25,11 @@ namespace LuckyDefense.Core.Manager
         public void StartGame()
         {
             CurrentWave = 1;
-            State = WaveState.Spawning;
             StartWave(CurrentWave);
         }
 
         public bool StartWave(int wave)
         {
-            if (IsWaveWaiting)
-                return false;
-
             WaveData data =
                 GameManager.Instance
                     .Data
@@ -41,6 +37,8 @@ namespace LuckyDefense.Core.Manager
 
             if (data == null)
                 return false;
+
+            State = WaveState.Spawning;
 
             CurrentWave = wave;
 
@@ -57,7 +55,6 @@ namespace LuckyDefense.Core.Manager
         {
             CurrentWave++;
             ElapsedTime = 0;
-            State = WaveState.Spawning;
             StartWave(CurrentWave);
         }
 
@@ -70,7 +67,7 @@ namespace LuckyDefense.Core.Manager
         public void Update()
         {
             if (IsWaveWaiting)
-                return;
+                return;          
 
             ElapsedTime += Time.deltaTime;
             GameManager.Instance.UI.Get<StatusUI>().SetTimer(RemainingTime);

@@ -28,6 +28,7 @@ namespace LuckyDefense.Core.Service
 
             cell.AddHero(hero);
             hero.CurrentCell = cell;
+            hero.SkillComponent.ApplyPassives();
 
             return true;
         }
@@ -81,7 +82,13 @@ namespace LuckyDefense.Core.Service
             bool result = cell.RemoveHero(hero);
 
             if (result)
+            {
                 hero.CurrentCell = null;
+                hero.SkillComponent.RemovePassives();
+            }
+
+
+            
 
             EventBus.Publish(new HeroRemovedEvent(hero, cell));
 

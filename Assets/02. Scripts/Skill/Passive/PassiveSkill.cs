@@ -33,5 +33,10 @@ namespace LuckyDefense.Skill.Passive
         public virtual void Remove(Hero hero)
         {
         }
+
+        public virtual int ModifyDamage(Hero hero, int damage)
+        {
+            return damage;
+        }
     }
 }

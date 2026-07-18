@@ -15,10 +15,13 @@ MonoBehaviour:
   SkillID: 2
   SkillName: ExecutionerSkill
   Category: 0
+  SkillClass: 0
   StatusEffectType: 0
-  FirstValue: 1
-  SecondValue: 0
-  ThirdValue: 0
+  SkillEffect: 0
+  LogicType: 2
+  ProjectileType: 0
+  Value: 3
+  StatusEffectValue: 0
   Radius: 0
   Duration: 0
   Cooldown: 0

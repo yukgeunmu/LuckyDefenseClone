@@ -11,13 +11,13 @@ namespace LuckyDefense.Skill.Passive
 
         public override void Apply(Hero hero)
         {
-            switch (Data.SkillName)
+            switch (Data.LogicType)
             {
-                case "AttackUp":
+                case SkillLogicType.AttackUp:
                     hero.Stats.Attack += (int)Data.Value;
                     break;
 
-                case "AttackSpeedUp":
+                case SkillLogicType.AttackSpeedUp:
                     hero.Stats.AttackSpeed += Data.Value;
                     break;
             }

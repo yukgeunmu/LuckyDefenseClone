@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f42d15aee51c5d4bb4fe1871faff952, type: 3}
-  m_Name: BattleInstinctSkill
+  m_Name: PowerUpSkill
   m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Skill.Data.SkillData
   SkillID: 1
-  SkillName: BattleInstinctSkill
+  SkillName: PowerUpSkill
   Category: 0
   SkillClass: 0
   StatusEffectType: 0
+  LogicType: 1
   SkillEffect: 0
   ProjectileType: 0
-  Value: 5
+  Value: 100
   StatusEffectValue: 0
   Radius: 0
   Duration: 0

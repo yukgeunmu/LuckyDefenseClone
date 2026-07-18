@@ -30,8 +30,11 @@ namespace LuckyDefense.Core.Service
                     continue;
                 }
 
- 
-                GameManager.Instance.Projectile.Fire(combat.Hero,target, combat.Hero.Stats.Attack);
+                int damage = combat.Hero.Stats.Attack;
+
+                damage = combat.Hero.SkillComponent.ModifyDamage(combat.Hero,damage);
+
+                GameManager.Instance.Projectile.Fire(combat.Hero,target, damage);
             }
         }
     }

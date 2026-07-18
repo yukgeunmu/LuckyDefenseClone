@@ -1,3 +1,4 @@
+using LuckyDefense.Skill.Passive;
 using LuckyDefense.StatusEffects;
 using UnityEngine;
 
@@ -16,6 +17,8 @@ namespace LuckyDefense.Skill.Data
         public SkillClass SkillClass;
 
         public StatusEffectType StatusEffectType;
+
+        public SkillLogicType LogicType;
 
         public SkillEffectType SkillEffect;
 

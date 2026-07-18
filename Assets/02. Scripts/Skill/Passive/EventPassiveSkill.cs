@@ -1,5 +1,3 @@
-
-using LuckyDefense.Core;
 using LuckyDefense.Core.Events;
 using LuckyDefense.Core.Manager;
 using LuckyDefense.Heroes;
@@ -15,21 +13,21 @@ namespace LuckyDefense.Skill.Passive
         {
         }
 
-        public override void Apply( Hero hero)
+        public override void Apply(Hero hero)
         {
             owner = hero;
 
             switch (Data.SkillName)
             {
                 case "Heist":
-                    EventBus.Subscribe <MonsterDeadEvent>(OnMonsterDead);
+                    EventBus.Subscribe<MonsterDeadEvent>(OnMonsterDead);
                     break;
             }
         }
 
         public override void Remove(Hero hero)
         {
-            EventBus.Unsubscribe <MonsterDeadEvent>(OnMonsterDead);
+            EventBus.Unsubscribe<MonsterDeadEvent>(OnMonsterDead);
         }
 
         private void OnMonsterDead(IEvent e)
