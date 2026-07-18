@@ -6,6 +6,7 @@ namespace LuckyDefense.Wave.Data
     {
         Waiting,
         Spawning,
+        Running,
         Fighting,
         Reward,
         Finished

@@ -16,7 +16,8 @@ MonoBehaviour:
   SpawnInterval: 0.5
   Monsters:
   - Monster: {fileID: 11400000, guid: c4bf1ae6b75ddca4b92e7962f079ff1a, type: 2}
-    Count: 1
+    Count: 20
     SpawnInterval: 0.5
+  Duration: 20
   RewardSilver: 1
   IsBossWave: 0

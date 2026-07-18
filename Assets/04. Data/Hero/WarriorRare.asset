@@ -22,7 +22,7 @@ MonoBehaviour:
   ProjectileType: 0
   AttackPower: 100
   AttackSpeed: 1.1
-  Range: 2
+  Range: 3
   ProjectileSpeed: 10
   SellPrice: 50
   PassiveSkills: []

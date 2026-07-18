@@ -16,5 +16,7 @@ public class GameLoop : MonoBehaviour
 
         GameManager.Instance.Projectile.Update();
 
+        GameManager.Instance.Spawn.RemoveDeadMonsters();
+
     }
 }

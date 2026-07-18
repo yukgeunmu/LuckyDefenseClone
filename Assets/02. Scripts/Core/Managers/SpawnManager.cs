@@ -7,7 +7,6 @@ using LuckyDefense.Monsters.Data;
 using LuckyDefense.Monsters.Factory;
 using LuckyDefense.Wave.Data;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace LuckyDefense.Core.Manager
@@ -23,7 +22,7 @@ namespace LuckyDefense.Core.Manager
         public IReadOnlyList<Monster> Monsters => monsters;
 
         public int AliveMonsterCount;
-   
+
         private readonly Queue<MonsterData> spawnQueue = new();
 
         private float spawnTimer;
@@ -73,11 +72,24 @@ namespace LuckyDefense.Core.Manager
         {
             Monster monster = monsterFactory.Create(monsterData);
 
+            AliveMonsterCount++;
+
             monsters.Add(monster);
 
             EventBus.Publish(new MonsterSpawnedEvent(monster));
 
             return monster;
+        }
+
+        public void RemoveDeadMonsters()
+        {
+            for (int i = monsters.Count - 1; i >= 0; i--)
+            {
+                if (monsters[i].IsDead)
+                {
+                    monsters.RemoveAt(i);
+                }
+            }
         }
 
 
@@ -96,7 +108,6 @@ namespace LuckyDefense.Core.Manager
                 for (int i = 0; i < info.Count; i++)
                 {
                     spawnQueue.Enqueue(info.Monster);
-                    AliveMonsterCount++;
                 }
             }
 

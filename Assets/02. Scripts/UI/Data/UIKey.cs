@@ -9,5 +9,6 @@ namespace LuckyDefense.UI.Data
         RecipePopupUI,
         RecipeSlotUI,
         SpawnUI,
+        StatusUI,
     }
 }

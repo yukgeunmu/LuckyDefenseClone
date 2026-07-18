@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Wave3
   m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Wave.Data.WaveData
   WaveNumber: 3
+  SpawnInterval: 0.5
   Monsters:
   - Monster: {fileID: 11400000, guid: 620a324b28b40b041bdae1a39e5d10d3, type: 2}
-    Count: 100
+    Count: 20
     SpawnInterval: 0.5
+  Duration: 20
   RewardSilver: 5
   IsBossWave: 0

@@ -1,5 +1,8 @@
 using LuckyDefense.Core.Events;
+using LuckyDefense.UI.Scene;
 using LuckyDefense.Wave.Data;
+using System.Diagnostics;
+using UnityEngine;
 
 namespace LuckyDefense.Core.Manager
 {
@@ -8,20 +11,27 @@ namespace LuckyDefense.Core.Manager
         public WaveState State { get; private set; }
         public int CurrentWave { get; private set; }
 
-        public bool IsWaveRunning => State != WaveState.Waiting && State != WaveState.Finished;
+        public bool IsWaveWaiting=> State == WaveState.Waiting;
 
         public WaveData CurrentWaveData { get; private set; }
+
+        public float WaveDuration => CurrentWaveData.Duration;
+
+        public float ElapsedTime { get; private set; }
+
+        public float RemainingTime => Mathf.Max(0, WaveDuration - ElapsedTime);
+
 
         public void StartGame()
         {
             CurrentWave = 1;
-
+            State = WaveState.Spawning;
             StartWave(CurrentWave);
         }
 
         public bool StartWave(int wave)
         {
-            if (IsWaveRunning)
+            if (IsWaveWaiting)
                 return false;
 
             WaveData data =
@@ -31,8 +41,6 @@ namespace LuckyDefense.Core.Manager
 
             if (data == null)
                 return false;
-
-            State = WaveState.Spawning;
 
             CurrentWave = wave;
 
@@ -44,22 +52,12 @@ namespace LuckyDefense.Core.Manager
             return true;
         }
 
-        public void EndWave()
-        {
-            if (!IsWaveRunning)
-                return;
-
-            State = WaveState.Waiting;
-
-            GameManager.Instance.Spawn.ClearMonster();
-
-            EventBus.Publish( new WaveEndedEvent(CurrentWaveData));
-        }
 
         public void NextWave()
         {
             CurrentWave++;
-
+            ElapsedTime = 0;
+            State = WaveState.Spawning;
             StartWave(CurrentWave);
         }
 
@@ -71,49 +69,24 @@ namespace LuckyDefense.Core.Manager
 
         public void Update()
         {
-            if (!IsWaveRunning)
+            if (IsWaveWaiting)
                 return;
 
-            switch (State)
-            {
-                case WaveState.Spawning:
-                    UpdateSpawning();
-                    break;
+            ElapsedTime += Time.deltaTime;
+            GameManager.Instance.UI.Get<StatusUI>().SetTimer(RemainingTime);
 
-                case WaveState.Fighting: 
-                    UpdateFighting();
-                    break;
+            if (ElapsedTime >= WaveDuration)
+            {
+                NextWave();
             }
         }
 
-        private void UpdateSpawning()
+
+
+        public void ChangeWaveState(WaveState state)
         {
-            if (!GameManager.Instance.Spawn.IsSpawnFinished)
-                return;
-
-            State = WaveState.Fighting;
-
-            EventBus.Publish(new WaveFightingEvent(CurrentWaveData));
+            State = state;
         }
-
-
-        private void UpdateFighting()
-        {
-            if (!IsWaveCleared())
-                return;
-
-            ClearWave();
-        }
-
-        private void ClearWave()
-        {
-            State = WaveState.Reward;
-
-            EndWave();
-
-            EventBus.Publish( new WaveClearedEvent(CurrentWaveData));
-        }
-
 
     }
 }

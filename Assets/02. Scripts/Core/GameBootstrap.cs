@@ -6,17 +6,18 @@ using UnityEngine;
 
 public class GameBootstrap : MonoBehaviour
 {
-    private void Start()
+    private async void Start()
     {
-        Init().Forget();
+       await Init();
 
-        GameManager.Instance.StartGame();
+       GameManager.Instance.StartGame();
     }
 
 
     private async UniTask Init()
     {
         await GameManager.Instance.UI.ShowScene<SpawnUI>();
+        await GameManager.Instance.UI.ShowScene<StatusUI>();
     }
 
 }
