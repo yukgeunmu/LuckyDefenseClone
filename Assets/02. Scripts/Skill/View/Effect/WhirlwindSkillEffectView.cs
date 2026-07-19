@@ -1,5 +1,7 @@
 
 
+using LuckyDefense.Core.Events;
+using LuckyDefense.Core.Manager;
 using UnityEngine;
 
 namespace LuckyDefense.Skill.View
@@ -8,9 +10,18 @@ namespace LuckyDefense.Skill.View
     {
 
         private float timer = 0.5f;
+
+        public override void Initialize(SkillEffectEvent evt)
+        {
+            base.Initialize(evt);
+            transform.SetPositionAndRotation(evt.Position, Quaternion.identity);
+            timer = 0.5f;
+        }
+
         public override void Play()
         {
         }
+
 
         // Update is called once per frame
         void Update()
@@ -21,7 +32,7 @@ namespace LuckyDefense.Skill.View
 
             if (timer <= 0)
             {
-                Destroy(gameObject);
+                GameManager.Instance.Pool.Release(this.gameObject);
             }
         }
     }

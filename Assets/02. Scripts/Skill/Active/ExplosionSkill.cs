@@ -29,8 +29,6 @@ namespace LuckyDefense.Skill.Active
                 if (Vector3.Distance(monster.Position, target.Position) > Data.Radius)
                     continue;
 
-                AddStatusEffect(hero, monster);
-
                 GameManager.Instance.Damage.DealDamage(monster, (int)Data.Value);
 
             }

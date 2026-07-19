@@ -10,11 +10,11 @@ namespace LuckyDefense.Skill.View
         {
         }
 
-        public void OnDespawn()
+        public virtual void OnDespawn()
         {
         }
 
-        public void OnSpawn()
+        public virtual void OnSpawn()
         {
         }
 

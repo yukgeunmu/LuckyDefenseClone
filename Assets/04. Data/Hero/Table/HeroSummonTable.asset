@@ -18,10 +18,10 @@ MonoBehaviour:
     Probability: 100
   - Grade: 1
     SummonCost: 300
-    Probability: 70
+    Probability: 0
   - Grade: 2
     SummonCost: 900
-    Probability: 10
+    Probability: 0
   - Grade: 3
     SummonCost: 2700
-    Probability: 1
+    Probability: 0

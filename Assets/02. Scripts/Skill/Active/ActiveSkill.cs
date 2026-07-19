@@ -37,20 +37,20 @@ namespace LuckyDefense.Skill
 
         public abstract void Execute(Hero hero, Monster target);
 
-        protected void AddStatusEffect(Hero hero, Monster target)
-        {
-            switch (Data.StatusEffectType)
-            {
-                case StatusEffectType.None:
-                    return;
-                case StatusEffectType.Freeze:
-                    target.Status.AddEffect(new FreezeEffect(target, Data.Duration, Data.StatusEffectValue));
-                    break;
-                case StatusEffectType.Stun:
-                    break;
-                case StatusEffectType.Poison:
-                    break;
-            }
-        }
+        //protected void AddStatusEffect(Hero hero, Monster target)
+        //{
+        //    switch (Data.StatusEffectType)
+        //    {
+        //        case StatusEffectType.None:
+        //            return;
+        //        case StatusEffectType.Freeze:
+        //            target.Status.AddEffect(new FreezeEffect(target, Data.Duration, Data.StatusEffectValue));
+        //            break;
+        //        case StatusEffectType.Stun:
+        //            break;
+        //        case StatusEffectType.Poison:
+        //            break;
+        //    }
+        //}
     }
 }

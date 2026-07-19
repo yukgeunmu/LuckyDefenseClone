@@ -1,5 +1,8 @@
+using Cysharp.Threading.Tasks;
 using LuckyDefense.Core;
 using LuckyDefense.Core.Events;
+using LuckyDefense.Core.Manager;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace LuckyDefense.Skill.View
@@ -24,12 +27,14 @@ namespace LuckyDefense.Skill.View
 
         private void OnEffect(IEvent e)
         {
-            SkillEffectEvent evt = (SkillEffectEvent)e;
+            SpawnAsync((SkillEffectEvent)e).Forget();
+        }
 
-            SkillEffectView view =
-                factory.Create(
-                    evt.Type,
-                    evt.Position);
+        private async UniTask SpawnAsync(SkillEffectEvent evt)
+        {
+            SkillEffectConfig data = GameManager.Instance.Data.GetSkillEffect(evt.Type);
+
+            SkillEffectView view = await GameManager.Instance.Pool.Get<SkillEffectView>(data.ViewPrefab);
 
             if (view == null)
                 return;

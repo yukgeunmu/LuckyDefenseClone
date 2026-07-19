@@ -7,6 +7,6 @@ namespace LuckyDefense.Skill.View
         menuName = "Game/Skill/SkillEffectDatabase", fileName = "SkillEffectDatabase")]
     public class SkillEffectDatabase : ScriptableObject
     {
-        public List<SkillEffectData> Effects = new();
+        public List<SkillEffectConfig> Effects = new();
     }
 }

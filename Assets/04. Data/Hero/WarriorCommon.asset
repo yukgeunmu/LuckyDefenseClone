@@ -27,7 +27,8 @@ MonoBehaviour:
   SellPrice: 10
   PassiveSkills:
   - {fileID: 11400000, guid: f95b90a4b0284d641bca0807048b0dd0, type: 2}
-  ActiveSkills: []
+  ActiveSkills:
+  - {fileID: 11400000, guid: 230b235ce6dcc094195f1b14ee4fa047, type: 2}
   Description: 
   ViewPrefab:
     m_AssetGUID: fb3b8198e178a5748bd04c8f7bb78fbe

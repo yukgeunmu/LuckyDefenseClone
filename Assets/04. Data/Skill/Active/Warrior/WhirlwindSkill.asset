@@ -16,11 +16,12 @@ MonoBehaviour:
   SkillName: WhirlwindSkill
   Category: 1
   SkillClass: 3
-  StatusEffectType: 0
+  StatusEffectType: 4
+  LogicType: 0
   SkillEffect: 4
-  FirstValue: 100
-  SecondValue: 0
-  ThirdValue: 0
+  ProjectileType: 0
+  Value: 200
+  StatusEffectValue: 0
   Radius: 3
   Duration: 0
-  Cooldown: 5
+  Cooldown: 2

@@ -29,7 +29,7 @@ namespace LuckyDefense.Core.Manager
 
         private Dictionary<int, WaveData> waveDict = new();
 
-        private Dictionary<SkillEffectType, SkillEffectData> skillEffects = new();
+        private Dictionary<SkillEffectType, SkillEffectConfig> skillEffects = new();
 
         private Dictionary<StatusEffectType, StatusEffectConfig> statusEffectDict = new();
 
@@ -248,7 +248,7 @@ namespace LuckyDefense.Core.Manager
             return data;
         }
 
-        public SkillEffectData GetSkillEffect(SkillEffectType type)
+        public SkillEffectConfig GetSkillEffect(SkillEffectType type)
         {
             skillEffects.TryGetValue(type, out var effect);
 
