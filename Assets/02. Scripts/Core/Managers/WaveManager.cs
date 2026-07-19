@@ -58,12 +58,6 @@ namespace LuckyDefense.Core.Manager
             StartWave(CurrentWave);
         }
 
-        public bool IsWaveCleared()
-        {
-            return GameManager.Instance
-                .Spawn.AliveMonsterCount == 0;
-        }
-
         public void Update()
         {
             if (IsWaveWaiting)

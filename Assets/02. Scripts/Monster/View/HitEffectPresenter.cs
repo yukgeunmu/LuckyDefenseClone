@@ -26,6 +26,9 @@ namespace LuckyDefense.Monsters.View
             if (view == null)
                 return;
 
+            if (evt.Monster.IsDead)
+                return;
+
             view.PlayHit();
         }
     }

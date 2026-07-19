@@ -21,7 +21,7 @@ namespace LuckyDefense.Core.Manager
 
         public IReadOnlyList<Monster> Monsters => monsters;
 
-        public int AliveMonsterCount;
+        public int AliveMonsterCount { get; private set; }
 
         private readonly Queue<MonsterData> spawnQueue = new();
 
@@ -94,6 +94,12 @@ namespace LuckyDefense.Core.Manager
                 }
             }
         }
+
+        public void OnMonsterDead()
+        {
+            AliveMonsterCount--;
+        }
+
 
 
         public void ClearMonster()

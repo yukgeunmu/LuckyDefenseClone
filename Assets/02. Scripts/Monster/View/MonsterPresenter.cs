@@ -67,11 +67,10 @@ namespace LuckyDefense.Monsters.View
 
             if (view != null)
             {
-                view.transform.localScale = Vector3.one;
+                view.ResetView();
                 GameManager.Instance.Pool.Release(view.gameObject);
                 GameManager.Instance.MonsterView.Remove(evt.Monster);
-
-                GameManager.Instance.Spawn.AliveMonsterCount--;
+                GameManager.Instance.Spawn.OnMonsterDead();
             }
 
         }

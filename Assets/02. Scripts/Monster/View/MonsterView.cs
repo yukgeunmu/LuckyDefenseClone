@@ -79,6 +79,12 @@ namespace LuckyDefense.Monsters.View
         public void OnDespawn()
         {
         }
+
+        public void ResetView()
+        {
+            this.transform.localScale = Vector3.one;
+            originColor = Color.white;
+        }
     }
 
 }
