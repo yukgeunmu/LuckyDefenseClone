@@ -16,7 +16,7 @@ MonoBehaviour:
   MonsterName: Slime
   Type: 0
   Race: 0
-  MaxHp: 200
+  MaxHp: 1
   Attack: 5
   MoveSpeed: 2
   RewardGold: 0

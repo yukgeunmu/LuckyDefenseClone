@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67e88cf1c952db64483cda1b9889eb34, type: 3}
-  m_Name: WhirwindEffect
-  m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Skill.View.SkillEffectData
-  Type: 4
+  m_Script: {fileID: 11500000, guid: 4fe991bf84c214c469818431999787de, type: 3}
+  m_Name: OrbitData
+  m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Skill.Data.OrbitConfig
+  type: 0
   ViewPrefab:
-    m_AssetGUID: 7dc3213f1a96d7e40b4e9a35fb6a6a0c
+    m_AssetGUID: 74e6ef840ba36ea4baf8e73e02d20eaf
     m_SubObjectName: 
     m_SubObjectType: 
     m_SubObjectGUID: 
-    m_EditorAssetChanged: 1
+    m_EditorAssetChanged: 0

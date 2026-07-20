@@ -57,6 +57,8 @@ namespace LuckyDefense.Core.Manager
 
         public ProjectileService Projectile { get; private set; }
 
+        public OrbitService Orbit { get; private set; }
+
         public SkillService Skill { get; private set; }
 
         public StatusEffectService StatusEffect { get; private set; }
@@ -88,6 +90,9 @@ namespace LuckyDefense.Core.Manager
 
         [SerializeField]
         private SkillProjectileDatabase skillProjectileDatabase;
+
+        [SerializeField]
+        private SkillOrbitDatabase skillOrbitDatabase;
 
         [SerializeField]
         private HeroSummonTable summonTable;
@@ -160,6 +165,7 @@ namespace LuckyDefense.Core.Manager
             Target = new TargetService();
             Combat = new CombatService(HeroCombat);
             Projectile = new ProjectileService(heroFactory, ProjectileManager);
+            Orbit = new OrbitService();
             Skill = new SkillService();
             StatusEffect = new StatusEffectService();
             CellSelection = new CellSelectionService();
@@ -173,6 +179,7 @@ namespace LuckyDefense.Core.Manager
                 skillEffectDatabase,
                 statusEffectDatabase,
                 skillProjectileDatabase,
+                skillOrbitDatabase,
                 summonTable,
                 uiDatabase);
             Path.Initialize(pathRoot);

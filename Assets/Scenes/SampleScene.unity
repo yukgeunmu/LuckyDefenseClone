@@ -5190,6 +5190,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 682229858335540154, guid: 5c79ae88974d18e47a027be4f783cfcd, type: 3}
   m_PrefabInstance: {fileID: 1978722161}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2022240215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2022240217}
+  - component: {fileID: 2022240216}
+  m_Layer: 0
+  m_Name: OrbitPresenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2022240216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022240215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49e5bbeee5efb244fa7b00862519ce6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OrbitPresenter
+--- !u!4 &2022240217
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022240215}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.09966, y: 2.26038, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2110208229
 GameObject:
   m_ObjectHideFlags: 0
@@ -5270,6 +5314,7 @@ MonoBehaviour:
   skillEffectDatabase: {fileID: 11400000, guid: 81030627d46c5d14eb317fa02c2b2525, type: 2}
   statusEffectDatabase: {fileID: 11400000, guid: beef481d3411b7c428652edb5a78be78, type: 2}
   skillProjectileDatabase: {fileID: 11400000, guid: a8f63088a5082ba49ba23b89a3f7abd9, type: 2}
+  skillOrbitDatabase: {fileID: 11400000, guid: 7f163bf0b9d9a5240a5f528d04d34f44, type: 2}
   summonTable: {fileID: 11400000, guid: 25c6bb07df0475947a23a1343926db71, type: 2}
   uiDatabase: {fileID: 11400000, guid: 7922d97007f86454bb7cbdd42b672179, type: 2}
   pathRoot: {fileID: 1059944096}
@@ -5406,3 +5451,4 @@ SceneRoots:
   - {fileID: 4861945432496306932}
   - {fileID: 1247837299}
   - {fileID: 288429618}
+  - {fileID: 2022240217}

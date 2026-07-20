@@ -24,6 +24,8 @@ namespace LuckyDefense.Skill.Data
 
         public ProjectileType ProjectileType;
 
+        public OrbitType OrbitType;
+
         public float Value;
 
         public float StatusEffectValue;
@@ -33,6 +35,10 @@ namespace LuckyDefense.Skill.Data
         public float Duration;
 
         public int Cooldown;
+
+        public int Count;
+
+        public float Speed;
 
         private void OnValidate()
         {

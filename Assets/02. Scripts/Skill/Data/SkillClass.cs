@@ -12,5 +12,8 @@ namespace LuckyDefense.Skill.Data
         Explosion,
         Summon,
         Aura,
+        Orbit,
+        Chain,
+        Buff,
     }
 }

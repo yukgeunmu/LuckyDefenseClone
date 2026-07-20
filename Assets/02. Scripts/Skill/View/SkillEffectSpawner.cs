@@ -9,14 +9,8 @@ namespace LuckyDefense.Skill.View
 {
     public class SkillEffectSpawner : MonoBehaviour
     {
-
-        private SkillEffectFactory factory;
-
-
         private void Awake()
         {
-            factory = new SkillEffectFactory();
-
             EventBus.Subscribe< SkillEffectEvent>(OnEffect);
         }
 

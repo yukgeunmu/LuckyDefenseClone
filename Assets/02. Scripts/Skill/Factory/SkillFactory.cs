@@ -16,7 +16,8 @@ namespace LuckyDefense.Skill
                 {SkillClass.Projectile, d => new ProjectileSkill(d)},
                 {SkillClass.Explosion, d => new ExplosionSkill(d)},
                 {SkillClass.Summon, d => new SummonSkill(d) },
-                {SkillClass.Aura, d => new AuraSkill(d)}
+                {SkillClass.Aura, d => new AuraSkill(d)},
+                {SkillClass.Orbit, d => new OrbitSkill(d)}
             };
 
         public ISkill Create(SkillData data)

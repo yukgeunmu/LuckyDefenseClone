@@ -6,10 +6,16 @@ namespace LuckyDefense.Skill
 
         Explosion,
 
-        Freeze,
+        Orbit,
 
-        ChainLightning,
+        Chain,
 
-        Whirlwind,
+        Aura,
+
+        Summon,
+
+        Projectile,
+
+        Buff,
     }
 }

@@ -35,6 +35,8 @@ namespace LuckyDefense.Core.Manager
 
         private Dictionary<ProjectileType, ProjectileConfig> skillProjectileDict = new();
 
+        private Dictionary<OrbitType, OrbitConfig> skillOrbitDict = new();
+
         private Dictionary<string, AssetReferenceGameObject> uiDict = new();
 
         public  IDictionary<ProjectileType, ProjectileConfig> ProjectileDict => skillProjectileDict;
@@ -50,6 +52,7 @@ namespace LuckyDefense.Core.Manager
             SkillEffectDatabase skillEffectDB,
             StatusEffectDatabase statusDB,
             SkillProjectileDatabase skillProjectileDB,
+            SkillOrbitDatabase skillOrbitDB,
             HeroSummonTable heroSummonTable,
             UIDatabase uIDatabase
             )
@@ -117,6 +120,14 @@ namespace LuckyDefense.Core.Manager
                     continue;
 
                 uiDict.Add(entry.TypeName, entry.Prefab);
+            }
+
+            foreach (var orbit in skillOrbitDB.SkillOrbitConfigs)
+            {
+                if (skillOrbitDict.ContainsKey(orbit.type))
+                    continue;
+
+                skillOrbitDict.Add(orbit.type, orbit);
             }
 
             recipes = recipeDB.Recipes;
@@ -267,6 +278,13 @@ namespace LuckyDefense.Core.Manager
             skillProjectileDict.TryGetValue(type, out var projectile);
 
             return projectile;
+        }
+
+        public OrbitConfig GetOrbit(OrbitType type)
+        {
+            skillOrbitDict.TryGetValue(type, out var orbit);
+
+            return orbit;
         }
 
         public AssetReferenceGameObject GetUIAsset<T>()

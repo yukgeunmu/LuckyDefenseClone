@@ -44,5 +44,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Hero
+    uniqueID: 3047808699
+    locked: 0
+  - name: Skill
+    uniqueID: 595669277
+    locked: 0
   m_RenderingLayers:
   - Default
