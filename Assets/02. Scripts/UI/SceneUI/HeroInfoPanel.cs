@@ -30,7 +30,7 @@ namespace LuckyDefense.UI.Scene
             heroName.text = hero.Data.HeroName;
             attack.text = $"ATK {hero.Stats.Attack}";
             attackSpeed.text = $"ASPD {hero.Stats.AttackSpeed}";
-            grade.text = hero.Data.Grade.ToString();
+            grade.text = hero.Grade.ToString();
 
             //if (hero.SkillComponent.ActiveSkills.Count > 0)
             //    ActiveSkill.text = hero.SkillComponent.ActiveSkills[0].Data.SkillName;

@@ -35,8 +35,6 @@ namespace LuckyDefense.Core.Manager
 
         public HeroViewManager HeroView { get; private set; }
 
-        public HeroCombatManager HeroCombat { get; private set; }
-
         public ProjectileManager ProjectileManager { get; private set; }
 
         public MonsterViewManager MonsterView { get; private set; }
@@ -53,7 +51,7 @@ namespace LuckyDefense.Core.Manager
 
         public TargetService Target { get; private set; }
 
-        public CombatService Combat { get; private set; }
+        public HeroStateServie HeroState { get; private set; }
 
         public ProjectileService Projectile { get; private set; }
 
@@ -156,14 +154,13 @@ namespace LuckyDefense.Core.Manager
 
             HeroView = new HeroViewManager();
             MonsterView = new MonsterViewManager();
-            HeroCombat = new HeroCombatManager();
             ProjectileManager = new ProjectileManager();
 
             Merge = new MergeService(heroFactory);
             Placement = new PlacementService(Board);
             Damage = new DamageService();
             Target = new TargetService();
-            Combat = new CombatService(HeroCombat);
+            HeroState = new HeroStateServie();
             Projectile = new ProjectileService(heroFactory, ProjectileManager);
             Orbit = new OrbitService();
             Skill = new SkillService();

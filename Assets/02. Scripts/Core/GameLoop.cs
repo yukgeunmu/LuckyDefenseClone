@@ -12,7 +12,7 @@ public class GameLoop : MonoBehaviour
 
         GameManager.Instance.Skill.Update();
 
-        GameManager.Instance.Combat.Update();
+        GameManager.Instance.HeroState.Update();
 
         GameManager.Instance.Projectile.Update();
 

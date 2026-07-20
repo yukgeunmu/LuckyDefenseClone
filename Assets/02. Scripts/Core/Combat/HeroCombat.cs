@@ -1,3 +1,4 @@
+using LuckyDefense.Core.Manager;
 using LuckyDefense.Heroes;
 using LuckyDefense.Monsters;
 
@@ -35,16 +36,36 @@ namespace LuckyDefense.Core.Combat
             return true;
         }
 
-        public Monster FindTarget()
+        public bool FindTarget(out Monster target)
         {
-            Monster target = PrimaryStrategy.FindTarget(Hero);
+            target = PrimaryStrategy.FindTarget(Hero) ?? FallbackStrategy.FindTarget(Hero);
 
-            if (target == null)
-            {
-                target = FallbackStrategy.FindTarget(Hero);
-            }
+            return target != null;
+        }
 
-            return target;
+        public bool TryAcquireTarget()
+        {
+            if (!FindTarget(out Monster target))
+                return false;
+
+            Hero.Target = target;
+
+            return true;
+        }
+
+        public void Attack(Monster target)
+        {
+            if (!CanAttack())
+                return;
+
+            int damage = Hero.Stats.Attack;
+
+            damage = Hero.SkillComponent.ModifyDamage(Hero, damage);
+
+            GameManager.Instance.Projectile.Fire(
+                Hero,
+                target,
+                damage);
         }
     }
 }

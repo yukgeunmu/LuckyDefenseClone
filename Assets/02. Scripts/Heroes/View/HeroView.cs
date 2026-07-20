@@ -36,8 +36,17 @@ namespace LuckyDefense.Heroes.View
                     spriteRenderer.color = Color.blueViolet;
                     break;
             }
+
+            Hero.Start();
         }
 
+        private void Update()
+        {
+            if (Hero == null)
+                return;
+
+            Hero.Update();
+        }
 
         public void OnSpawn()
         {

@@ -40,7 +40,7 @@ namespace LuckyDefense.Core.Service
             {
                 GameManager.Instance.Placement.RemoveHero(hero);
 
-                GameManager.Instance.HeroCombat.Remove(hero);
+                //GameManager.Instance.HeroCombat.Remove(hero);
             }
 
             return mergeService.SpawnResultHero(recipe.ResultHero, consumes);

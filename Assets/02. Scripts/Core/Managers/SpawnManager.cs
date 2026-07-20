@@ -60,12 +60,6 @@ namespace LuckyDefense.Core.Manager
 
                 return false;
             }
-            else
-            {
-                GameManager.Instance.HeroCombat.Add(hero);
-            }
-
-
 
             EventBus.Publish(new HeroSummonedEvent(hero));
             return true;

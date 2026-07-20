@@ -28,9 +28,6 @@ namespace LuckyDefense.Core.Service
 
             GameManager.Instance.Placement.RemoveHero(hero);
 
-            GameManager.Instance.HeroCombat.Remove(hero);
-
-
             EventBus.Publish(new HeroSoldEvent(hero));
         }
     }

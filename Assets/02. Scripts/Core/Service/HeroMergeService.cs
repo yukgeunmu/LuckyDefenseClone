@@ -45,7 +45,7 @@ namespace LuckyDefense.Core.Service
             {
                 GameManager.Instance.Placement.RemoveHero(h);
 
-                GameManager.Instance.HeroCombat.Remove(h);
+                //GameManager.Instance.HeroCombat.Remove(h);
             }
 
             HeroData heroData = GameManager.Instance.Data.GetRandomHero(nextGrade);

@@ -26,7 +26,6 @@ namespace LuckyDefense.Core.Service
             Hero hero = heroFactory.Create(data);
 
             GameManager.Instance.Placement.PlaceHero(hero);
-            GameManager.Instance.HeroCombat.Add(hero);
 
             EventBus.Publish(new HeroMergedEvent(hero, consumes));
 
