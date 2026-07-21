@@ -10,7 +10,7 @@ namespace LuckyDefense.Core.Service
             {
                 foreach (var hero in cell.Heroes)
                 {
-                    hero.StateMachine.Update();
+                    hero.Update();
                 }
             }
         }

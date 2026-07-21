@@ -1,5 +1,5 @@
-using LuckyDefense.Monsters;
-using UnityEngine;
+using LuckyDefense.Core.Events;
+using LuckyDefense.Heroes.Animation;
 
 
 namespace LuckyDefense.Heroes.States
@@ -14,6 +14,8 @@ namespace LuckyDefense.Heroes.States
         public override void Enter()
         {
             base.Enter();
+
+            EventBus.Publish(new HeroStateChangedEvent(Hero, HeroStateType.Idle));
         }
 
         public override void Update()

@@ -1,12 +1,10 @@
 using LuckyDefense.Board;
 using LuckyDefense.Core.Combat;
-using LuckyDefense.Core.Manager;
 using LuckyDefense.Heroes.Buff;
 using LuckyDefense.Heroes.Data;
 using LuckyDefense.Heroes.States;
 using LuckyDefense.Monsters;
 using LuckyDefense.Skill;
-using UnityEngine.UIElements;
 
 namespace LuckyDefense.Heroes
 {
@@ -16,7 +14,7 @@ namespace LuckyDefense.Heroes
 
         public HeroStats Stats { get; }
 
-        public HeroStateMachine StateMachine { get;}
+        public HeroStateMachine StateMachine { get; }
 
         public HeroSkillComponent SkillComponent { get; set; }
 

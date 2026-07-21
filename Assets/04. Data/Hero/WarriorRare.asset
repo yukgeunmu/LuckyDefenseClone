@@ -30,7 +30,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ab9a1327a759a08498d05e5c9091d3f0, type: 2}
   Description: 
   ViewPrefab:
-    m_AssetGUID: fb3b8198e178a5748bd04c8f7bb78fbe
+    m_AssetGUID: cf326381d6c6be545bb01fb17647b0ce
     m_SubObjectName: 
     m_SubObjectType: 
     m_SubObjectGUID: 

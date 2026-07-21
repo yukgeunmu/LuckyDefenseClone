@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Heroes
   m_GUID: 17565a2b27c52b346b126506167e0d98
   m_SerializeEntries:
+  - m_GUID: cf326381d6c6be545bb01fb17647b0ce
+    m_Address: WarriorView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fb3b8198e178a5748bd04c8f7bb78fbe
     m_Address: HeroView
     m_ReadOnly: 0

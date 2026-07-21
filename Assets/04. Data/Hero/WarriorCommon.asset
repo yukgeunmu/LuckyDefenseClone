@@ -26,11 +26,10 @@ MonoBehaviour:
   ProjectileSpeed: 10
   SellPrice: 10
   PassiveSkills: []
-  ActiveSkills:
-  - {fileID: 11400000, guid: 1580eb5925de2014bb23261a2efeebfd, type: 2}
+  ActiveSkills: []
   Description: 
   ViewPrefab:
-    m_AssetGUID: fb3b8198e178a5748bd04c8f7bb78fbe
+    m_AssetGUID: cf326381d6c6be545bb01fb17647b0ce
     m_SubObjectName: 
     m_SubObjectType: 
     m_SubObjectGUID: 

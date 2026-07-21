@@ -1,4 +1,5 @@
 using LuckyDefense.Core.Pool;
+using LuckyDefense.Heroes.Animation;
 using UnityEngine;
 
 namespace LuckyDefense.Heroes.View
@@ -6,7 +7,18 @@ namespace LuckyDefense.Heroes.View
     public class HeroView : MonoBehaviour, IPoolable
     {
         public Hero Hero { get; private set; }
-        public SpriteRenderer spriteRenderer;
+
+        [SerializeField]
+        private SpriteRenderer spriteRenderer;
+
+        [SerializeField]
+        private Animator animator;
+
+        [SerializeField]
+        private HeroAnimationData animationData;
+
+        [SerializeField]
+        private float AttackAnimationLength = 1.125f;
 
         private Vector3 originalPosition;
         private Transform originalParent;
@@ -17,6 +29,8 @@ namespace LuckyDefense.Heroes.View
 
             gameObject.name =
                 $"{hero.HeroName}";
+
+            animationData.Init();
 
             switch (hero.Grade)
             {
@@ -37,15 +51,20 @@ namespace LuckyDefense.Heroes.View
                     break;
             }
 
-            Hero.Start();
         }
 
-        private void Update()
-        {
-            if (Hero == null)
-                return;
 
-            Hero.Update();
+        public void PlayIdle()
+        {
+        }
+
+        public void PlayAttack()
+        {
+            spriteRenderer.flipX =  Hero.Target.Position.x < Hero.CurrentCell.WorldPosition.x;
+
+            animator.speed = AttackAnimationLength / (1.0f / Hero.Stats.AttackSpeed);
+
+            animator.SetTrigger(animationData.AttackTriggerHash);
         }
 
         public void OnSpawn()

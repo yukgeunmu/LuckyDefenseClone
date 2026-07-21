@@ -4,6 +4,7 @@ using LuckyDefense.Board.View;
 using LuckyDefense.Core.Events;
 using LuckyDefense.Core.Manager;
 using LuckyDefense.Heroes;
+using LuckyDefense.Heroes.Animation;
 using LuckyDefense.Heroes.Factory;
 using LuckyDefense.Heroes.View;
 using LuckyDefense.UI.Scene;
@@ -34,6 +35,7 @@ namespace Game.Heroes.View
             EventBus.Subscribe<HeroRemovedEvent>(OnHeroRemoved);
             EventBus.Subscribe<CellSelectedEvent>(OnCellSelected);
             EventBus.Subscribe<CellDeselectedEvent>(OnCellDeselected);
+            EventBus.Subscribe<HeroStateChangedEvent>(OnHeroStateChanged);
 
         }
 
@@ -45,6 +47,7 @@ namespace Game.Heroes.View
             EventBus.Unsubscribe<HeroRemovedEvent>(OnHeroRemoved);
             EventBus.Unsubscribe<CellSelectedEvent>(OnCellSelected);
             EventBus.Unsubscribe<CellDeselectedEvent>(OnCellDeselected);
+            EventBus.Unsubscribe<HeroStateChangedEvent>(OnHeroStateChanged);
         }
 
         private void OnHeroSummoned(IEvent e)
@@ -71,6 +74,8 @@ namespace Game.Heroes.View
             cellView.HeroStackView.AddHeroView(heroView);
 
             GameManager.Instance.HeroView.Add(hero, heroView);
+
+            hero.Start();
 
         }
 
@@ -191,5 +196,28 @@ namespace Game.Heroes.View
             scene.SetSellVisible(canSell);
         }
 
+
+        private void OnHeroStateChanged(IEvent e)
+        {
+            HeroStateChangedEvent evt =
+                (HeroStateChangedEvent)e;
+
+            HeroView view = GameManager.Instance.HeroView.GetView(evt.Hero);
+
+            if (view == null)
+                return;
+
+
+            switch (evt.State)
+            {
+                case HeroStateType.Idle:
+                    view.PlayIdle();
+                    break;
+
+                case HeroStateType.Attack:
+                    view.PlayAttack();
+                    break;
+            }
+        }
     }
 }
