@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 821d2935d0248ce478bc5b99f74d4819, type: 3}
   m_Name: IceBallProjectileData
   m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Skill.SkillProjectileConfig
-  Type: 2
+  Type: 3
   ViewPrefab:
     m_AssetGUID: 1d0be3b50e3523c46b4ba3db5f842bbf
     m_SubObjectName: 

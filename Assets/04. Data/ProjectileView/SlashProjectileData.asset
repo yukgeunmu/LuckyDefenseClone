@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 821d2935d0248ce478bc5b99f74d4819, type: 3}
-  m_Name: ArrowProjectileData
-  m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Skill.SkillProjectileConfig
-  Type: 2
+  m_Name: SlashProjectileData
+  m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Skill.Data.ProjectileConfig
+  Type: 1
   ViewPrefab:
-    m_AssetGUID: ead3badb4a67dba46a80827792bf6574
+    m_AssetGUID: 2c8d624fee95e68438865b223ba0f330
     m_SubObjectName: 
     m_SubObjectType: 
     m_SubObjectGUID: 

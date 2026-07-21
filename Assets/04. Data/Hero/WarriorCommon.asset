@@ -19,7 +19,7 @@ MonoBehaviour:
   RaceType: 0
   PrimaryTarget: 5
   FallbackTarget: 0
-  ProjectileType: 0
+  ProjectileType: 1
   AttackPower: 100
   AttackSpeed: 1
   Range: 3

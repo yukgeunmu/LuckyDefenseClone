@@ -12,6 +12,8 @@ namespace LuckyDefense.Heroes.Runtime
         public Monster Target { get; }
         public Vector3 Position { get; private set; }
 
+        public float Rotation { get; private set; }
+
         public float Speed { get; }
 
         public Action<Projectile> OnHit;
@@ -39,6 +41,10 @@ namespace LuckyDefense.Heroes.Runtime
 
         public void Move(Vector3 pos)
         {
+            Vector3 dir = (Target.Position - pos).normalized;
+
+            Rotation = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
             Position = pos;
         }
 

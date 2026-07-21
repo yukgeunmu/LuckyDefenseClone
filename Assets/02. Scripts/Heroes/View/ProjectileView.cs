@@ -1,6 +1,7 @@
 using LuckyDefense.Core.Pool;
 using LuckyDefense.Heroes.Runtime;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 namespace LuckyDefense.Heroes.View
 {
@@ -29,6 +30,9 @@ namespace LuckyDefense.Heroes.View
                 return;
 
             transform.position = projectile.Position;
+
+            transform.rotation = Quaternion.Euler(0, 0, projectile.Rotation + 180);
+
         }
     }
 }

@@ -47,6 +47,9 @@ TagManager:
   - name: Hero
     uniqueID: 3047808699
     locked: 0
+  - name: Projectile
+    uniqueID: 808324803
+    locked: 0
   - name: Skill
     uniqueID: 595669277
     locked: 0

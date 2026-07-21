@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 821d2935d0248ce478bc5b99f74d4819, type: 3}
   m_Name: PoisonBallProjectileData
   m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Skill.SkillProjectileConfig
-  Type: 4
+  Type: 5
   ViewPrefab:
     m_AssetGUID: 84aa3c2ceab6ef948a25c8a1f8068dab
     m_SubObjectName: 
