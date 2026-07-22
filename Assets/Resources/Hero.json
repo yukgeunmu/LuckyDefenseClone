@@ -1,0 +1,58 @@
+[
+  {
+    "HeroID": "HERO00001",
+    "HeroName": "전사",
+    "Grade": "Common",
+    "ClassType": "Warrior",
+    "RaceType": "Human",
+    "PrimaryTarget": "Front",
+    "FallbackTarget": "Boss",
+    "ProjectileType": "Slash",
+    "AttackPower": 10,
+    "AttackSpeed": 1.0,
+    "Range": 3.0,
+    "ProjectileSpeed": 1.0
+  },
+  {
+    "HeroID": "HERO00002",
+    "HeroName": "궁수",
+    "Grade": "Common",
+    "ClassType": "Archer",
+    "RaceType": "Human",
+    "PrimaryTarget": "Front",
+    "FallbackTarget": "Boss",
+    "ProjectileType": "Arrow",
+    "AttackPower": 10,
+    "AttackSpeed": 1.0,
+    "Range": 5.0,
+    "ProjectileSpeed": 1.0
+  },
+  {
+    "HeroID": "HERO00003",
+    "HeroName": "마법사",
+    "Grade": "Common",
+    "ClassType": "Mage",
+    "RaceType": "Human",
+    "PrimaryTarget": "Front",
+    "FallbackTarget": "Boss",
+    "ProjectileType": "ThunderBall",
+    "AttackPower": 10,
+    "AttackSpeed": 1.0,
+    "Range": 5.0,
+    "ProjectileSpeed": 1.0
+  },
+  {
+    "HeroID": "HERO00004",
+    "HeroName": "신관",
+    "Grade": "Common",
+    "ClassType": "Priest",
+    "RaceType": "Human",
+    "PrimaryTarget": "Front",
+    "FallbackTarget": "Boss",
+    "ProjectileType": "IceBall",
+    "AttackPower": 10,
+    "AttackSpeed": 1.0,
+    "Range": 3.0,
+    "ProjectileSpeed": 1.0
+  }
+]
