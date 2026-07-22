@@ -18,8 +18,6 @@ namespace LuckyDefense.Heroes.Runtime
 
         public Action<Projectile> OnHit;
 
-        public ProjectileType SkillProjectileType { get; }
-
         public bool IsReady { get; private set; }
 
         public bool IsDestroyed { get; private set; }
@@ -29,14 +27,13 @@ namespace LuckyDefense.Heroes.Runtime
             Hero owner, 
             Monster target, 
             Vector3 position ,
-            float speed,
-            ProjectileType skillProjectileType = ProjectileType.None)
+            float speed
+            )
         {
             Owner = owner;
             Target = target;
             Position = position;
             Speed = speed;
-            SkillProjectileType = skillProjectileType;
         }
 
         public void Move(Vector3 pos)

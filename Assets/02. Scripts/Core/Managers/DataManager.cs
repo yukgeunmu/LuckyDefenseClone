@@ -29,17 +29,9 @@ namespace LuckyDefense.Core.Manager
 
         private Dictionary<int, WaveData> waveDict = new();
 
-        private Dictionary<SkillEffectType, SkillEffectConfig> skillEffects = new();
-
         private Dictionary<StatusEffectType, StatusEffectConfig> statusEffectDict = new();
 
-        private Dictionary<ProjectileType, ProjectileConfig> skillProjectileDict = new();
-
-        private Dictionary<OrbitType, OrbitConfig> skillOrbitDict = new();
-
         private Dictionary<string, AssetReferenceGameObject> uiDict = new();
-
-        public  IDictionary<ProjectileType, ProjectileConfig> ProjectileDict => skillProjectileDict;
 
         public IDictionary<string, AssetReferenceGameObject> UIDct => uiDict;
 
@@ -49,17 +41,13 @@ namespace LuckyDefense.Core.Manager
             RecipeDatabase recipeDB,
             MonsterDatabase monsterDB,
             WaveDatabase waveDB,
-            SkillEffectDatabase skillEffectDB,
             StatusEffectDatabase statusDB,
-            SkillProjectileDatabase skillProjectileDB,
-            SkillOrbitDatabase skillOrbitDB,
             HeroSummonTable heroSummonTable,
             UIDatabase uIDatabase
             )
         {
             heroDict.Clear();
             recipes.Clear();
-            skillEffects.Clear();
 
             foreach (HeroData hero in heroDB.Heroes)
             {
@@ -91,13 +79,6 @@ namespace LuckyDefense.Core.Manager
                     wave);
             }
 
-            foreach (var effect in skillEffectDB.Effects)
-            {
-                skillEffects.Add(
-                    effect.Type,
-                    effect);
-            }
-
             foreach (var effect in statusDB.Effects)
             {
                 if (statusEffectDict.ContainsKey(effect.Type))
@@ -106,13 +87,6 @@ namespace LuckyDefense.Core.Manager
                 statusEffectDict.Add(effect.Type, effect);
             }
 
-            foreach (var projectile in skillProjectileDB.SkillProjectileConfigs)
-            {
-                if (skillProjectileDict.ContainsKey(projectile.Type))
-                    continue;
-
-                skillProjectileDict.Add(projectile.Type, projectile);
-            }
 
             foreach (var entry in uIDatabase.entries)
             {
@@ -120,14 +94,6 @@ namespace LuckyDefense.Core.Manager
                     continue;
 
                 uiDict.Add(entry.TypeName, entry.Prefab);
-            }
-
-            foreach (var orbit in skillOrbitDB.SkillOrbitConfigs)
-            {
-                if (skillOrbitDict.ContainsKey(orbit.type))
-                    continue;
-
-                skillOrbitDict.Add(orbit.type, orbit);
             }
 
             recipes = recipeDB.Recipes;
@@ -259,32 +225,12 @@ namespace LuckyDefense.Core.Manager
             return data;
         }
 
-        public SkillEffectConfig GetSkillEffect(SkillEffectType type)
-        {
-            skillEffects.TryGetValue(type, out var effect);
-
-            return effect;
-        }
 
         public StatusEffectConfig GetStatusEffect(StatusEffectType type)
         {
             statusEffectDict.TryGetValue(type, out var config);
 
             return config;
-        }
-
-        public ProjectileConfig GetProjectile(ProjectileType type)
-        {
-            skillProjectileDict.TryGetValue(type, out var projectile);
-
-            return projectile;
-        }
-
-        public OrbitConfig GetOrbit(OrbitType type)
-        {
-            skillOrbitDict.TryGetValue(type, out var orbit);
-
-            return orbit;
         }
 
         public AssetReferenceGameObject GetUIAsset<T>()

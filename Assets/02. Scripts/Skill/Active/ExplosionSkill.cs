@@ -33,7 +33,7 @@ namespace LuckyDefense.Skill.Active
 
             }
 
-            EventBus.Publish(new SkillEffectEvent(Data.SkillEffect, target.Position, Data.Radius));
+            EventBus.Publish(new SkillEffectEvent(Data.EffectPrefab, target.Position, Data.Radius));
         }
     }
 }

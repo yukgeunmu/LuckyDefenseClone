@@ -34,9 +34,7 @@ namespace LuckyDefense.Heroes.View
 
         private async UniTask SpawnAsync(OrbitSpawnedEvent evt)
         {
-            OrbitConfig config = GameManager.Instance.Data.GetOrbit(evt.Orbit.Type);
-
-            OrbitView view = await GameManager.Instance.Pool.Get<OrbitView>(config.ViewPrefab);
+            OrbitView view = await GameManager.Instance.Pool.Get<OrbitView>(evt.OrbitPrefab);
 
             view.Initialize(evt.Orbit);
 

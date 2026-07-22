@@ -1,15 +1,14 @@
-using Cysharp.Threading.Tasks;
 using LuckyDefense.Core.Events;
 using LuckyDefense.Core.Manager;
 using LuckyDefense.Heroes;
 using LuckyDefense.Heroes.Factory;
 using LuckyDefense.Heroes.Runtime;
-using LuckyDefense.Heroes.View;
 using LuckyDefense.Monsters;
 using LuckyDefense.Skill.Data;
 using LuckyDefense.StatusEffects;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace LuckyDefense.Core.Service
 {
@@ -26,19 +25,10 @@ namespace LuckyDefense.Core.Service
             this.projectileManager = projectileManager;
         }
 
-        public async UniTask Initialize()
-        {
-            foreach (var p in GameManager.Instance.Data.ProjectileDict)
-            {
-                var v = p.Value;
-
-                await GameManager.Instance.Pool.Prewarm<ProjectileView>(v.ViewPrefab, 20);
-            }
-        }
 
         public void Fire(Hero hero, Monster target, int damage)
         {
-            Projectile projectile = heroFactory.CreateProjectile(hero, target, hero.Data.ProjectileType);
+            Projectile projectile = heroFactory.CreateProjectile(hero, target);
 
             projectile.OnHit = p =>
             {
@@ -49,7 +39,7 @@ namespace LuckyDefense.Core.Service
             };
 
 
-            Spawn(projectile);
+            Spawn(projectile, hero.Data.ProjectilePrefab);
 
         }
 
@@ -58,7 +48,7 @@ namespace LuckyDefense.Core.Service
             Monster target,
             SkillData skillData)
         {
-            Projectile projectile = heroFactory.CreateProjectile(hero, target, skillData.ProjectileType);
+            Projectile projectile = heroFactory.CreateProjectile(hero, target);
 
             projectile.OnHit = p =>
             {
@@ -79,16 +69,16 @@ namespace LuckyDefense.Core.Service
             };
 
 
-            Spawn(projectile);
+            Spawn(projectile, skillData.ProjectilePrefab);
 
         }
 
 
-        public void Spawn(Projectile projectile)
+        public void Spawn(Projectile projectile, AssetReferenceGameObject prefab)
         {
             projectileManager.Add(projectile);
 
-            EventBus.Publish(new ProjectileSpawnedEvent(projectile));
+            EventBus.Publish(new ProjectileSpawnedEvent(projectile, prefab));
         }
 
 

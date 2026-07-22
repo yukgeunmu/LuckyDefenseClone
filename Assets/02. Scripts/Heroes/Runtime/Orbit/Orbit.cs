@@ -13,8 +13,6 @@ namespace LuckyDefense.Heroes.Runtime
 
         public float LastHitTime;
 
-        public OrbitType Type;
-
         public Vector3 Position
         {
             get
@@ -30,11 +28,10 @@ namespace LuckyDefense.Heroes.Runtime
             }
         }
 
-        public Orbit(OrbitController controller, float angle, OrbitType type)
+        public Orbit(OrbitController controller, float angle)
         {
             Controller = controller;
             Angle = angle;
-            Type = type;
         }
 
         public void Hit(Monster monster)

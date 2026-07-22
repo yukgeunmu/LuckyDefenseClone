@@ -1,5 +1,3 @@
-using Cysharp.Threading.Tasks;
-using LuckyDefense.Core.Combat;
 using LuckyDefense.Core.Service;
 using LuckyDefense.Heroes.Data;
 using LuckyDefense.Heroes.Factory;
@@ -9,12 +7,9 @@ using LuckyDefense.Monsters.Data;
 using LuckyDefense.Monsters.Factory;
 using LuckyDefense.Monsters.View;
 using LuckyDefense.Skill;
-using LuckyDefense.Skill.Data;
-using LuckyDefense.Skill.View;
 using LuckyDefense.StatusEffects.Data;
 using LuckyDefense.UI.Base;
 using LuckyDefense.UI.Data;
-using LuckyDefense.UI.Scene;
 using LuckyDefense.Wave.Data;
 using UnityEngine;
 
@@ -39,7 +34,7 @@ namespace LuckyDefense.Core.Manager
 
         public MonsterViewManager MonsterView { get; private set; }
 
-        public UIManager UI {  get; private set; }
+        public UIManager UI { get; private set; }
 
         public PoolManager Pool { get; private set; }
 
@@ -81,16 +76,7 @@ namespace LuckyDefense.Core.Manager
         private WaveDatabase waveDatabase;
 
         [SerializeField]
-        private SkillEffectDatabase skillEffectDatabase;
-
-        [SerializeField]
         private StatusEffectDatabase statusEffectDatabase;
-
-        [SerializeField]
-        private SkillProjectileDatabase skillProjectileDatabase;
-
-        [SerializeField]
-        private SkillOrbitDatabase skillOrbitDatabase;
 
         [SerializeField]
         private HeroSummonTable summonTable;
@@ -169,14 +155,11 @@ namespace LuckyDefense.Core.Manager
             HeroSell = new HeroSellService();
 
 
-            Data.Init(heroDatabase, 
+            Data.Init(heroDatabase,
                 recipeDatabase,
                 monsterDatabase,
                 waveDatabase,
-                skillEffectDatabase,
                 statusEffectDatabase,
-                skillProjectileDatabase,
-                skillOrbitDatabase,
                 summonTable,
                 uiDatabase);
             Path.Initialize(pathRoot);

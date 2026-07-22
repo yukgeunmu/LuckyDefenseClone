@@ -3,7 +3,6 @@ using LuckyDefense.Heroes;
 using LuckyDefense.Heroes.Runtime;
 using LuckyDefense.Monsters;
 using LuckyDefense.Skill.Data;
-using System.Diagnostics;
 
 
 namespace LuckyDefense.Skill.Active
@@ -36,10 +35,10 @@ namespace LuckyDefense.Skill.Active
 
             for (int i = 0; i < Data.Count; i++)
             {
-                controller.Orbit.Add(new Orbit(controller, i * step, Data.OrbitType));
+                controller.Orbit.Add(new Orbit(controller, i * step));
             }
 
-            GameManager.Instance.Orbit.Spawn(controller);
+            GameManager.Instance.Orbit.Spawn(controller, Data.OrbitPrefab);
 
         }
     }

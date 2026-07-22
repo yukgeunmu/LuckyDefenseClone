@@ -1,5 +1,6 @@
 using LuckyDefense.Heroes.Runtime;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 
 
@@ -9,9 +10,12 @@ namespace LuckyDefense.Core.Events
     {
         public Projectile Projectile;
 
-        public ProjectileSpawnedEvent(Projectile projectile)
+        public AssetReferenceGameObject ProjectilePrefab;
+
+        public ProjectileSpawnedEvent(Projectile projectile, AssetReferenceGameObject projectilePrefab)
         {
             Projectile = projectile;
+            ProjectilePrefab = projectilePrefab;
         }
     }
 }

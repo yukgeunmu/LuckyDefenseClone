@@ -26,9 +26,7 @@ namespace LuckyDefense.Skill.View
 
         private async UniTask SpawnAsync(SkillEffectEvent evt)
         {
-            SkillEffectConfig data = GameManager.Instance.Data.GetSkillEffect(evt.Type);
-
-            SkillEffectView view = await GameManager.Instance.Pool.Get<SkillEffectView>(data.ViewPrefab);
+            SkillEffectView view = await GameManager.Instance.Pool.Get<SkillEffectView>(evt.EffectPrefab);
 
             if (view == null)
                 return;

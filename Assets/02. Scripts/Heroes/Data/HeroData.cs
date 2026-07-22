@@ -20,7 +20,6 @@ namespace LuckyDefense.Heroes.Data
         public HeroRace RaceType;
         public TargetType PrimaryTarget;
         public TargetType FallbackTarget;
-        public ProjectileType ProjectileType;
 
 
         [Header("Battle")]
@@ -44,6 +43,7 @@ namespace LuckyDefense.Heroes.Data
 
         [Header("Prefab")]
         public AssetReferenceGameObject ViewPrefab;
+        public AssetReferenceGameObject ProjectilePrefab;
 
     }
 }

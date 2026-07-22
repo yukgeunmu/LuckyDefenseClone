@@ -1,5 +1,6 @@
 using LuckyDefense.Heroes.Runtime;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace LuckyDefense.Core.Events
 {
@@ -7,9 +8,12 @@ namespace LuckyDefense.Core.Events
     {
         public Orbit Orbit;
 
-        public OrbitSpawnedEvent(Orbit orbit)
+        public AssetReferenceGameObject OrbitPrefab;
+
+        public OrbitSpawnedEvent(Orbit orbit, AssetReferenceGameObject prefab)
         {
             Orbit = orbit;
+            OrbitPrefab = prefab;
         }
 
     }

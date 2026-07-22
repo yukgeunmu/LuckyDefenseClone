@@ -82,15 +82,15 @@ namespace LuckyDefense.Heroes.Factory
                     return new FrontTargetStrategy();
             }
         }
-        public Projectile CreateProjectile(Hero hero, Monster target, ProjectileType skillProjectileType = ProjectileType.None)
+        public Projectile CreateProjectile(Hero hero, Monster target)
         {
 
             return new Projectile(
                 hero,
                 target,
                 hero.CurrentCell.WorldPosition,
-                hero.Data.ProjectileSpeed,
-                skillProjectileType);
+                hero.Data.ProjectileSpeed
+                );
         }
     }
 }

@@ -40,10 +40,8 @@ namespace LuckyDefense.Heroes.View
         {
             ProjectileSpawnedEvent evt = (ProjectileSpawnedEvent)e;
 
-            ProjectileConfig config = GameManager.Instance.Data.GetProjectile(evt.Projectile.SkillProjectileType);
-
-            ProjectileView view = await GameManager.Instance.Pool.Get<ProjectileView>(config.ViewPrefab);
-
+            ProjectileView view = await GameManager.Instance.Pool.Get<ProjectileView>(evt.ProjectilePrefab);
+            
             view.Initialize(evt.Projectile);
 
             evt.Projectile.Ready();

@@ -1,6 +1,7 @@
 using LuckyDefense.Skill.Passive;
 using LuckyDefense.StatusEffects;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace LuckyDefense.Skill.Data
 {
@@ -20,12 +21,6 @@ namespace LuckyDefense.Skill.Data
 
         public SkillLogicType LogicType;
 
-        public SkillEffectType SkillEffect;
-
-        public ProjectileType ProjectileType;
-
-        public OrbitType OrbitType;
-
         public float Value;
 
         public float StatusEffectValue;
@@ -39,6 +34,12 @@ namespace LuckyDefense.Skill.Data
         public int Count;
 
         public float Speed;
+
+        public AssetReferenceGameObject EffectPrefab;
+
+        public AssetReferenceGameObject ProjectilePrefab;
+
+        public AssetReferenceGameObject OrbitPrefab;
 
         private void OnValidate()
         {
