@@ -68,7 +68,7 @@ namespace LuckyDefense.Core.Service
             if (heroes == null || materials == null)
                 return false;
 
-            Dictionary<HeroData, int> heroCounts = new();
+            Dictionary<HeroDataSO, int> heroCounts = new();
 
             foreach (Hero hero in heroes)
             {

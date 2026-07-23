@@ -46,7 +46,7 @@ namespace LuckyDefense.Core.Manager
                 return false;
             }
 
-            HeroData heroData =
+            HeroDataSO heroData =
                 GameManager.Instance.Data.GetRandomHero(grade); ;
 
 

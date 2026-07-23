@@ -1,3 +1,4 @@
+using LuckyDefense.Core;
 using LuckyDefense.Skill.Data;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +9,13 @@ namespace LuckyDefense.Heroes.Data
     [CreateAssetMenu(
         menuName = "Game/Hero/Hero Data",
         fileName = "HeroData")]
-    public class HeroData : ScriptableObject
+    public class HeroDataSO : ScriptableObject, IDataSO
     {
         [Header("Info")]
         public int HeroID;
+        public int ID => HeroID;
         public string HeroName;
+
 
         [Header("Type")]
         public HeroGrade Grade;
@@ -32,10 +35,10 @@ namespace LuckyDefense.Heroes.Data
         public int SellPrice;
 
         [Header("Passive Skills")]
-        public List<SkillData> PassiveSkills = new();
+        public List<SkillDataSO> PassiveSkills = new();
 
         [Header("Active Skills")]
-        public List<SkillData> ActiveSkills = new();
+        public List<SkillDataSO> ActiveSkills = new();
 
         [Header("Description")]
         [TextArea]

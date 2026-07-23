@@ -1,14 +1,16 @@
-using UnityEngine;
-using UnityEditor;
-using System.IO;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using System;
 using LuckyDefense.Heroes.Data;
+using LuckyDefense.SheetData;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using UnityEditor;
+using UnityEngine;
 
 public class ScriptableObjectGenerator : EditorWindow
 {
-    private string jsonPath = "";
+    private string jsonPath = "Assets/Resources";
 
     private string savePath = "Assets/Data/Item";
 
@@ -36,10 +38,10 @@ public class ScriptableObjectGenerator : EditorWindow
 
             string fileName = Path.GetFileNameWithoutExtension(jsonPath);
 
-            string soName = fileName.Replace("Data", "");
+            string soName = $"{fileName}SO";
 
-            var soType = Type.GetType(soName);
-            var dtoType = Type.GetType(fileName);
+            var soType = FindType(soName); // HeroDataSO
+            var dtoType = FindType(fileName); // HeroData
 
             if (soType != null && dtoType != null)
             {
@@ -61,54 +63,13 @@ public class ScriptableObjectGenerator : EditorWindow
 
     }
 
-    void Generate()
+    private static Type FindType(string className)
     {
-        if (!File.Exists(jsonPath))
-        {
-            Debug.LogError("JSON file not found");
-            return;
-        }
-
-        string json = File.ReadAllText(jsonPath);
-
-        var list = JsonConvert.DeserializeObject<List<HeroData>>(json);
-
-        if (list == null && list.Count == 0)
-        {
-            Debug.LogError("JSON parsing failed");
-            return;
-        }
-
-        if (!Directory.Exists(savePath))
-        {
-            Directory.CreateDirectory(savePath);
-        }
-
-        foreach (var data in list)
-        {
-            string path = $"{savePath}/{data.HeroID}.asset";
-
-            var existing = AssetDatabase.LoadAssetAtPath<HeroData>(path);
-
-            if (existing != null)
-            {
-                // existing.data = data;
-            }
-            else
-            {
-                var asset = ScriptableObject.CreateInstance<HeroData>();
-
-                // asset.data = data;
-
-                AssetDatabase.CreateAsset(asset, path);
-            }
-
-            AddressableRegister.AddToAddressable(path, addressableGroup);
-        }
-
-        AssetDatabase.SaveAssets();
-        AssetDatabase.Refresh();
-
-        Debug.Log("ScriptableObject 생성 완료!");
+        return AppDomain.CurrentDomain
+            .GetAssemblies()
+            .SelectMany(a => a.GetTypes())
+            .FirstOrDefault(t => t.Name == className);
     }
+
+
 }

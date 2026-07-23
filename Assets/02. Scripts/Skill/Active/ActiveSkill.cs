@@ -14,12 +14,12 @@ namespace LuckyDefense.Skill
      */
     public abstract class ActiveSkill : ISkill
     {
-        public SkillData Data { get; }
+        public SkillDataSO Data { get; }
 
         public SkillCategory SkillType => SkillCategory.Active;
 
         private float lastCastTime = -9999.0f;
-        protected ActiveSkill(SkillData data)
+        protected ActiveSkill(SkillDataSO data)
         {
             this.Data = data;
         }

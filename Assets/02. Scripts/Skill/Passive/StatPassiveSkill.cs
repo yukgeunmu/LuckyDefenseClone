@@ -5,7 +5,7 @@ namespace LuckyDefense.Skill.Passive
 {
     public class StatPassiveSkill : PassiveSkill
     {
-        public StatPassiveSkill(SkillData data) : base(data)
+        public StatPassiveSkill(SkillDataSO data) : base(data)
         {
         }
 

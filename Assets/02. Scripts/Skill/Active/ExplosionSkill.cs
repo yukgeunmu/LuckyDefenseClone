@@ -10,7 +10,7 @@ namespace LuckyDefense.Skill.Active
 {
     public class ExplosionSkill : ActiveSkill
     {
-        public ExplosionSkill(SkillData data) : base(data)
+        public ExplosionSkill(SkillDataSO data) : base(data)
         {
         }
 

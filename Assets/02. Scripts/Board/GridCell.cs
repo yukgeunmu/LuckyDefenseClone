@@ -17,7 +17,7 @@ namespace LuckyDefense.Board
 
         public Vector3 WorldPosition;
 
-        public HeroData HeroData
+        public HeroDataSO HeroData
         {
             get
             {

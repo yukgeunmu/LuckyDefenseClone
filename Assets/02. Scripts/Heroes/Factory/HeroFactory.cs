@@ -18,7 +18,7 @@ namespace LuckyDefense.Heroes.Factory
         }
 
 
-        public Hero Create(HeroData heroData)
+        public Hero Create(HeroDataSO heroData)
         {
             Hero hero = new Hero(heroData);
 

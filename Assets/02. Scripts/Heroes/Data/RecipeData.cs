@@ -10,7 +10,7 @@ namespace LuckyDefense.Heroes.Data
     {
         public int RecipeID;
 
-        public HeroData ResultHero;
+        public HeroDataSO ResultHero;
 
         public List<RecipeMaterial> Materials;
     }

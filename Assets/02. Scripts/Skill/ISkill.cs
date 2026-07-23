@@ -5,7 +5,7 @@ namespace LuckyDefense.Skill
 {
     public interface ISkill
     {
-        SkillData Data { get; }
+        SkillDataSO Data { get; }
 
         SkillCategory SkillType { get; }
     }

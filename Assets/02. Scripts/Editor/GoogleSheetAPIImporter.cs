@@ -76,7 +76,7 @@ public class GoogleSheetAPIImporter : EditorWindow
                 Debug.Log($"Fetching: {title}");
 
                 // 2. 데이터 가져오기
-                string range = $"{title}!A:L";
+                string range = $"{title}!A:O";
                 string dataUrl = $"https://sheets.googleapis.com/v4/spreadsheets/{sheetId}/values/{range}?key={apiKey}";
 
                 string dataJson = Download(dataUrl);
@@ -153,10 +153,12 @@ public class GoogleSheetAPIImporter : EditorWindow
             case "bool":
                 return bool.TryParse(value, out var b);
             case "int[]":
+                if (string.IsNullOrWhiteSpace(value))
+                    return new List<int>();
+
                 return value
                     .Split(',')
-                    .Where(x => !string.IsNullOrWhiteSpace(x))
-                    .Select(int.Parse)
+                    .Select(x => int.Parse(x.Trim()))
                     .ToList();
             default:
                 return value;

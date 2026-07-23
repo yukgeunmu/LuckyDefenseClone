@@ -9,7 +9,7 @@ namespace LuckyDefense.Skill.Active
 {
     public class SummonSkill : ActiveSkill
     {
-        public SummonSkill(SkillData data) : base(data)
+        public SummonSkill(SkillDataSO data) : base(data)
         {
         }
 

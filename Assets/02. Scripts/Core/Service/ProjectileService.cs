@@ -46,7 +46,7 @@ namespace LuckyDefense.Core.Service
         public void FireSkill(
             Hero hero,
             Monster target,
-            SkillData skillData)
+            SkillDataSO skillData)
         {
             Projectile projectile = heroFactory.CreateProjectile(hero, target);
 

@@ -55,7 +55,7 @@ namespace LuckyDefense.Core.Manager
             return null;
         }
 
-        public GridCell GetAvailableCell(HeroData heroData)
+        public GridCell GetAvailableCell(HeroDataSO heroData)
         {
             GridCell firstEmptyCell = null;
 
@@ -90,14 +90,14 @@ namespace LuckyDefense.Core.Manager
 
         public void OptimizeHeroStacks()
         {
-            Dictionary<HeroData, List<GridCell>> groups = new();
+            Dictionary<HeroDataSO, List<GridCell>> groups = new();
 
             foreach (GridCell cell in cells)
             {
                 if (cell.HeroCount == 0)
                     continue;
 
-                HeroData data = cell.Heroes[0].Data;
+                HeroDataSO data = cell.Heroes[0].Data;
 
                 if (!groups.TryGetValue(data, out var list))
                 {

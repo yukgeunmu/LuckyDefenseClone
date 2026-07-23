@@ -9,7 +9,7 @@ namespace LuckyDefense.Skill.Active
 {
     public class OrbitSkill : ActiveSkill
     {
-        public OrbitSkill(SkillData data) : base(data)
+        public OrbitSkill(SkillDataSO data) : base(data)
         {
         }
 

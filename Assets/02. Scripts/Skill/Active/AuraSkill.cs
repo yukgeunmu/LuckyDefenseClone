@@ -8,7 +8,7 @@ namespace LuckyDefense.Skill.Active
 {
     public class AuraSkill : ActiveSkill
     {
-        public AuraSkill(SkillData data) : base(data)
+        public AuraSkill(SkillDataSO data) : base(data)
         {
         }
 

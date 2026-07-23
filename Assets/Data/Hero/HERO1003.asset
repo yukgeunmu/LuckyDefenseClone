@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 722f9fc9d9a469b439060dc9181b0cec, type: 3}
+  m_Name: HERO1003
+  m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Heroes.Data.HeroDataSO
+  HeroID: 1003
+  HeroName: "\uB9C8\uBC95\uC0AC"
+  Grade: 0
+  ClassType: 2
+  RaceType: 0
+  PrimaryTarget: 0
+  FallbackTarget: 5
+  AttackPower: 10
+  AttackSpeed: 1
+  Range: 5
+  ProjectileSpeed: 1
+  SellPrice: 10
+  PassiveSkills: []
+  ActiveSkills:
+  - {fileID: 11400000, guid: d60de0995f94d6a46bf5af2a9b51c3e9, type: 2}
+  Description: "\uB9C8\uBC95\uC0AC\uB2E4"
+  ViewPrefab:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  ProjectilePrefab:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0

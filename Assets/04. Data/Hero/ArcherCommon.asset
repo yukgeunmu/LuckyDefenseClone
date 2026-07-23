@@ -19,7 +19,6 @@ MonoBehaviour:
   RaceType: 0
   PrimaryTarget: 5
   FallbackTarget: 0
-  ProjectileType: 1
   AttackPower: 1
   AttackSpeed: 1.3
   Range: 5
@@ -30,6 +29,12 @@ MonoBehaviour:
   Description: 
   ViewPrefab:
     m_AssetGUID: fb3b8198e178a5748bd04c8f7bb78fbe
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  ProjectilePrefab:
+    m_AssetGUID: ead3badb4a67dba46a80827792bf6574
     m_SubObjectName: 
     m_SubObjectType: 
     m_SubObjectGUID: 

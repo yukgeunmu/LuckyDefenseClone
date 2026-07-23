@@ -9,7 +9,7 @@ namespace LuckyDefense.Skill.Active
     public class ProjectileSkill : ActiveSkill
     {
 
-        public ProjectileSkill(SkillData data) : base(data)
+        public ProjectileSkill(SkillDataSO data) : base(data)
         {
         }
 

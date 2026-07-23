@@ -48,7 +48,7 @@ namespace LuckyDefense.Core.Service
                 //GameManager.Instance.HeroCombat.Remove(h);
             }
 
-            HeroData heroData = GameManager.Instance.Data.GetRandomHero(nextGrade);
+            HeroDataSO heroData = GameManager.Instance.Data.GetRandomHero(nextGrade);
 
             return mergeService.SpawnResultHero(heroData, consumeHeroes);
 

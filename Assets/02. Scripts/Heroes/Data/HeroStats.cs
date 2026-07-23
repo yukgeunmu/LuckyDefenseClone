@@ -18,7 +18,7 @@ namespace LuckyDefense.Heroes.Data
         {
         }
 
-        public HeroStats(HeroData data)
+        public HeroStats(HeroDataSO data)
         {
             Attack = data.AttackPower;
             AttackSpeed = data.AttackSpeed;

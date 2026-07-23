@@ -21,7 +21,7 @@ namespace LuckyDefense.Core.Service
             this.heroFactory = heroFactory;
         }
 
-        public Hero SpawnResultHero(HeroData data, IReadOnlyList<Hero> consumes)
+        public Hero SpawnResultHero(HeroDataSO data, IReadOnlyList<Hero> consumes)
         {
             Hero hero = heroFactory.Create(data);
 

@@ -25,7 +25,7 @@ namespace  LuckyDefense.UI.Scene
 
         private void OnClickHeroSpawn()
         {
-            HeroData hero = GameManager.Instance.Data.GetRandomHero();
+            HeroDataSO hero = GameManager.Instance.Data.GetRandomHero();
 
             GameManager.Instance.Spawn.SummonHero(hero.Grade);
         }

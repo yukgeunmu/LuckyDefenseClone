@@ -8,6 +8,6 @@ namespace LuckyDefense.Heroes.Data
         fileName = "HeroDatabase")]
     public class HeroDatabase : ScriptableObject
     {
-        public List<HeroData> Heroes;
+        public List<HeroDataSO> Heroes;
     }
 }

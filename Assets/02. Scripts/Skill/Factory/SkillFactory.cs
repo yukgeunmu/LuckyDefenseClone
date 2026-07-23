@@ -8,7 +8,7 @@ namespace LuckyDefense.Skill
 {
     public class SkillFactory
     {
-        private Dictionary<SkillClass, Func<SkillData, ISkill>> registry
+        private Dictionary<SkillClass, Func<SkillDataSO, ISkill>> registry
             = new()
             {
                 {SkillClass.StatPassive, d => new StatPassiveSkill(d)},
@@ -20,7 +20,7 @@ namespace LuckyDefense.Skill
                 {SkillClass.Orbit, d => new OrbitSkill(d)}
             };
 
-        public ISkill Create(SkillData data)
+        public ISkill Create(SkillDataSO data)
         {
             if (registry.TryGetValue(data.SkillClass, out var creator))
                 return creator(data);

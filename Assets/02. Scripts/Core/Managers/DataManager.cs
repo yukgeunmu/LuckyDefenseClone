@@ -15,9 +15,9 @@ namespace LuckyDefense.Core.Manager
 {
     public class DataManager
     {
-        private Dictionary<int, HeroData> heroDict = new();
+        private Dictionary<int, HeroDataSO> heroDict = new();
 
-        private List<HeroData> commonHeroes = new();
+        private List<HeroDataSO> commonHeroes = new();
 
         private List<RecipeData> recipes = new();
 
@@ -49,7 +49,7 @@ namespace LuckyDefense.Core.Manager
             heroDict.Clear();
             recipes.Clear();
 
-            foreach (HeroData hero in heroDB.Heroes)
+            foreach (HeroDataSO hero in heroDB.Heroes)
             {
                 if (heroDict.ContainsKey(hero.HeroID))
                 {
@@ -102,16 +102,16 @@ namespace LuckyDefense.Core.Manager
 
         }
 
-        public HeroData GetHero(int heroID)
+        public HeroDataSO GetHero(int heroID)
         {
-            heroDict.TryGetValue(heroID, out HeroData hero);
+            heroDict.TryGetValue(heroID, out HeroDataSO hero);
 
             return hero;
         }
 
-        public HeroData GetGradeHero(HeroGrade grade)
+        public HeroDataSO GetGradeHero(HeroGrade grade)
         {
-            List<HeroData> selectedGradeList = new List<HeroData>();
+            List<HeroDataSO> selectedGradeList = new List<HeroDataSO>();
 
             foreach (var hero in heroDict)
             {
@@ -124,7 +124,7 @@ namespace LuckyDefense.Core.Manager
             return selectedGradeList[index];
         }
 
-        public HeroData GetRandomCommonHero()
+        public HeroDataSO GetRandomCommonHero()
         {
             int index =
                 UnityEngine.Random.Range(
@@ -134,7 +134,7 @@ namespace LuckyDefense.Core.Manager
             return commonHeroes[0];
         }
 
-        public HeroData GetRandomHero()
+        public HeroDataSO GetRandomHero()
         {
             HeroGrade grade = GetRandomGrade();
 
@@ -155,7 +155,7 @@ namespace LuckyDefense.Core.Manager
             return 0;
         }
 
-        public HeroData GetRandomHero(HeroGrade heroGrade)
+        public HeroDataSO GetRandomHero(HeroGrade heroGrade)
         {
             return GetGradeHero(heroGrade);
         }
@@ -191,7 +191,7 @@ namespace LuckyDefense.Core.Manager
 
         }
 
-        public RecipeData FindRecipe(HeroData heroData)
+        public RecipeData FindRecipe(HeroDataSO heroData)
         {
             foreach (var recipe in recipes)
             {

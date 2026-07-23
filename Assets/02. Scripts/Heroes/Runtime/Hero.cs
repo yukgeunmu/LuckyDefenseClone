@@ -10,7 +10,7 @@ namespace LuckyDefense.Heroes
 {
     public class Hero
     {
-        public HeroData Data { get; }
+        public HeroDataSO Data { get; }
 
         public HeroStats Stats { get; }
 
@@ -31,7 +31,7 @@ namespace LuckyDefense.Heroes
 
         public Monster Target;
 
-        public Hero(HeroData data)
+        public Hero(HeroDataSO data)
         {
             Data = data;
 

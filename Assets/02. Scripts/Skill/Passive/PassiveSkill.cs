@@ -15,10 +15,10 @@ namespace LuckyDefense.Skill.Passive
      */
     public abstract class PassiveSkill: ISkill
     {
-        public SkillData Data { get; }
+        public SkillDataSO Data { get; }
 
         public SkillCategory SkillType => SkillCategory.Passive;
-        protected PassiveSkill(SkillData data)
+        protected PassiveSkill(SkillDataSO data)
         {
             this.Data = data;
         }

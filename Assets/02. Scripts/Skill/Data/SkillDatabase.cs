@@ -7,7 +7,7 @@ namespace LuckyDefense.Skill.Data
     menuName = "Game/Skill/SkillDatabase", fileName = "SkillDatabase")]
     public class SkillDatabase : ScriptableObject
     {
-        public List<SkillData> Skills;
+        public List<SkillDataSO> Skills;
     }
 }
 

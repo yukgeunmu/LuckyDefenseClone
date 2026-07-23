@@ -9,7 +9,7 @@ namespace LuckyDefense.Skill.Passive
     {
         private Hero owner;
 
-        public EventPassiveSkill(SkillData data) : base(data)
+        public EventPassiveSkill(SkillDataSO data) : base(data)
         {
         }
 
