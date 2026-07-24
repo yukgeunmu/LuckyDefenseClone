@@ -15,7 +15,7 @@ MonoBehaviour:
   WaveID: 4001
   WaveNumber: 1
   Monster: {fileID: 11400000, guid: c8a0522e9f31c6a42985f021bcc29b61, type: 2}
-  Count: 50
+  Count: 5
   SpawnInterval: 0.5
   Duration: 20
   RewardSilver: 2000

@@ -17,9 +17,6 @@ namespace LuckyDefense.Heroes.View
         [SerializeField]
         private HeroAnimationData animationData;
 
-        [SerializeField]
-        private float AttackAnimationLength = 1.125f;
-
         private Vector3 originalPosition;
         private Transform originalParent;
 
@@ -56,15 +53,17 @@ namespace LuckyDefense.Heroes.View
 
         public void PlayIdle()
         {
+            animator.SetBool(animationData.IdleParameterHash, true);
+            animator.SetBool(animationData.AttackParameterHash, false);
         }
 
         public void PlayAttack()
         {
             spriteRenderer.flipX =  Hero.Target.Position.x < Hero.CurrentCell.WorldPosition.x;
 
-            animator.speed = AttackAnimationLength / (1.0f / Hero.Stats.AttackSpeed);
+            animator.SetBool(animationData.IdleParameterHash, false);
+            animator.SetBool(animationData.AttackParameterHash, true);
 
-            animator.SetTrigger(animationData.AttackTriggerHash);
         }
 
         public void OnSpawn()

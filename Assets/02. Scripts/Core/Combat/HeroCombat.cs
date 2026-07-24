@@ -28,9 +28,9 @@ namespace LuckyDefense.Core.Combat
 
             float cooldown = 1f / Hero.Stats.AttackSpeed;
 
-            if (attackTimer < cooldown)
+            if (attackTimer < cooldown)         
                 return false;
-
+           
             attackTimer = 0;
 
             return true;

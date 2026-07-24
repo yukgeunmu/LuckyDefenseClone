@@ -1,10 +1,12 @@
 using LuckyDefense.Core.Events;
 using LuckyDefense.Heroes.Animation;
+using UnityEngine;
 
 namespace LuckyDefense.Heroes.States
 {
     public class HeroAttackState : HeroBaseState
     {
+
         public HeroAttackState(HeroStateMachine stateMachine) : base(stateMachine)
         {
         }
@@ -12,6 +14,7 @@ namespace LuckyDefense.Heroes.States
         public override void Enter()
         {
             base.Enter();
+           
 
             EventBus.Publish(new HeroStateChangedEvent(Hero, HeroStateType.Attack));
         }

@@ -161,3 +161,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Heroes.View.HeroView
   spriteRenderer: {fileID: 1934731580308123969}
   animator: {fileID: 1545684751087141512}
+  animationData:
+    attackTriggerName: Attack
+  AttackAnimationLength: 1

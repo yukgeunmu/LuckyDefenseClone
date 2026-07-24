@@ -20,7 +20,7 @@ MonoBehaviour:
   PrimaryTarget: 0
   FallbackTarget: 5
   AttackPower: 10
-  AttackSpeed: 0.00001
+  AttackSpeed: 1
   Range: 3
   ProjectileSpeed: 5
   SellPrice: 10
