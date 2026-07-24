@@ -8,6 +8,6 @@ namespace LuckyDefense.Heroes.Data
         menuName = "Game/Hero/Recipe Database")]
     public class RecipeDatabase : ScriptableObject
     {
-        public List<RecipeData> Recipes;
+        public List<RecipeDataSO> Recipes;
     }
 }

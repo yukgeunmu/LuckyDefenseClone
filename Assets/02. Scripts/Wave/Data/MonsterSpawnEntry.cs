@@ -6,7 +6,7 @@ namespace LuckyDefense.Wave.Data
     [Serializable]
     public class MonsterSpawnEntry
     {
-        public MonsterData Monster;
+        public MonsterDataSO Monster;
 
         public int Count = 1;
 

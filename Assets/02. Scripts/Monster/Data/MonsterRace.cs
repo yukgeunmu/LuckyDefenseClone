@@ -8,6 +8,7 @@ namespace LuckyDefense.Monsters.Data
         Goblin,
         Orc,
         Demon,
-        Undead
+        Undead,
+        Dragon
     }
 }

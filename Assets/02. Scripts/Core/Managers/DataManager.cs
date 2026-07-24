@@ -19,15 +19,15 @@ namespace LuckyDefense.Core.Manager
 
         private List<HeroDataSO> commonHeroes = new();
 
-        private List<RecipeData> recipes = new();
+        private List<RecipeDataSO> recipes = new();
 
-        public IReadOnlyList<RecipeData> Recipes => recipes;
+        public IReadOnlyList<RecipeDataSO> Recipes => recipes;
 
         private List<SummonInfo> summonInfo = new();
 
-        private Dictionary<int, MonsterData> monsterDict = new();
+        private Dictionary<int, MonsterDataSO> monsterDict = new();
 
-        private Dictionary<int, WaveData> waveDict = new();
+        private Dictionary<int, WaveDataSO> waveDict = new();
 
         private Dictionary<StatusEffectType, StatusEffectConfig> statusEffectDict = new();
 
@@ -72,7 +72,7 @@ namespace LuckyDefense.Core.Manager
                     monster);
             }
 
-            foreach (WaveData wave in waveDB.Waves)
+            foreach (WaveDataSO wave in waveDB.Waves)
             {
                 waveDict.Add(
                     wave.WaveNumber,
@@ -191,7 +191,7 @@ namespace LuckyDefense.Core.Manager
 
         }
 
-        public RecipeData FindRecipe(HeroDataSO heroData)
+        public RecipeDataSO FindRecipe(HeroDataSO heroData)
         {
             foreach (var recipe in recipes)
             {
@@ -211,16 +211,16 @@ namespace LuckyDefense.Core.Manager
             return null;
         }
 
-        public MonsterData GetMonster(int id)
+        public MonsterDataSO GetMonster(int id)
         {
-            monsterDict.TryGetValue(id, out MonsterData monster);
+            monsterDict.TryGetValue(id, out MonsterDataSO monster);
 
             return monster;
         }
 
-        public WaveData GetWave(int wave)
+        public WaveDataSO GetWave(int wave)
         {
-            waveDict.TryGetValue(wave, out WaveData data);
+            waveDict.TryGetValue(wave, out WaveDataSO data);
 
             return data;
         }

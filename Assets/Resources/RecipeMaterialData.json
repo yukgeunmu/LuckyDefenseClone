@@ -1,0 +1,17 @@
+[
+  {
+    "RecipeID": 5001,
+    "HeroID": 1001,
+    "Count": 3
+  },
+  {
+    "RecipeID": 5001,
+    "HeroID": 1003,
+    "Count": 1
+  },
+  {
+    "RecipeID": 5001,
+    "HeroID": 1004,
+    "Count": 1
+  }
+]

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75c83e36f50506c46a3fbc4b5126a80e, type: 3}
+  m_Name: MonsterDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Monster.Data.MonsterDatabase
+  Monsters:
+  - {fileID: 11400000, guid: c8a0522e9f31c6a42985f021bcc29b61, type: 2}
+  - {fileID: 11400000, guid: f733d7c0f507dc346b0de2c8a2353621, type: 2}
+  - {fileID: 11400000, guid: 5ec2d4b9acf35e4458a7820fbb453d7e, type: 2}

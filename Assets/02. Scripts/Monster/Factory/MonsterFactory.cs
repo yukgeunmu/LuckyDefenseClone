@@ -5,7 +5,7 @@ namespace LuckyDefense.Monsters.Factory
 {
     public class MonsterFactory
     {
-        public Monster Create(MonsterData data)
+        public Monster Create(MonsterDataSO data)
         {
             return new Monster(data); ;
         }

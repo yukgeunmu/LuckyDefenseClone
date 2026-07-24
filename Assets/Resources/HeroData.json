@@ -83,5 +83,26 @@
       2006
     ],
     "Description": "신관이다"
+  },
+  {
+    "HeroID": 1005,
+    "HeroName": "드래곤워리어",
+    "Grade": "Mythic",
+    "ClassType": "Warrior",
+    "RaceType": "Human",
+    "PrimaryTarget": "Front",
+    "FallbackTarget": "Boss",
+    "AttackPower": 999,
+    "AttackSpeed": 2.0,
+    "Range": 5.0,
+    "ProjectileSpeed": 1.0,
+    "SellPrice": 1000,
+    "PassiveSkillIDs": [
+      0
+    ],
+    "ActiveSkillIDs": [
+      0
+    ],
+    "Description": "드래곤워리어다"
   }
 ]

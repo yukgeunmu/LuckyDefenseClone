@@ -1,0 +1,32 @@
+[
+  {
+    "MonsterID": 3001,
+    "MonsterName": "말캉말캉",
+    "MonsterType": "Normal",
+    "MonsterRace": "Slime",
+    "MaxHp": 100,
+    "Attack": 1,
+    "MoveSpeed": 1.0,
+    "RewardGold": 100
+  },
+  {
+    "MonsterID": 3002,
+    "MonsterName": "고블린전사",
+    "MonsterType": "Normal",
+    "MonsterRace": "Goblin",
+    "MaxHp": 100,
+    "Attack": 1,
+    "MoveSpeed": 1.0,
+    "RewardGold": 100
+  },
+  {
+    "MonsterID": 3003,
+    "MonsterName": "오크전사",
+    "MonsterType": "Normal",
+    "MonsterRace": "Orc",
+    "MaxHp": 100,
+    "Attack": 1,
+    "MoveSpeed": 1.0,
+    "RewardGold": 100
+  }
+]

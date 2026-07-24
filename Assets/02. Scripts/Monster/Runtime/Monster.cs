@@ -8,7 +8,7 @@ namespace LuckyDefense.Monsters
 {
     public class Monster
     {
-        public MonsterData Data { get; }
+        public MonsterDataSO Data { get; }
 
         public MonsterStats Stats { get; }
 
@@ -39,7 +39,7 @@ namespace LuckyDefense.Monsters
 
         public int CurrentPathIndex { get; set; }
 
-        public Monster(MonsterData data)
+        public Monster(MonsterDataSO data)
         {
             Data = data;
 

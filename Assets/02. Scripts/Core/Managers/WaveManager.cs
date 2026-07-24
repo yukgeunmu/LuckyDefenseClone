@@ -13,7 +13,7 @@ namespace LuckyDefense.Core.Manager
 
         public bool IsWaveWaiting=> State == WaveState.Waiting;
 
-        public WaveData CurrentWaveData { get; private set; }
+        public WaveDataSO CurrentWaveData { get; private set; }
 
         public float WaveDuration => CurrentWaveData.Duration;
 
@@ -30,7 +30,7 @@ namespace LuckyDefense.Core.Manager
 
         public bool StartWave(int wave)
         {
-            WaveData data =
+            WaveDataSO data =
                 GameManager.Instance
                     .Data
                     .GetWave(wave);

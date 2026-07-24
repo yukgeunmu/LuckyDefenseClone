@@ -23,7 +23,7 @@ namespace LuckyDefense.Core.Manager
 
         public int AliveMonsterCount { get; private set; }
 
-        private readonly Queue<MonsterData> spawnQueue = new();
+        private readonly Queue<MonsterDataSO> spawnQueue = new();
 
         private float spawnTimer;
 
@@ -65,7 +65,7 @@ namespace LuckyDefense.Core.Manager
             return true;
         }
 
-        public Monster SpawnMonster(MonsterData monsterData)
+        public Monster SpawnMonster(MonsterDataSO monsterData)
         {
             Monster monster = monsterFactory.Create(monsterData);
 
@@ -102,16 +102,13 @@ namespace LuckyDefense.Core.Manager
         }
 
 
-        public void StartWave(WaveData wave)
+        public void StartWave(WaveDataSO wave)
         {
             spawnQueue.Clear();
 
-            foreach (var info in wave.Monsters)
+            for (int i = 0; i < wave.Count; i++)
             {
-                for (int i = 0; i < info.Count; i++)
-                {
-                    spawnQueue.Enqueue(info.Monster);
-                }
+                spawnQueue.Enqueue(wave.Monster);
             }
 
             spawnInterval = wave.SpawnInterval;

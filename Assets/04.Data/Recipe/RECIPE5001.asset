@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4ec4d288f761894d9901b541903f4d3, type: 3}
+  m_Name: RECIPE5001
+  m_EditorClassIdentifier: Assembly-CSharp::LuckyDefense.Heroes.Data.RecipeDataSO
+  RecipeID: 5001
+  ResultHero: {fileID: 11400000, guid: 1b3b71ff0cedcc1488c5586e1055653a, type: 2}
+  Materials:
+  - HeroData: {fileID: 11400000, guid: a5ee07e5052719d4c9c0d1dae1120c0f, type: 2}
+    Count: 3
+  - HeroData: {fileID: 11400000, guid: 816306b9dc59c46448f9bc7d1ceb0d14, type: 2}
+    Count: 1
+  - HeroData: {fileID: 11400000, guid: e105174b13aca354f9aff3fb955a7701, type: 2}
+    Count: 1

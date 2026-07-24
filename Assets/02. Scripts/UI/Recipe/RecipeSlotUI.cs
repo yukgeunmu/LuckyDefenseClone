@@ -13,9 +13,9 @@ namespace LuckyDefense.UI.Recipe
         [SerializeField] private TMP_Text materials;
         [SerializeField] private Button mergeButton;
 
-        private RecipeData recipe;
+        private RecipeDataSO recipe;
 
-        public void Initialize(RecipeData recipe)
+        public void Initialize(RecipeDataSO recipe)
         {
             this.recipe = recipe;
 

@@ -1,7 +1,9 @@
 using LuckyDefense.Core;
 using LuckyDefense.Heroes.Data;
+using LuckyDefense.Monsters.Data;
 using LuckyDefense.SheetData;
 using LuckyDefense.Skill.Data;
+using LuckyDefense.Wave.Data;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,11 +15,23 @@ using UnityEngine;
 public static class SOGenerator
 {
     private static Dictionary<int, SkillDataSO> skillCache;
+    private static Dictionary<int, HeroDataSO> heroCache;
+    private static Dictionary<int, MonsterDataSO> monsterCache;
 
-    public static void Generate<TSO, TD>(string json, string savePath, string addressableGroup) where TSO : ScriptableObject
+    private static Dictionary<int, List<RecipeMaterial>> materialCache;
+
+    public static void Initialize()
     {
         skillCache = BuildCache<SkillDataSO>();
+        heroCache = BuildCache<HeroDataSO>();
+        monsterCache = BuildCache<MonsterDataSO>();
 
+        BuildRecipeMaterialCache();
+    }
+
+
+    public static void Preprocessing<TSO, TD>(string json, string savePath) where TSO : ScriptableObject
+    {
         var list = JsonConvert.DeserializeObject<List<TD>>(json);
 
         if (!Directory.Exists(savePath))
@@ -26,33 +40,65 @@ public static class SOGenerator
 
         foreach (var dto in list)
         {
-            var asset = ScriptableObject.CreateInstance<TSO>();
-
-            CopyFields(dto, asset);
-
-            ResolveReference(dto, asset);
-
             string fileName = GetFileName(dto);
             string path = $"{savePath}/{fileName}.asset";
 
-            var existing = AssetDatabase.LoadAssetAtPath<TSO>(path);
+            TSO asset = AssetDatabase.LoadAssetAtPath<TSO>(path);
 
-            if (existing != null)
+            if (asset == null)
             {
-                CopyFields(dto, existing);
-                EditorUtility.SetDirty(existing);
-            }
-            else
-            {
-                AssetDatabase.CreateAsset(asset, path);
+                asset = ScriptableObject.CreateInstance<TSO>();
+                AssetDatabase.CreateAsset(asset, path );
             }
 
-            AddressableRegister.AddToAddressable(path, addressableGroup);
+            CopyFields(dto, asset);
+            EditorUtility.SetDirty(asset);
+
+            //var asset = ScriptableObject.CreateInstance<TSO>();
+
+            //CopyFields(dto, asset);
+
+            //string fileName = GetFileName(dto);
+            //string path = $"{savePath}/{fileName}.asset";
+
+            //TSO existing = AssetDatabase.LoadAssetAtPath<TSO>(path);
+
+            //if (existing != null)
+            //{
+            //    CopyFields(dto, existing);
+            //    EditorUtility.SetDirty(existing);
+            //}
+            //else
+            //{
+            //    AssetDatabase.CreateAsset(asset, path);
+            //}
 
         }
 
-        AssetDatabase.SaveAssets();
-        AssetDatabase.Refresh();
+    }
+
+
+    public static void ResolveAllReference<TSO, TD>(string json, string savePath) where TSO : ScriptableObject
+    {
+        var list = JsonConvert.DeserializeObject<List<TD>>(json);
+
+        foreach (var dto in list)
+        {
+            string fileName = GetFileName(dto);
+            string path = $"{savePath}/{fileName}.asset";
+
+            TSO asset = AssetDatabase.LoadAssetAtPath<TSO>(path);
+
+            if (asset == null)
+            {
+                Debug.LogWarning($"SO를 찾을 수 없습니다 : {path}");
+                continue;
+            }
+
+            ResolveReference(dto, asset);
+
+            EditorUtility.SetDirty(asset);
+        }
     }
 
     static void CopyFields<TD, TSO>(TD source, TSO target)
@@ -73,33 +119,15 @@ public static class SOGenerator
         }
     }
 
-    //static void CopyFields<TD, TSO>(TD source, TSO target)
-    //{
-    //    var doFields = typeof(TD).GetFields();
-    //    var soFields = typeof(TSO).GetFields();
-
-    //    foreach (var doField in doFields)
-    //    {
-    //        foreach (var soField in soFields)
-    //        {
-    //            if (doField.Name == soField.Name && doField.FieldType == soField.FieldType)
-    //            {
-    //                var value = doField.GetValue(source);
-    //                soField.SetValue(target, value);
-    //            }
-    //        }
-    //    }
-    //}
-
     static string GetFileName<TD>(TD dto)
     {
         Type type = typeof(TD);
 
         var idField =
+            type.GetField("RecipeID") ??
             type.GetField("HeroID") ??
             type.GetField("MonsterID") ??
             type.GetField("SkillID") ??
-            type.GetField("RecipeID") ??
             type.GetField("ID");
 
         if (idField == null)
@@ -110,19 +138,6 @@ public static class SOGenerator
         return $"{className}{idField.GetValue(dto)}";
     }
 
-    //static string GetFileName<TD>(TD dto)
-    //{
-    //    var field = typeof(TD).GetField("rcode");
-
-    //    if (field != null)
-    //    {
-    //        var value = field.GetValue(dto);
-    //        return $"{value}";
-    //    }
-
-    //    return typeof(TD).Name;
-    //}
-
     static void ResolveReference<TD, TSO>(TD dto, TSO so)
     {
         if (dto is HeroData heroDto &&
@@ -132,28 +147,42 @@ public static class SOGenerator
 
             foreach (int id in heroDto.PassiveSkillIDs)
             {
-                if (id == 0)
-                    continue;
-
-                SkillDataSO skill = skillCache[id];
-
-                if (skill != null)
+                if (skillCache.TryGetValue(id, out var skill))
+                {
                     heroSO.PassiveSkills.Add(skill);
+                }
             }
 
             heroSO.ActiveSkills.Clear();
 
             foreach (int id in heroDto.ActiveSkillIDs)
             {
-                if (id == 0)
-                     continue;
-
-                SkillDataSO skill = skillCache[id];
-
-                if (skill != null)
+                if (skillCache.TryGetValue(id, out var skill))
+                {
                     heroSO.ActiveSkills.Add(skill);
+                }
             }
         }
+        else if (dto is WaveData waveDto &&
+            so is WaveDataSO waveSO)
+        {
+            MonsterDataSO monster = monsterCache[waveDto.MonsterID];
+
+            if (monster != null)
+                waveSO.Monster = monster;
+        }
+        else if (dto is RecipeData recipeDto &&
+            so is RecipeDataSO recipeSO)
+        {
+            recipeSO.ResultHero = heroCache[recipeDto.HeroID];
+
+            if (materialCache.TryGetValue(recipeDto.RecipeID, out var list))
+            {
+                recipeSO.Materials = list;
+            }
+        }
+
+
     }
 
     public static Dictionary<int, T> BuildCache<T>() where T : ScriptableObject, IDataSO
@@ -175,5 +204,31 @@ public static class SOGenerator
         }
 
         return cache;
+    }
+
+    private static void BuildRecipeMaterialCache()
+    {
+        materialCache = new();
+
+        string json =
+            File.ReadAllText("Assets/Resources/RecipeMaterialData.json");
+
+        var list =
+            JsonConvert.DeserializeObject<List<RecipeMaterialData>>(json);
+
+        foreach (var dto in list)
+        {
+            if (!materialCache.TryGetValue(dto.RecipeID, out var materials))
+            {
+                materials = new List<RecipeMaterial>();
+                materialCache.Add(dto.RecipeID, materials);
+            }
+
+            materials.Add(new RecipeMaterial
+            {
+                HeroData = heroCache[dto.HeroID],
+                Count = dto.Count
+            });
+        }
     }
 }

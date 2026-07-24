@@ -8,6 +8,6 @@ namespace LuckyDefense.Monsters.Data
     [CreateAssetMenu(menuName = "Game/Monster/Monster Database", fileName = "MonsterDatabase")]
     public class MonsterDatabase : ScriptableObject
     {
-        public List<MonsterData> Monsters = new();
+        public List<MonsterDataSO> Monsters = new();
     }
 }

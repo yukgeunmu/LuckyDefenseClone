@@ -17,7 +17,7 @@ namespace LuckyDefense.Core.Service
         }
 
 
-        public Hero Merge(RecipeData recipe)
+        public Hero Merge(RecipeDataSO recipe)
         {
             if (recipe == null)
                 return null;
@@ -46,9 +46,9 @@ namespace LuckyDefense.Core.Service
             return mergeService.SpawnResultHero(recipe.ResultHero, consumes);
         }
 
-        public List<RecipeData> GetAvailableRecipes()
+        public List<RecipeDataSO> GetAvailableRecipes()
         {
-            List<RecipeData> result = new();
+            List<RecipeDataSO> result = new();
 
             List<Hero> heroes = GameManager.Instance.Placement.GetAllHeroes();
 

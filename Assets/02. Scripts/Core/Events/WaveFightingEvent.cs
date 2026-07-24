@@ -6,9 +6,9 @@ namespace LuckyDefense.Core.Events
 {
     public class WaveFightingEvent : IEvent
     {
-        public WaveData Wave;
+        public WaveDataSO Wave;
 
-        public WaveFightingEvent(WaveData waveData)
+        public WaveFightingEvent(WaveDataSO waveData)
         {
             Wave = waveData;
         }

@@ -16,7 +16,7 @@ namespace LuckyDefense.Monsters.Data
         {
         }
 
-        public MonsterStats(MonsterData data)
+        public MonsterStats(MonsterDataSO data)
         {
             MaxHP = data.MaxHp;
             CurrentHP = data.MaxHp;

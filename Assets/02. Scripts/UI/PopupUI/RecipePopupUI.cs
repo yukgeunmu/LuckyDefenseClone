@@ -44,10 +44,10 @@ namespace LuckyDefense.UI.Popup
         {
             Clear();
 
-            List<RecipeData> recipes =
+            List<RecipeDataSO> recipes =
                 GameManager.Instance.Merge.RecipeService.GetAvailableRecipes();
 
-            foreach (RecipeData recipe in recipes)
+            foreach (RecipeDataSO recipe in recipes)
             {
                 RecipeSlotUI item = await GameManager.Instance.Pool.Get<RecipeSlotUI>(recipeItemPrefab, content);
 

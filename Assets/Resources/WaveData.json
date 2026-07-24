@@ -1,0 +1,32 @@
+[
+  {
+    "WaveID": 4001,
+    "WaveNumber": 1,
+    "MonsterID": 3001,
+    "Count": 50,
+    "SpawnInterval": 0.5,
+    "Duration": 20.0,
+    "RewardSilver": 2000,
+    "IsBossWave": false
+  },
+  {
+    "WaveID": 4002,
+    "WaveNumber": 2,
+    "MonsterID": 3002,
+    "Count": 50,
+    "SpawnInterval": 0.5,
+    "Duration": 20.0,
+    "RewardSilver": 2000,
+    "IsBossWave": false
+  },
+  {
+    "WaveID": 4003,
+    "WaveNumber": 3,
+    "MonsterID": 3003,
+    "Count": 50,
+    "SpawnInterval": 0.5,
+    "Duration": 20.0,
+    "RewardSilver": 2000,
+    "IsBossWave": false
+  }
+]

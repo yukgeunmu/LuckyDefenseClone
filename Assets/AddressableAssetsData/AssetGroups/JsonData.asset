@@ -15,6 +15,16 @@ MonoBehaviour:
   m_GroupName: JsonData
   m_GUID: a8cc99e5c0061b849addfa5001311177
   m_SerializeEntries:
+  - m_GUID: 3a263f74e7830f94ca9d90872a8ec2fb
+    m_Address: RecipeData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 85a00a498c397e647b8f456eda65dab6
+    m_Address: WaveData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a4d28793ded282f448666c930a9f6cf1
     m_Address: HeroData
     m_ReadOnly: 0
@@ -22,6 +32,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ac09be8c0135a064396b8be0fd8bede8
     m_Address: SkillData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b4c73226ee1a2ff4daf6b9c2ca2b05ea
+    m_Address: MonsterData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f69f225bdd7a76542a3e0058796b9b05
+    m_Address: RecipeMaterialData
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

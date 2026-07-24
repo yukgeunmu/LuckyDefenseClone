@@ -8,6 +8,6 @@ namespace LuckyDefense.Wave.Data
         menuName = "Game/Wave/Wave Database")]
     public class WaveDatabase : ScriptableObject
     {
-        public List<WaveData> Waves = new();
+        public List<WaveDataSO> Waves = new();
     }
 }

@@ -5,9 +5,9 @@ namespace LuckyDefense.Core.Events
 {
     public struct WaveEndedEvent : IEvent
     {
-        public WaveData Wave;
+        public WaveDataSO Wave;
 
-        public WaveEndedEvent(WaveData wave)
+        public WaveEndedEvent(WaveDataSO wave)
         {
             Wave = wave;
         }
